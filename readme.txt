@@ -19,6 +19,8 @@ This is a plugin for church administration and religious ministries.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 3. Place [k7_contact_form] on the page you want the form displayed, 
 4. Place [k7_custom_registration] on the page you want the users registration form  displayed,
+5. Go to Settings » Permalinks, and simply click on Save Changes button.
+
 
 == Frequently Asked Questions ==
 What is the K7 Church?

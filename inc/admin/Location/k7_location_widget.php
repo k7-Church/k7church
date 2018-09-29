@@ -4,9 +4,9 @@ defined( 'ABSPATH' ) or die( 'Nope, not accessing this' );
 
 //main widget used for displaying locations
 
-if(class_exists('K7_location_widget'));
+if(class_exists('K7_Location_Widget'));
 
-class K7_location_widget extends WP_widget
+class K7_Location_Widget extends WP_widget
 {
 
     //initialise widget values
@@ -14,9 +14,9 @@ class K7_location_widget extends WP_widget
     {
         //set base values for the widget (override parent)
         parent::__construct(
-            'k7_location_widget',
+            'K7_Location_Widget',
             __('Church Location Widget', 'k7'),
-            array('description' => __('A widget that displays your locations', 'k7') )
+            array('description' => __('A widget that displays your locations', 'k7'))
         );
         add_action('widgets_init', array($this, 'register_k7_location_widgets'));
     }
@@ -143,7 +143,7 @@ class K7_location_widget extends WP_widget
         $html .= $k7_simple_locations->get_locations_output($arguments);
         $html .= $args['after_widget'];
 
-        echo $html;
+        return $html;
     }
 
     //registers our widget for use
@@ -152,6 +152,5 @@ class K7_location_widget extends WP_widget
         register_widget('k7_location_widget');
     }
 }
-
-new K7_location_widget();
+new K7_Location_Widget();
 

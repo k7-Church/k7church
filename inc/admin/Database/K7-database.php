@@ -20,6 +20,8 @@ class K7_Database
         $this->version = '1.0';
 
 
+        $this->init();
+
 
     }
 
@@ -27,24 +29,25 @@ class K7_Database
     {
 
         global $wpdb;
+        $charset_collate = $wpdb->get_charset_collate();
+
         require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 
-       
 
-        $sql = "CREATE TABLE ". $wpdb->prefix. 'form_submissions' . " (
+        $sql = "CREATE TABLE " . $wpdb->prefix . 'form_submissions' . " (
         id bigint(20) NOT NULL AUTO_INCREMENT,
-        user_id bigint(20) NOT NULL,
         data longtext NOT NULL,
-        PRIMARY KEY  (id),
-        KEY user (user_id)
-        ) CHARACTER SET utf8 COLLATE utf8_general_ci;";
+        PRIMARY KEY  (id)
+        ) CHARACTER SET utf8 COLLATE $charset_collate;";
 
         dbDelta($sql);
 
-       update_option( $this->table_name . '_db_version', $this->version );
+
+
+        update_option($this->table_name . '_db_version', $this->version);
     }
 
-    public function insert_data(string $table, array $data, array $dataType)
+    public function insert_data( string $table, array $data, array $dataType)
     {
         global $wpdb;
 
@@ -58,12 +61,9 @@ class K7_Database
         global $wpdb;
 
 
-        $obj = $wpdb->get_row("SELECT *  FROM  $table ");
+        $obj = $wpdb->get_results("SELECT *  FROM  $table ");
 
-        foreach ($obj as $item) {
-            echo $item;
-        }
-
+        return $obj;
     }
 
     public function update_data()
@@ -73,7 +73,7 @@ class K7_Database
 
     public function delete_data()
     {
-                global $wpdb;
+        global $wpdb;
 
 
     }
@@ -81,19 +81,21 @@ class K7_Database
     public function on_delete_blog()
     {
         global $wpdb;
-        $tabelas [] =$wpdb->query("DROP table IF EXISTS " . $wpdb->prefix. "form_submissions ");
+        $tabelas [] = $wpdb->query("DROP table IF EXISTS " . $wpdb->prefix . "form_submissions ");
         return $tabelas;
     }
 
 
     public function init()
     {
-        // add_action('init', array($this, 'create_table'));
+        add_action('drop_database', array($this, 'on_delete_blog'));
         add_action('init', array($this, 'create_table'));
         add_filter(' wpmu_drop_tables ', array($this, ' on_delete_blog '));
 
-        register_activation_hook(__FILE__, 'init');
+        register_uninstall_hook(__FILE__, 'drop_database');
+        register_activation_hook(__FILE__, 'create_table');
 
     }
 
 }
+new K7_Database();

@@ -36,7 +36,6 @@ class K7_location_shortcode
                 'number_of_locations' => -1)
             , $atts, $tag);
 
-        
 
         $k7_simple_locations = new K7_Location();
 

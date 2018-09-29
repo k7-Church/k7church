@@ -1,11 +1,8 @@
-section, .location_list {
 
-	background: red  !important;
-	color: red  !important;
+ div {
+	 margin-bottom:2px;
+ }
+
+input{
+	margin-bottom:4px;
 }
-
-.phone_email, .teste, .title, .image_content {
-
-	background-color: red !important;
-}
-
