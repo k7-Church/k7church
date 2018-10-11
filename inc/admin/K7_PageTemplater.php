@@ -151,7 +151,7 @@ class K7_PageTemplater
         if (file_exists($file)) {
             return $file;
         } else {
-            $file;
+            return $file;
         }
 
         // Return template
@@ -161,3 +161,5 @@ class K7_PageTemplater
 
 }
 add_action( 'plugins_loaded', array( 'K7_PageTemplater', 'getInstance' ) );
+
+?>

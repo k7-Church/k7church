@@ -21,55 +21,55 @@ class K7_user_register
     {
         ?>
 
-        <form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
+        <form  class="form" action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
             <div>
                 <label for="username"><?php echo __('Username', 'k7'); ?> <strong>*</strong></label>
-                <input type="text" name="username" value="<?php echo(isset($_POST['username']) ? $username : null); ?>"
+                <input type="text" class="form-control" name="username" value="<?php echo(isset($_POST['username']) ? $username : null); ?>"
                        autocomplete="off">
             </div>
 
             <div>
                 <label for="firstname"><?php echo __('First Name<', 'k7'); ?>/label>
-                    <input type="text" name="fname" value="<?php echo(isset($_POST['fname']) ? $first_name : null); ?>"
+                    <input type="text" class="form-control" name="fname" value="<?php echo(isset($_POST['fname']) ? $first_name : null); ?>"
                            autocomplete="off">
             </div>
 
             <div>
                 <label for="website"><?php echo __('Last Name', 'k7'); ?></label>
-                <input type="text" name="lname" value="<?php echo(isset($_POST['lname']) ? $last_name : null); ?>"
+                <input type="text"class="form-control" name="lname" value="<?php echo(isset($_POST['lname']) ? $last_name : null); ?>"
                        autocomplete="off">
             </div>
 
             <div>
                 <label for="nickname"><?php echo __('', 'k7'); ?>Nickname</label>
-                <input type="text" name="nickname" value="<?php echo(isset($_POST['nickname']) ? $nickname : null); ?>"
+                <input type="text" class="form-control" name="nickname" value="<?php echo(isset($_POST['nickname']) ? $nickname : null); ?>"
                        autocomplete="off">
             </div>
 
             <div>
                 <label for="password"><?php echo __('Password', 'k7'); ?> <strong>*</strong></label>
-                <input type="password" name="password"
+                <input type="password" name="password" class="form-control"
                        value="<?php echo(isset($_POST['password']) ? $password : null); ?>" autocomplete="off">
             </div>
 
             <div>
                 <label for="email"><?php echo __('Email', 'k7'); ?><strong>*</strong></label>
-                <input type="text" name="email" value="<?php echo(isset($_POST['email']) ? $email : null); ?>"
+                <input type="text"  class="form-control" name="email" value="<?php echo(isset($_POST['email']) ? $email : null); ?>"
                        autocomplete="off">
             </div>
 
             <div>
                 <label for="website"><?php echo __('Website', 'k7'); ?></label>
-                <input type="text" name="website" value="<?php echo(isset($_POST['website']) ? $website : null); ?>">
+                <input type="text" class="form-control" name="website" value="<?php echo(isset($_POST['website']) ? $website : null); ?>">
             </div>
 
             <div>
                 <label for="bio"><?php echo __('About / Bio', 'k7'); ?></label>
                 <textarea name="bio"><?php echo(isset($_POST['bio']) ? $bio : null); ?></textarea>
             </div>
-            <input type="hidden" name="k7_nonce_field" value="<?php echo wp_create_nonce('k7_nonce_field_submit'); ?>">
+            <input type="hidden" class="form-control" name="k7_nonce_field" value="<?php echo wp_create_nonce('k7_nonce_field_submit'); ?>">
             <br/>
-            <input type="submit" name="submit"
+            <input type="submit" name="submit" class="form-control"
                    value="<?php echo apply_filters('k7_submit_value_register', 'REGISTER'); ?>"/>
         </form>
         <?php

@@ -99,3 +99,5 @@ class K7_Database
 
 }
 new K7_Database();
+
+?>

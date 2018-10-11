@@ -18,5 +18,6 @@
 
         <?php
 
+        edd_checkout_cart();
 
 

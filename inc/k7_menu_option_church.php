@@ -10,8 +10,6 @@ class k7_Menu_Option_Church
     private $my_plugin_screen_name;
     private static $instance;
 
-    /*......*/
-
     public static function GetInstance()
     {
 
@@ -24,7 +22,6 @@ class k7_Menu_Option_Church
         }
         return self::$instance;
     }
-
 
     public function PluginMenu()
     {
@@ -46,7 +43,6 @@ class k7_Menu_Option_Church
     public function RenderPage_callback()
     {
         require_once K7_PLUGIN_DIR . 'templates/admin/html-admin-settings-home.php';
-
 
     }
 
@@ -100,7 +96,6 @@ class k7_Menu_Option_Church
         <?php
     }
 
-
     function k7_page_template($page_template)
     {
         if (is_page('my-custom-page-slug')) {
@@ -111,10 +106,8 @@ class k7_Menu_Option_Church
 
     private function InitPlugin()
     {
-
         add_action('admin_menu', array($this, 'PluginMenu'));
         add_filter('page_template', array($this, 'k7_page_template'));
-
 
     }
 
@@ -123,16 +116,13 @@ class k7_Menu_Option_Church
         add_shortcode('example', array($this, 'k7_Example_function'));
         add_action('wp_head', array($this, 'k7_display_header_scripts'));
 
-
     }
-
 
     public static function k7_display_header_scripts()
     {
         $header_scripts = get_option('k7_header_scripts', 'none');
         return $header_scripts;
     }
-
 
     private function k7_display_footer_scripts()
     {

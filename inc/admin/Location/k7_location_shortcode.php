@@ -47,3 +47,5 @@ class K7_location_shortcode
 }
 
 new K7_location_shortcode();
+
+?>

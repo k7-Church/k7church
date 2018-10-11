@@ -201,3 +201,4 @@ if ( ! class_exists('TpPostsUsuarios') ) {
     $TutsupContato = new TpPostsUsuarios();
 
 } // class_exists('TpPostsUsuarios')
+?>

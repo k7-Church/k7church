@@ -368,5 +368,7 @@ class K7_Location
         //used so you can hook here and save additional post fields added via 'k7_location_meta_data_output_end' or 'k7_location_meta_data_output_end'
         do_action('k7_location_admin_save', $post_id, $_POST);
 
+
     }
 }
+?>
