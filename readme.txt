@@ -1,25 +1,22 @@
 === K7 Church ===
 Contributors: Márcio Zebedeu
-Tags: Tags: Form, Register, Locations, Post Type
+Tags: Tags: Form, Register, Locations, Location Widget, Media Widget, Custom Post Type Manager, Custom Taxonomy Manager, Testimonial, Sermon post,  
 Requires at least: 4.6
-Tested up to: 4.9.8
-Requires PHP: 5.2.4
-Stable tag: 1.0.3
+Tested up to: 5.1.1
+Requires PHP: 5.6.20
+Stable tag: 1.0.11
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-This is a plugin for church administration and religious ministries.
+K7 Church is a Wordpress plugin for churches that claims to be simple and objective for your church's website.
 
 == Description ==
-This is a plugin for church administration and religious ministries.
-
+K7 Church is a Wordpress plugin for churches that claims to be simple and objective for your church's website.
 == Installation ==
 
 1. Upload the `church_admin` directory to the `/wp-content/plugins/` directory.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
-3. Place [k7_contact_form] on the page you want the form displayed (optional) 
-4. Place [k7_custom_registration] on the page you want the users registration form  displayed (optional)
-5. Go to Settings » Permalinks, and simply click on Save Changes button.
+3. Go to Settings » Permalinks, and simply click on Save Changes button.
 
 
 == Frequently Asked Questions ==
@@ -30,10 +27,42 @@ What can we find in it?
 can be found form for comentarios and a complete form to register users.
 
 == Screenshots ==
-1. submit informations
+1. Sermon Post
+2. Sermon Post 2
+3. quick view of the sermon
+4. full sermon view
+5. Post Testimonial
+6. slide view of the testimony
+7. location post
+8. quick view of the location
+9. full location view
 
 
 == Changelog ==
+== 1.0.11 ==
+Minimum update of the required PHP version
+
+== 1.0.10 ==
+Add Custom Post Type Manager, Custom Taxonomy Manager
+fixe bug
+
+= 1.0.9
+fix bug 
+
+= 1.0.8
+fix bug 
+
+= 1.0.7
+fix bug 
+
+= 1.0.6
+fix bug 
+
+= 1.0.5
+fix bug 
+
+= 1.0.4
+fix bug 
 
 = 1.0.3
 

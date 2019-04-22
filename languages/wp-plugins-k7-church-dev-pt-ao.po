@@ -1,0 +1,991 @@
+# Translation of Plugins - K7 Church - Development (trunk) in Portuguese (Angola)
+# This file is distributed under the same license as the Plugins - K7 Church - Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2019-04-22 21:31+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Poedit 2.2.1\n"
+"Language: pt_AO\n"
+"Project-Id-Version: Plugins - K7 Church - Development (trunk)\n"
+"POT-Creation-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+
+#: templates/taxonomy.php:60
+msgid "Export Your Taxonomies"
+msgstr "Exportar suas taxonomias"
+
+#: templates/taxonomy.php:39
+msgid "Are you sure you want to delete this Custom Taxonomy? The data associated with it will not be deleted"
+msgstr "Tem certeza de que deseja excluir essa taxonomia personalizada ? Os dados associados a ele não serão excluídos"
+
+#: templates/taxonomy.php:18
+msgid "Manage Your Custom Taxonomies"
+msgstr "Gerenciar suas taxonomias personalizadas"
+
+#: templates/taxonomy.php:9
+msgid "Taxonomy"
+msgstr "Taxonomia"
+
+#: templates/taxonomy.php:6
+msgid "Your Taxonomies"
+msgstr "Suas taxonomias"
+
+#: templates/panel.php:33
+msgid "ANOTHER"
+msgstr "OUTRO"
+
+#: templates/panel.php:32
+msgid "Information"
+msgstr "Em formação"
+
+#: templates/cpt.php:61
+msgid "Export Your Custom Post Types"
+msgstr "Exportar seus tipos de postagem personalizados "
+
+#: templates/cpt.php:40
+msgid "Are you sure you want to delete this Custom Post Type? The data associated with it will not be deleted."
+msgstr "Tem certeza de que deseja excluir este tipo de postagem personalizada  ? Os dados associados a ele não serão excluídos ."
+
+#: templates/cpt.php:23 templates/taxonomy.php:23
+msgid "Actions"
+msgstr "Ações"
+
+#: templates/cpt.php:23 templates/taxonomy.php:23
+msgid "ID"
+msgstr "ID"
+
+#: templates/cpt.php:18
+msgid "Manage Your Custom Post Types"
+msgstr "Gerenciar seus tipos de postagem personalizados "
+
+#: templates/cpt.php:12 templates/taxonomy.php:12
+msgid "Export"
+msgstr "Exportar"
+
+#: templates/cpt.php:6
+msgid "Your Custom Post Types"
+msgstr "Seus tipos de postagem personalizada "
+
+#: templates/testimonial.php:7
+msgid "Testimonial SlideShow Shortcode"
+msgstr "Testimonial SlideShow Shortcode"
+
+#: templates/testimonial.php:4
+msgid "Testimonial Form Shortcode"
+msgstr "Forma de Depoimento Shortcode"
+
+#: templates/testimonial.php:2
+msgid "Testimonial Shortcode"
+msgstr "Código de Atestado de Testemunho"
+
+#: templates/contact-form.php:24
+msgid "There was a problem with the Contact Form, please try again!"
+msgstr "Houve um problema com o formulário de contato. Tente novamente."
+
+#: templates/contact-form.php:23
+msgid "Message Successfully submitted, thank you!"
+msgstr "Mensagem enviada com sucesso, obrigado!"
+
+#: templates/contact-form.php:22
+msgid "Submission in process, please wait&hellip;"
+msgstr "Submissão em andamento, por favor aguarde & hellip;"
+
+#: templates/contact-form.php:15
+msgid "A Message is Required"
+msgstr "Uma mensagem é necessária"
+
+#: templates/contact-form.php:10
+msgid "The Email address is not valid"
+msgstr "O endereço de e-mail não é válido"
+
+#: templates/contact-form.php:9
+msgid "Your Email"
+msgstr "Seu email"
+
+#: templates/contact-form.php:5
+msgid "Your Name is Required"
+msgstr "Seu nome é obrigatório"
+
+#: templates/contact-form.php:4
+msgid "Your Name"
+msgstr "Seu nome"
+
+#: templates/admin.php:8 templates/admin.php:74
+msgid "About"
+msgstr "Sobre"
+
+#: templates/admin.php:7 templates/admin.php:25
+msgid "Updates"
+msgstr "Atualizações"
+
+#: templates/admin.php:6
+msgid "Manage Settings"
+msgstr "Gerenciar  configurações"
+
+#: templates/admin.php:2
+msgid "Church Plugin"
+msgstr "Plugin da Igreja"
+
+#: templates/auth.php:16
+msgid "Forgot Password?"
+msgstr "Esqueceu a senha?"
+
+#: templates/auth.php:7
+msgid "Site Login"
+msgstr "Login no site"
+
+#: templates/auth.php:6
+msgid "&times;"
+msgstr "&times;"
+
+#: templates/auth.php:3 templates/auth.php:12
+msgid "Login"
+msgstr "Entrar"
+
+#: templates/widget.php:1
+msgid "Widgets Manager"
+msgstr "Gerenciador de Widgets"
+
+#: inc/Controller/Church_BaseController.php:29
+msgid "Activate Custom Templates"
+msgstr "Ativar  modelos personalizados"
+
+#: inc/Controller/Church_BaseController.php:28
+msgid "Activate Testimonial Manager"
+msgstr "Ativar o Gerente de Testemunho"
+
+#: inc/Controller/Church_BaseController.php:27
+msgid "Activate Media Widget"
+msgstr "Ativar Widget de Mídia"
+
+#: inc/Controller/Church_BaseController.php:26
+msgid "Activate Location Widget"
+msgstr "Ativar widget de localização"
+
+#: inc/Controller/Church_BaseController.php:25
+msgid "Activate Localion Manager"
+msgstr "Ativar Gerenciador de Localion"
+
+#: inc/Controller/Church_BaseController.php:24
+msgid "Activate Taxonomy Manager"
+msgstr "Ativar Gerente de Taxonomia"
+
+#: inc/Controller/Church_BaseController.php:23
+msgid "Activate CPT Manager"
+msgstr "Ativar o Gerenciador de CPT"
+
+#: inc/Controller/Church_TestimonialController.php:184
+msgid "Featured"
+msgstr "Destaque"
+
+#: inc/Controller/Church_TestimonialController.php:176
+msgid "Approved"
+msgstr "Aprovado"
+
+#: inc/Controller/Church_TestimonialController.php:172
+msgid "Author Email"
+msgstr "E-mail do autor"
+
+#: inc/Controller/Church_TestimonialController.php:168
+msgid "Author Name"
+msgstr "Nome do autor"
+
+#: inc/Controller/Church_TestimonialController.php:128
+msgid "Testimonial"
+msgstr "Testemunho"
+
+#: inc/Controller/Church_SermonController.php:315
+msgid "Passages"
+msgstr "Passagens"
+
+#: inc/Controller/Church_SermonController.php:289
+#: inc/Controller/Church_SermonController.php:328
+msgid "view sermon"
+msgstr "ver sermão"
+
+#: inc/Controller/Church_SermonController.php:208
+msgid "Description of the Sermon:"
+msgstr "Descrição do Sermão:"
+
+#: inc/Controller/Church_SermonController.php:204
+msgid "Author of the sermon:"
+msgstr "Autor do sermão:"
+
+#: inc/Controller/Church_SermonController.php:200
+msgid "Passages of the sermon:"
+msgstr "Passagens do sermão:"
+
+#: inc/Controller/Church_SermonController.php:155
+#: inc/Controller/Church_SermonController.php:318
+msgid "Author"
+msgstr "Autor"
+
+#: inc/Controller/Church_SermonController.php:149
+msgid "Biblical Passages"
+msgstr "Passagens Bíblicas"
+
+#: inc/Controller/Church_SermonController.php:148
+msgid "Passages for the sermon"
+msgstr "Passagens para o sermão"
+
+#: inc/Controller/Church_SermonController.php:141
+msgid "Enter additional information about your sermon"
+msgstr "Insira informações adicionais sobre o seu sermão"
+
+#: inc/Controller/Church_SermonController.php:120
+msgid "Sermon Information"
+msgstr "Informação do Sermão"
+
+#: inc/Controller/Church_SermonController.php:92
+msgid "No Sermons found in Trash."
+msgstr "Nenhum Sermão encontrado no Lixo ."
+
+#: inc/Controller/Church_SermonController.php:90
+msgid "Parent Sermon:"
+msgstr "Sermão Pai:"
+
+#: inc/Controller/Church_SermonController.php:89
+msgid "Search Sermons"
+msgstr "Pesquisar sermões"
+
+#: inc/Controller/Church_SermonController.php:88
+msgid "All Sermons"
+msgstr "Todos os Sermões"
+
+#: inc/Controller/Church_SermonController.php:87
+#: inc/Controller/Church_SermonController.php:328
+msgid "View Sermon"
+msgstr "Visualizar Sermão"
+
+#: inc/Controller/Church_SermonController.php:86
+msgid "Edit Sermon"
+msgstr "Editar sermão"
+
+#: inc/Controller/Church_SermonController.php:85
+msgid "New Sermon"
+msgstr "Novo Sermão"
+
+#: inc/Controller/Church_SermonController.php:84
+msgid "Add New Sermon"
+msgstr "Adicionar novo sermão"
+
+#: inc/Controller/Church_SermonController.php:81
+msgid "Sermons"
+msgstr "Sermões"
+
+#: inc/Controller/Church_SermonController.php:79
+#: inc/Controller/Church_SermonController.php:80
+#: inc/Controller/Church_SermonController.php:82
+msgid "Sermon"
+msgstr "Sermão"
+
+#: inc/Controller/Church_LocationController.php:362
+msgid "Phone"
+msgstr "telefone"
+
+#: inc/Controller/Church_LocationController.php:336
+#: inc/Controller/Church_LocationController.php:375
+msgid "view location"
+msgstr "ver localização"
+
+#: inc/Controller/Church_LocationController.php:252
+msgid "Location Trading Hours"
+msgstr "Horário de Negociação no Local"
+
+#: inc/Controller/Church_LocationController.php:245
+msgid "Location Address"
+msgstr "Endereço de localização"
+
+#: inc/Controller/Church_LocationController.php:241
+msgid "Location Email"
+msgstr "Email de localização"
+
+#: inc/Controller/Church_LocationController.php:237
+msgid "Location Phone"
+msgstr "Localização Telefone"
+
+#: inc/Controller/Church_LocationController.php:190
+msgid "Trading hours for the location (e.g 9am - 5pm) "
+msgstr "Horário de negociação para a localização (por exemplo, 9:00 - 17:00) "
+
+#: inc/Controller/Church_LocationController.php:181
+msgid "Physical address of your location"
+msgstr "Endereço físico da sua localização"
+
+#: inc/Controller/Church_LocationController.php:180
+msgid "Address"
+msgstr "Endereço"
+
+#: inc/Controller/Church_LocationController.php:174
+msgid "Email contact"
+msgstr "Contato por e-mail"
+
+#: inc/Controller/Church_LocationController.php:173
+msgid "Contact Email"
+msgstr "email de contato"
+
+#: inc/Controller/Church_LocationController.php:167
+msgid "main contact number"
+msgstr "número de contato principal"
+
+#: inc/Controller/Church_LocationController.php:166
+msgid "Contact Phone"
+msgstr "telefone de contato"
+
+#: inc/Controller/Church_LocationController.php:159
+msgid "Enter additional information about your location"
+msgstr "Insira informações adicionais sobre sua localização"
+
+#: inc/Controller/Church_LocationController.php:138
+msgid "Location Information"
+msgstr "Informação de localização"
+
+#: inc/Controller/Church_GalleryController.php:38
+#: inc/Controller/Church_GalleryController.php:39
+msgid "Gallery Manager"
+msgstr "Gerente de galeria"
+
+#: inc/Controller/Church_MembershipController.php:38
+#: inc/Controller/Church_MembershipController.php:39
+msgid "Membership Manager"
+msgstr "Gerente de Associação"
+
+#: inc/Controller/Church_MembershipController.php:37
+#: inc/Controller/Church_GalleryController.php:37
+msgid "church_plugin"
+msgstr "church_plugin"
+
+#: inc/Controller/Church_TemplateController.php:21
+msgid "Two Columns Layout"
+msgstr "Layout de duas colunas"
+
+#: inc/Controller/Church_ChatController.php:38
+#: inc/Controller/Church_ChatController.php:39
+msgid "Chat Manager"
+msgstr "Gerenciador de bate-papo"
+
+#: templates/cpt.php:23 inc/Controller/Church_CustomPostTypeController.php:152
+msgid "Archive"
+msgstr "Arquivo"
+
+#: templates/cpt.php:23 inc/Controller/Church_CustomPostTypeController.php:139
+msgid "Public"
+msgstr "Público"
+
+#: inc/Controller/Church_CustomPostTypeController.php:133
+msgid "eg. Products"
+msgstr "por exemplo. Produtos"
+
+#: templates/cpt.php:23 inc/Controller/Church_CustomPostTypeController.php:126
+msgid "Plural Name"
+msgstr "Nome plural"
+
+#: inc/Controller/Church_CustomPostTypeController.php:120
+msgid "eg. Product"
+msgstr "por exemplo. produtos"
+
+#: inc/Controller/Church_CustomPostTypeController.php:107
+msgid "eg. product"
+msgstr "por exemplo. produtos"
+
+#: inc/Controller/Church_CustomPostTypeController.php:100
+msgid "Custom Post Type ID"
+msgstr " ID de tipo de postagem personalizada"
+
+#: inc/Controller/Church_CustomPostTypeController.php:86
+msgid "Custom Post Type Manager"
+msgstr " Gerente de tipo de postagem personalizado"
+
+#: templates/cpt.php:2 inc/Controller/Church_CustomPostTypeController.php:60
+msgid "CPT Manager"
+msgstr "Gerente de Tipo de Postagens Personalizadas "
+
+#: inc/Controller/Church_CustomPostTypeController.php:59
+msgid "Custom Post Types"
+msgstr " Tipos de Postagens Personalizadas"
+
+#: inc/Controller/Church_CustomTaxonomyController.php:139
+msgid "Post Types"
+msgstr "Tipos de postagem"
+
+#: templates/taxonomy.php:23
+#: inc/Controller/Church_CustomTaxonomyController.php:126
+msgid "Hierarchical"
+msgstr "Hierárquico"
+
+#: inc/Controller/Church_CustomTaxonomyController.php:120
+msgid "eg. Genre"
+msgstr "por exemplo. Gênero"
+
+#: templates/cpt.php:23 templates/taxonomy.php:23
+#: inc/Controller/Church_CustomTaxonomyController.php:113
+#: inc/Controller/Church_CustomPostTypeController.php:113
+msgid "Singular Name"
+msgstr "Nome no Singular"
+
+#: inc/Controller/Church_CustomTaxonomyController.php:107
+msgid "eg. genre"
+msgstr "por exemplo. gênero"
+
+#: inc/Controller/Church_CustomTaxonomyController.php:100
+msgid "Custom Taxonomy ID"
+msgstr "ID de taxonomia personalizada"
+
+#: inc/Controller/Church_CustomTaxonomyController.php:86
+msgid "Custom Taxonomy Manager"
+msgstr "Gerente de Taxonomia Personalizada"
+
+#: templates/taxonomy.php:2
+#: inc/Controller/Church_CustomTaxonomyController.php:60
+msgid "Taxonomy Manager"
+msgstr "Gerente de Taxonomia"
+
+#: inc/Controller/Church_CustomTaxonomyController.php:59
+msgid "Custom Taxonomies"
+msgstr "Taxonomias Personalizadas"
+
+#: inc/Api/Widgets/Church_LocationWidget.php:87
+msgid "Number of Locations"
+msgstr "Número de locais"
+
+#: inc/Api/Widgets/Church_LocationWidget.php:85
+msgid "If you want to display multiple locations select how many below"
+msgstr "Se você deseja exibir vários locais, selecione quantos abaixo"
+
+#: inc/Api/Widgets/Church_LocationWidget.php:62
+msgid "Location to display"
+msgstr "Localização para exibir"
+
+#: inc/Api/Widgets/Church_MediaWidget.php:71
+msgid "Image:"
+msgstr "Imagem:"
+
+#: inc/Api/Widgets/Church_MediaWidget.php:67
+msgid "Title:"
+msgstr "Título:"
+
+#: templates/panel.php:71 templates/panel/K7_html_panel.php:68
+#: inc/Controller/Church_SermonController.php:161
+msgid "Description"
+msgstr "Descrição"
+
+#: templates/panel.php:31 templates/panel/K7_html_panel.php:60
+#: templates/panel/K7_html_panel.php:78
+msgid "Recent Activity"
+msgstr "Atividade recente"
+
+#: templates/panel/K7_html_panel.php:59
+msgid "Home"
+msgstr "Casa"
+
+#: templates/panel.php:22 templates/panel/K7_html_panel.php:46
+msgid "Posts"
+msgstr "Postagens"
+
+#: templates/panel.php:23 templates/panel/K7_html_panel.php:45
+msgid "Comments"
+msgstr "Comentários"
+
+#: inc/admin/user/K7_My_Account.php:47
+#: inc/Controller/Church_AccountController.php:61
+msgid "You must be registered"
+msgstr "Você deve estar registrado"
+
+#: inc/admin/user/K7_My_Account.php:36
+#: inc/Controller/Church_AccountController.php:50
+msgid "Log out"
+msgstr "Sair"
+
+#: inc/admin/user/K7_My_Account.php:27
+#: inc/Controller/Church_AccountController.php:43
+msgid "Welcome"
+msgstr "Bem vindo"
+
+#: inc/admin/user/K7_user_register.php:38
+msgid "Last Name"
+msgstr "Último nome"
+
+#: inc/admin/user/K7_user_register.php:32
+msgid "First Name<"
+msgstr "Primeiro Nome "
+
+#: templates/register_form.php:30
+msgid "City name"
+msgstr "Nome da Cidade"
+
+#: K7_Church.php:123
+msgid "Your Account"
+msgstr "Sua conta"
+
+#: templates/register_form.php:35
+msgid "Note: Your password will be generated automatically and emailed to the address you specify above."
+msgstr "Nota: Sua senha será gerada automaticamente e enviada para o endereço que você especificar acima."
+
+#: templates/password_reset_form.php:23
+msgid "Repeat new password"
+msgstr "Repita a nova senha"
+
+#: templates/password_reset_form.php:19
+msgid "New password"
+msgstr "Nova senha"
+
+#: templates/password_reset_form.php:31 templates/password_lost_form.php:31
+msgid "Reset Password"
+msgstr "Redefinir Senha"
+
+#: templates/password_lost_form.php:16
+msgid "Enter your email address and we'll send you a link you can use to pick a new password."
+msgstr "Digite seu endereço de e-mail e enviaremos um link para você escolher uma nova senha."
+
+#: templates/login_form.php:57
+msgid "Forgot your password?"
+msgstr "Esqueceu sua senha?"
+
+#: templates/login_form.php:42
+msgid "Your password has been changed. You can sign in now."
+msgstr "Sua senha foi mudada. Você pode entrar agora."
+
+#: templates/login_form.php:36
+msgid "Check your email for a link to reset your password."
+msgstr "Verifique no seu email um link para redefinir sua senha."
+
+#: templates/login_form.php:27
+msgid "You have successfully registered to <strong>%s</strong>. We have emailed your password to the email address you entered."
+msgstr "Você se registrou com sucesso em <strong>%s</strong>. Nós enviamos sua senha por e-mail para o endereço de e-mail que você digitou ."
+
+#: templates/login_form.php:19
+msgid "You have signed out. Would you like to sign in again?"
+msgstr "Você assinou. Gostaria de entrar novamente?"
+
+#: inc/admin/user/K7_Login.php:689
+msgid "reCAPTCHA secret key"
+msgstr "chave secreta reCAPTCHA"
+
+#: inc/admin/user/K7_Login.php:683
+msgid "reCAPTCHA site key"
+msgstr "chave do site reCAPTCHA"
+
+#: inc/admin/user/K7_Login.php:668
+msgid "An unknown error occurred. Please try again later."
+msgstr "Ocorreu um erro desconhecido. Por favor, tente novamente mais tarde."
+
+#: inc/admin/user/K7_Login.php:664
+msgid "Sorry, we don't accept empty passwords."
+msgstr "Desculpe, não aceitamos senhas vazias."
+
+#: inc/admin/user/K7_Login.php:662
+msgid "The two passwords you entered don't match."
+msgstr "As duas senhas que você digitou não correspondem."
+
+#: inc/admin/user/K7_Login.php:660
+msgid "The password reset link you used is not valid anymore."
+msgstr "O link de redefinição de senha que você usou não é mais válido."
+
+#: inc/admin/user/K7_Login.php:656
+msgid "There are no users registered with this email address."
+msgstr "Não há usuários registrados com este endereço de e-mail."
+
+#: inc/admin/user/K7_Login.php:653
+msgid "You need to enter your email address to continue."
+msgstr "Você precisa digitar seu endereço de e-mail para continuar."
+
+#: inc/admin/user/K7_Login.php:650
+msgid "The Google reCAPTCHA check failed. Are you a robot?"
+msgstr "A verificação do Google reCAPTCHA falhou. Você é um robô?"
+
+#: inc/admin/user/K7_Login.php:646
+msgid "An account exists with this email address."
+msgstr "Existe uma conta com este endereço de email."
+
+#: inc/admin/user/K7_Login.php:644
+msgid "The email address you entered is not valid."
+msgstr "O endereço de email que você digitou não é válido."
+
+#: inc/admin/user/K7_Login.php:637
+msgid "The password you entered wasn't quite right. <a href='%s'>Did you forget your password</a>?"
+msgstr "A senha que você digitou não estava correta.<a href='%s'>Você esqueceu sua senha</a>?"
+
+#: inc/admin/user/K7_Login.php:632
+msgid "We don't have any users with that email address. Maybe you used a different one when signing up?"
+msgstr "Não temos usuários com esse endereço de e-mail. Talvez você tenha usado um diferente ao se inscrever?"
+
+#: inc/admin/user/K7_Login.php:630
+msgid "You need to enter a password to login."
+msgstr "Você precisa digitar uma senha para fazer o login."
+
+#: inc/admin/user/K7_Login.php:628
+msgid "You do have an email address, right?"
+msgstr "Você tem um endereço de e-mail, certo?"
+
+#: inc/admin/user/K7_Login.php:513
+msgid "Thanks!"
+msgstr "Obrigado!"
+
+#: inc/admin/user/K7_Login.php:511
+msgid "To reset your password, visit the following address:"
+msgstr "Para redefinir sua senha, visite o seguinte endereço:"
+
+#: inc/admin/user/K7_Login.php:510
+msgid "If this was a mistake, or you didn't ask for a password reset, just ignore this email and nothing will happen."
+msgstr "Se isso foi um erro, ou você não solicitou uma redefinição de senha, ignore este e-mail e nada acontecerá."
+
+#: inc/admin/user/K7_Login.php:509
+msgid "You asked us to reset your password for your account using the email address %s."
+msgstr "Você nos pediu para redefinir sua senha para sua conta usando o endereço de e-mail %s."
+
+#: inc/admin/user/K7_Login.php:508
+msgid "Hello!"
+msgstr "Olá!"
+
+#: inc/admin/user/K7_Login.php:333
+msgid "Invalid password reset link."
+msgstr "Link de redefinição de senha inválido ."
+
+#: inc/admin/user/K7_Login.php:259 inc/admin/user/K7_Login.php:648
+msgid "Registering new users is currently not allowed."
+msgstr "Registrar novos usuários não é permitido no momento."
+
+#: inc/admin/user/K7_Login.php:213 inc/admin/user/K7_Login.php:257
+#: inc/admin/user/K7_Login.php:289 inc/admin/user/K7_Login.php:317
+msgid "You are already signed in."
+msgstr "Você já está inscrito."
+
+#: K7_Church.php:135 templates/password_reset_form.php:3
+msgid "Pick a New Password"
+msgstr "Escolha uma nova senha"
+
+#: K7_Church.php:131 templates/password_lost_form.php:3
+msgid "Forgot Your Password?"
+msgstr "Esqueceu sua senha?"
+
+#: K7_Church.php:119 templates/login_form.php:4 templates/login_form.php:50
+#: templates/login_form.php:74
+msgid "Sign In"
+msgstr "Assinar em"
+
+#: inc/admin/user/K7_user_register.php:115
+msgid "Website is not a valid URL"
+msgstr "Website is not a valid URL"
+
+#: inc/admin/user/K7_user_register.php:110
+msgid "Email Already in use"
+msgstr "Email já em uso"
+
+#: inc/admin/user/K7_user_register.php:102
+msgid "Password length must be greater than 5"
+msgstr "O comprimento da senha deve ser maior que 5"
+
+#: inc/admin/user/K7_user_register.php:96
+msgid "Sorry, that username already exists!"
+msgstr "Desculpe, esse nome de usuário já existe!"
+
+#: inc/admin/user/K7_user_register.php:67
+msgid "About / Bio"
+msgstr "Sobre / Bio"
+
+#: inc/admin/user/K7_user_register.php:62
+msgid "Website"
+msgstr "Local na rede Internet"
+
+#: templates/login_form.php:49 templates/login_form.php:65
+#: templates/register_form.php:16 templates/password_lost_form.php:25
+#: inc/admin/user/K7_user_register.php:56
+#: inc/Controller/Church_LocationController.php:365
+msgid "Email"
+msgstr "O email"
+
+#: templates/login_form.php:69 templates/auth.php:10
+#: inc/admin/user/K7_user_register.php:50
+msgid "Password"
+msgstr "Senha"
+
+#: templates/register_form.php:26
+msgid "Last name"
+msgstr "Último nome"
+
+#: templates/register_form.php:21
+msgid "First name"
+msgstr "Primeiro nome"
+
+#: templates/auth.php:8 inc/admin/user/K7_user_register.php:26
+msgid "Username"
+msgstr "Nome de usuário"
+
+#: inc/admin/Post-Type/K7_Message_Post.php:49
+msgid "Filter Message list"
+msgstr "Filtrar lista de mensagens"
+
+#: inc/admin/Post-Type/K7_Message_Post.php:48
+msgid "Messages list navigation"
+msgstr "Navegação da lista de mensagens"
+
+#: inc/admin/Post-Type/K7_Message_Post.php:46
+msgid "Uploaded to this Message"
+msgstr "Enviado para esta mensagem"
+
+#: inc/admin/Post-Type/K7_Message_Post.php:38
+msgid "Search Messages"
+msgstr "Pesquisar mensagens"
+
+#: inc/admin/Post-Type/K7_Message_Post.php:36
+#: inc/admin/Post-Type/K7_Message_Post.php:37
+msgid "View Message"
+msgstr "Ver mensagem"
+
+#: inc/admin/Post-Type/K7_Message_Post.php:35
+msgid "Update Message"
+msgstr "Atualizar mensagem"
+
+#: inc/admin/Post-Type/K7_Message_Post.php:34
+msgid "Edit Message"
+msgstr "Editar mensagem"
+
+#: inc/admin/Post-Type/K7_Message_Post.php:33
+msgid "New Message"
+msgstr "Nova mensagem"
+
+#: inc/admin/Post-Type/K7_Message_Post.php:31
+msgid "Add New Message"
+msgstr "Adicionar nova mensagem"
+
+#: inc/admin/Post-Type/K7_Message_Post.php:30
+msgid "All Messages"
+msgstr "Todas as mensagens"
+
+#: inc/admin/Post-Type/K7_Message_Post.php:29
+msgid "Parent Message:"
+msgstr "Mensagem pai:"
+
+#: inc/K7_Form.php:113
+msgid "Iea pro exemaple site form submission"
+msgstr "Iea pro submissão do formulário do site exemaple"
+
+#: inc/admin/user/K7_user_register.php:106 inc/K7_Form.php:67
+msgid "Email is not valid"
+msgstr "E-mail não é válido"
+
+#: inc/admin/user/K7_user_register.php:99 inc/K7_Form.php:62
+msgid "Sorry, the username you entered is not valid"
+msgstr "Desculpe, o nome de usuário que você digitou não é válido"
+
+#: inc/K7_Form.php:58
+msgid "Comments too short. At least 1 characters is required"
+msgstr "Comentários muito curtos. Pelo menos 1 caracteres é necessário"
+
+#: inc/K7_Form.php:54
+msgid "Phone Number too short. At least 4 characters is required"
+msgstr "Número de telefone muito curto. Pelo menos 4 caracteres são necessários"
+
+#: inc/admin/user/K7_user_register.php:92 inc/K7_Form.php:50
+msgid "Username too short. At least 4 characters is required"
+msgstr "Nome de usuário muito curto. Pelo menos 4 caracteres são necessários"
+
+#: inc/admin/user/K7_user_register.php:88 inc/K7_Form.php:46
+msgid "Required form field is missing"
+msgstr "Campo de formulário obrigatório está ausente"
+
+#: inc/K7_Form.php:28
+msgid "Give us your comments"
+msgstr "Nos dê seus comentários"
+
+#: inc/K7_Form.php:25
+msgid "Phone Number"
+msgstr "Número de telefone"
+
+#: inc/K7_Form.php:23
+msgid "Email Adress"
+msgstr "Endereço de email"
+
+#: inc/K7_Form.php:21
+msgid "you full name"
+msgstr "seu nome completo"
+
+#: inc/admin/user/K7_My_Account.php:47
+#: inc/Controller/Church_AccountController.php:61
+msgid "Log in"
+msgstr "Entrar"
+
+#: K7_Church.php:127 templates/register_form.php:3
+#: templates/register_form.php:48 templates/auth.php:16
+msgid "Register"
+msgstr "registo"
+
+#. Author of the plugin
+msgid "Márcio Zebedeu"
+msgstr "Márcio Zebedeu"
+
+#. Description of the plugin
+msgid "This is a plugin for church administration and religious ministries."
+msgstr "Este é um plugin para a administração da igreja e ministérios religiosos."
+
+#. Plugin Name of the plugin
+msgid "K7 Church"
+msgstr "K7 Igreja"
+
+#: inc/admin/Post-Type/K7_Message_Post.php:47
+msgid "Items list"
+msgstr "Lista de itens"
+
+#: inc/admin/Post-Type/K7_Message_Post.php:45
+msgid "Insert into item"
+msgstr "Inserir no item"
+
+#: inc/admin/Post-Type/K7_Message_Post.php:44
+msgid "Use as featured image"
+msgstr "Usar como imagem destacada"
+
+#: inc/admin/Post-Type/K7_Message_Post.php:43
+msgid "Remove featured image"
+msgstr "Remover imagem em destaque"
+
+#: inc/admin/Post-Type/K7_Message_Post.php:42
+msgid "Set featured image"
+msgstr "Definir imagem destacada"
+
+#: inc/admin/Post-Type/K7_Message_Post.php:41
+msgid "Featured Image"
+msgstr "Imagem em destaque"
+
+#: inc/admin/Post-Type/K7_Message_Post.php:40
+msgid "Not found in Trash"
+msgstr "Não encontrado na lixeira"
+
+#: inc/admin/Post-Type/K7_Message_Post.php:39
+msgid "Not found"
+msgstr "Não encontrado"
+
+#: inc/admin/Post-Type/K7_Message_Post.php:28
+msgid "Item Attributes"
+msgstr "Atributos do item"
+
+#: inc/admin/Post-Type/K7_Message_Post.php:27
+msgid "Item Archives"
+msgstr "Arquivos de itens"
+
+#: templates/contact-form.php:14 inc/admin/Post-Type/K7_Message_Post.php:26
+msgid "Your Message"
+msgstr "Sua Mensagem"
+
+#: inc/admin/Post-Type/K7_Message_Post.php:25
+msgid "Yours Messages"
+msgstr "Suas Mensagens"
+
+#: inc/admin/Post-Type/K7_Message_Post.php:24
+msgctxt "Post Type Singular Name"
+msgid "Your Message"
+msgstr "Sua Mensagem"
+
+#: inc/admin/Post-Type/K7_Message_Post.php:23
+msgctxt "Post Type General Name"
+msgid "Message"
+msgstr "mensagem"
+
+#: inc/admin/Location/K7_location_widget.php:19
+msgid "A widget that displays your locations"
+msgstr "Um widget que exibe seus locais"
+
+#: inc/admin/Location/K7_location_widget.php:18
+msgid "Church Location Widget"
+msgstr "Widget de localização da igreja"
+
+#: inc/admin/Location/K7_Location.php:61
+#: inc/Controller/Church_LocationController.php:110
+msgid "No Locations found in Trash."
+msgstr "Nenhum local encontrado na lixeira ."
+
+#: inc/admin/Location/K7_Location.php:59
+#: inc/Controller/Church_LocationController.php:108
+msgid "Parent Location:"
+msgstr "Localização dos Pais:"
+
+#: inc/admin/Location/K7_Location.php:58
+#: inc/Controller/Church_LocationController.php:107
+msgid "Search Locations"
+msgstr "Procurar Localizações"
+
+#: inc/Api/Widgets/Church_LocationWidget.php:65
+#: inc/Api/Widgets/Church_LocationWidget.php:93
+#: inc/admin/Location/K7_Location.php:57
+#: inc/Controller/Church_LocationController.php:106
+msgid "All Locations"
+msgstr "Todas as Localizações"
+
+#: inc/admin/Location/K7_Location.php:56
+#: inc/Controller/Church_LocationController.php:105
+#: inc/Controller/Church_LocationController.php:375
+msgid "View Location"
+msgstr "Localização"
+
+#: inc/admin/Location/K7_Location.php:55
+#: inc/Controller/Church_LocationController.php:104
+msgid "Edit Location"
+msgstr "Editar Localização"
+
+#: inc/admin/Location/K7_Location.php:54
+#: inc/Controller/Church_LocationController.php:103
+msgid "New Location"
+msgstr "Nova Localização"
+
+#: inc/admin/Location/K7_Location.php:53
+#: inc/Controller/Church_LocationController.php:102
+msgid "Add New Location"
+msgstr "Adicionar Nova Localização"
+
+#: inc/admin/Post-Type/K7_Message_Post.php:32
+#: inc/admin/Location/K7_Location.php:52
+#: inc/Controller/Church_LocationController.php:101
+#: inc/Controller/Church_SermonController.php:83
+msgid "Add New"
+msgstr "Adicionar Novo"
+
+#: inc/admin/Location/K7_Location.php:50
+#: inc/Controller/Church_LocationController.php:99
+msgid "Locations"
+msgstr "Localizações"
+
+#: inc/admin/Location/K7_Location.php:48 inc/admin/Location/K7_Location.php:49
+#: inc/admin/Location/K7_Location.php:51
+#: inc/Controller/Church_LocationController.php:97
+#: inc/Controller/Church_LocationController.php:98
+#: inc/Controller/Church_LocationController.php:100
+msgid "Location"
+msgstr "Localização"
+
+#: inc/admin/Location/K7_Location.php:36
+#: inc/Controller/Church_LocationController.php:86
+msgid "Sunday"
+msgstr "Sábado"
+
+#: inc/admin/Location/K7_Location.php:35
+#: inc/Controller/Church_LocationController.php:85
+msgid "Saturday"
+msgstr "Sábado"
+
+#: inc/admin/Location/K7_Location.php:34
+#: inc/Controller/Church_LocationController.php:84
+msgid "Friday"
+msgstr "Sexta-Feira"
+
+#: inc/admin/Location/K7_Location.php:33
+#: inc/Controller/Church_LocationController.php:83
+msgid "Thursday"
+msgstr "Quinta-Feira"
+
+#: inc/admin/Location/K7_Location.php:32
+#: inc/Controller/Church_LocationController.php:82
+msgid "Wednesday"
+msgstr "Quarta-Feira"
+
+#: inc/admin/Location/K7_Location.php:31
+#: inc/Controller/Church_LocationController.php:81
+msgid "Tuesday"
+msgstr "Terça-Feira"
+
+#: inc/admin/Location/K7_Location.php:30
+#: inc/Controller/Church_LocationController.php:80
+msgid "Monday"
+msgstr "Segunda-feira"
