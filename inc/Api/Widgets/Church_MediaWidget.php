@@ -2,14 +2,12 @@
 /**
  * @package  K7Church
  */
-namespace Inc\Api\Widgets;
 
-use WP_Widget;
 
 /**
 * 
 */
-class Church_MediaWidget extends WP_Widget
+class Church_MediaWidget extends \WP_Widget
 {
 	public $widget_ID;
 

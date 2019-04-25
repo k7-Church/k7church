@@ -2,11 +2,7 @@
 /**
  * @package  K7Church
  */
-namespace Inc\Controller;
-
-use Inc\Api\Church_SettingsApi;
-use Inc\Controller\Church_BaseController;
-use Inc\Api\Callbacks\Church_SermonCallbacks;
+ 
 
 class Church_SermonController extends Church_BaseController
 
@@ -117,7 +113,7 @@ class Church_SermonController extends Church_BaseController
 
         add_meta_box(
             'sermon_meta_box', //id
-            esc_html__( 'Sermon Information', 'k7'), //name
+            __( 'Sermon Information', 'k7'), //name
             array($this, 'ch_sermon_meta_box_display'), //display function
             'sermon', //post type
             'normal', //sermon
@@ -138,27 +134,27 @@ class Church_SermonController extends Church_BaseController
         $sermon_description = get_post_meta($post->ID, 'sermon_description', true);
 
         ?>
-        <p><?php esc_html_e( 'Enter additional information about your sermon', 'k7');?></p>
+        <p><?php _e( 'Enter additional information about your sermon', 'k7');?></p>
         <div class="field-container">
             <?php
             //before main form elementst hook
             do_action('sermon_admin_form_start');
             ?>
             <div class="field">
-                <label for="sermon_vers"><?php esc_html_e( 'Passages for the sermon', 'k7');?></label><br/>
-                <small><?php esc_html_e( 'Biblical Passages', 'k7');?></small>
+                <label for="sermon_vers"><?php _e( 'Passages for the sermon', 'k7');?></label><br/>
+                <small><?php _e( 'Biblical Passages', 'k7');?></small>
                 <input type="text" name="sermon_vers" spellcheck="true" id="sermon_vers"
                        value="<?php echo $sermon_vers; ?>" autocomplete="off"/>
             </div>
             <hr>
             <div class="field">
-                <label for="sermon_author"><?php esc_html_e( 'Author', 'k7');?></label><br/>
+                <label for="sermon_author"><?php _e( 'Author', 'k7');?></label><br/>
                 <input type="text" name="sermon_author" id="sermon_author"
                        value="<?php echo $sermon_author; ?>" autocomplete="off"/>
             </div>
             <hr>
             <div class="field">
-                <label for="sermon_description"><?php esc_html_e( 'Description', 'k7');?></label><br/>
+                <label for="sermon_description"><?php _e( 'Description', 'k7');?></label><br/>
                 <textarea name="sermon_description"
                           id="sermon_description"><?php echo $sermon_description; ?></textarea>
             </div>
@@ -197,15 +193,15 @@ class Church_SermonController extends Church_BaseController
             $html .= '<p classs="ch-row ch-col-12"><br>';
             //phone
             if (!empty($sermon_vers)) {
-                $html .= '<b>' . esc_html__( 'Passages of the sermon:', 'k7') . '</b> ' . esc_html($sermon_vers) . '</br>';
+                $html .= '<b>' . __( 'Passages of the sermon:', 'k7') . '</b> ' . __($sermon_vers) . '</br>';
             }
             //email
             if (!empty($sermon_author)) {
-                $html .= '<b>' . esc_html__( 'Author of the sermon:', 'k7') . '</b> ' . esc_html($sermon_author) . '</br>';
+                $html .= '<b>' . __( 'Author of the sermon:', 'k7') . '</b> ' . __($sermon_author) . '</br>';
             }
             //description
             if (!empty($sermon_description)) {
-                $html .= '<b class="teste">' . esc_html__( 'Description of the Sermon:', 'k7') . '</b> <i>' . esc_html($sermon_description) . '</i></br>';
+                $html .= '<b class="teste">' . __( 'Description of the Sermon:', 'k7') . '</b> <i>' . __($sermon_description) . '</i></br>';
             }
             $html .= '</p>';
 
@@ -312,10 +308,10 @@ class Church_SermonController extends Church_BaseController
                 if (!empty($sermon_vers) || !empty($sermon_author)) {
                     $html .= '<p class="phone_email">';
                     if (!empty($sermon_vers)) {
-                        $html .= '<b>' . esc_html__('Passages', 'k7') .': </b>' . $sermon_vers . '</br>';
+                        $html .= '<b>' . __('Passages', 'k7') .': </b>' . $sermon_vers . '</br>';
                     }
                     if (!empty($sermon_author)) {
-                        $html .= '<b>' . esc_html__('Author', 'k7') .': </b>' . $sermon_author;
+                        $html .= '<b>' . __('Author', 'k7') .': </b>' . $sermon_author;
                     }
                     $html .= '</p>';
                 }
@@ -325,7 +321,7 @@ class Church_SermonController extends Church_BaseController
                 $html = apply_filters('sermon_after_main_content', $html);
 
                 //readmore
-                $html .= '<a class="link" href="' . esc_url($sermon_permalink) . '" title="' . esc_attr__( 'view sermon', 'k7') . '">' . esc_html__('View Sermon', 'k7') .'</a>';
+                $html .= '<a class="link" href="' . esc_url($sermon_permalink) . '" title="' . esc_attr__( 'view sermon', 'k7') . '">' . __('View Sermon', 'k7') .'</a>';
                 $html .= '</section>';
             }
             $html .= '</article>';

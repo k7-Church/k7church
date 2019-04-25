@@ -2,14 +2,7 @@
 /**
  * @package  K7Church
  */
-namespace Inc\Pages;
 
-use Inc\Api\Church_SettingsApi;
-use Inc\Controller\{
-	Church_BaseController, Church_AccountController
-};
-use Inc\Api\Callbacks\Church_AdminCallbacks;
-use Inc\Api\Callbacks\Church_ManagerCallbacks;
 
 class Church_Dashboard extends Church_BaseController
 {
@@ -38,6 +31,7 @@ class Church_Dashboard extends Church_BaseController
 		$this->ch_setFields();
 
 		$this->settings->ch_addPages( $this->pages )->ch_withSubPage( 'Dashboard' )->ch_register();
+
 	}
 
 	public function ch_setPages() 
@@ -62,6 +56,11 @@ class Church_Dashboard extends Church_BaseController
 				'option_group' => 'church_plugin_settings',
 				'option_name' => 'church_plugin',
 				'callback' => array( $this->callbacks_mngr, 'ch_checkboxSanitize' )
+			),
+			array(
+				'option_group' => 'church_plugin_settings_outro',
+				'option_name' => 'church_plugin_outro',
+				'callback' => array( $this->callbacks_mngr, 'ch_checkboxSanitize_outro' )
 			)
 		);
 
@@ -76,6 +75,12 @@ class Church_Dashboard extends Church_BaseController
 				'title' => 'Settings Manager',
 				'callback' => array( $this->callbacks_mngr, 'ch_adminSectionManager' ),
 				'page' => 'church_plugin'
+			),
+			array(
+				'id' => 'church_admin_index_outro',
+				'title' => 'Settings Manager',
+				'callback' => array( $this->callbacks_mngr, 'ch_adminSectionManager_outro' ),
+				'page' => 'church_plugin_outro'
 			)
 		);
 
@@ -103,4 +108,5 @@ class Church_Dashboard extends Church_BaseController
 
 		$this->settings->ch_setFields( $args );
 	}
+
 }

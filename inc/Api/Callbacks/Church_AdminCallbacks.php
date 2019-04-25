@@ -2,9 +2,7 @@
 /**
  * @package  K7Church
  */
-namespace Inc\Api\Callbacks;
-
-use Inc\Controller\Church_BaseController;
+ 
 
 class Church_AdminCallbacks extends Church_BaseController
 {
@@ -53,10 +51,6 @@ class Church_AdminCallbacks extends Church_BaseController
 		echo "<h1>Membership Manager</h1>";
 	}
 
-	public function ch_adminChat()
-	{
-		echo "<h1>Chat Manager</h1>";
-	}
 	public function painel()
 	{
 		return require_once( "$this->plugin_path/templates/panel.php" );

@@ -1,10 +1,10 @@
 === K7 Church ===
 Contributors: Márcio Zebedeu
-Tags: Tags: Form, Register, Locations, Location Widget, Media Widget, Custom Post Type Manager, Custom Taxonomy Manager, Testimonial, Sermon post,  
+Tags: Tags: Form, Register, Locations, Location Widget, Media Widget, Custom Post Type Manager, Custom Taxonomy Manager, Testimonial, Sermon post, Advanced Notification System,  
 Requires at least: 4.6
 Tested up to: 5.1.1
 Requires PHP: 5.6.20
-Stable tag: 1.0.11
+Stable tag: 1.0.12
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,7 +18,22 @@ K7 Church is a Wordpress plugin for churches that claims to be simple and object
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 3. Go to Settings » Permalinks, and simply click on Save Changes button.
 
+== Shortcode ==
 
+Testimonial Form Shortcode
+[testimonial-form]
+
+tesTestimonial SlideShow Shortcode
+[testimonial-slideshow]
+
+location for defaul 
+[locations location_id=1]
+
+Location for namber the post
+
+[locations location_id=1 number_of_locations=1]
+[locations location_id="1" number_of_locations=1 post_status="publish"]
+				
 == Frequently Asked Questions ==
 What is the K7 Church?
 K7 Church is a plugin for creating a post type with details of the church location.
@@ -36,9 +51,16 @@ can be found form for comentarios and a complete form to register users.
 7. location post
 8. quick view of the location
 9. full location view
+10. Notify subscribers
+11. Location  Layout and front-page
 
 
 == Changelog ==
+== 1.0.12 ==
+filter by country to notify subscribers that a post or other event on the site has been triggered
+Advanced Notification System
+bug fix in Location  Layout and front-page 
+
 == 1.0.11 ==
 Minimum update of the required PHP version
 

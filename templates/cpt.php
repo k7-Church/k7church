@@ -1,15 +1,15 @@
 <div class="wrap">
-	<h1><?php esc_html_e( 'CPT Manager', 'k7');?></h1>
+	<h1><?php _e( 'CPT Manager', 'k7');?></h1>
 	<?php settings_errors(); ?>
 
 	<ul class="nav nav-tabs">
-		<li class="<?php echo !isset($_POST["edit_post"]) ? 'active' : '' ?>"><a href="#tab-1"><?php esc_html_e( 'Your Custom Post Types', 'k7');?></a></li>
+		<li class="<?php echo !isset($_POST["edit_post"]) ? 'active' : '' ?>"><a href="#tab-1"><?php _e( 'Your Custom Post Types', 'k7');?></a></li>
 		<li class="<?php echo isset($_POST["edit_post"]) ? 'active' : '' ?>">
 			<a href="#tab-2">
 				<?php echo isset($_POST["edit_post"]) ? 'Edit' : 'Add' ?> Custom Post Type
 			</a>
 		</li>
-		<li><a href="#tab-3"><?php esc_html_e( 'Export', 'k7');?></a></li>
+		<li><a href="#tab-3"><?php _e( 'Export', 'k7');?></a></li>
 	</ul>
 
 	<div class="tab-content">
@@ -20,7 +20,7 @@
 			<?php 
 				$options = get_option( 'church_plugin_cpt' ) ?: array();
 
-				echo '<table class="cpt-table"><tr><th>' . esc_html__( "ID", "k7") . '</th><th>' . esc_html__( "Singular Name", "k7"). '</th><th>' . esc_html__( "Plural Name", "k7"). '</th><th class="text-center">' . esc_html__( "Public", "k7"). '</th><th class="text-center">' . esc_html__( "Archive", "k7"). '</th><th class="text-center">' . esc_html__( "Actions", "k7"). '</th></tr>';
+				echo '<table class="cpt-table"><tr><th>' . __( "ID", "k7") . '</th><th>' . __( "Singular Name", "k7"). '</th><th>' . __( "Plural Name", "k7"). '</th><th class="text-center">' . __( "Public", "k7"). '</th><th class="text-center">' . __( "Archive", "k7"). '</th><th class="text-center">' . __( "Actions", "k7"). '</th></tr>';
 
 				foreach ($options as $option) {
 					$public = isset($option['public']) ? "TRUE" : "FALSE";
@@ -37,7 +37,7 @@
 					settings_fields( 'church_plugin_cpt_settings' );
 					echo '<input type="hidden" name="remove" value="' . $option['post_type'] . '">';
 					submit_button( 'Delete', 'delete small', 'submit', false, array(
-						'onclick' => 'return confirm("' . esc_html__( "Are you sure you want to delete this Custom Post Type? The data associated with it will not be deleted.", "k7") .'" );'
+						'onclick' => 'return confirm("' . __( "Are you sure you want to delete this Custom Post Type? The data associated with it will not be deleted.", "k7") .'" );'
 					));
 					echo '</form></td></tr>';
 				}
@@ -58,7 +58,7 @@
 		</div>
 
 		<div id="tab-3" class="tab-pane">
-			<h3><?php esc_html_e( 'Export Your Custom Post Types', 'k7'); ?></h3>
+			<h3><?php _e( 'Export Your Custom Post Types', 'k7'); ?></h3>
 
 			<?php foreach ($options as $option) { ?>
 

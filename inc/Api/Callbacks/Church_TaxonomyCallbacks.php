@@ -2,7 +2,7 @@
 /**
  * @package  K7Church
  */
-namespace Inc\Api\Callbacks;
+ 
 
 class Church_TaxonomyCallbacks
 {

@@ -2,9 +2,6 @@
 /**
  * @package  K7Church
  */
-namespace Inc\Controller;
-
-use Inc\Controller\Church_BaseController;
 
 /**
 * 
@@ -18,7 +15,7 @@ class Church_TemplateController extends Church_BaseController
 		if ( ! $this->ch_activated( 'templates_manager' ) ) return;
 
 		$this->templates = array(
-			'page-templates/two-columns-tpl.php' => esc_html__( 'Two Columns Layout', 'k7')
+			'page-templates/location-template.php' => __( 'Location  Layout', 'k7')
 		);
 
 		add_filter( 'theme_page_templates', array( $this, 'ch_custom_template' ) );

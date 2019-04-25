@@ -2,7 +2,7 @@
 /**
  * @package  K7Church
  */
-namespace Inc\Controller;
+ 
 
 class Church_Activate
 {

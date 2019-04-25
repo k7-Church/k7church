@@ -2,7 +2,6 @@
 /**
  * @package  K7Church
  */
-namespace Inc\Api;
 
 class church_SettingsApi
 {
@@ -15,6 +14,7 @@ class church_SettingsApi
 	public $sections = array();
 
 	public $fields = array();
+
 
 	public function ch_register()
 	{

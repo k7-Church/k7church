@@ -2,9 +2,7 @@
 /**
  * @package  K7Church
  */
-namespace Inc\Controller;
-
-use Inc\Controller\Church_BaseController;
+ 
 
 class Church_SettingsLinks extends Church_BaseController
 {

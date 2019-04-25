@@ -2,10 +2,6 @@
 /**
  * @package  K7Church
  */
-namespace Inc\Controller;
-
-use Inc\Controller\Church_BaseController;
-use Inc\Api\Widgets\Church_MediaWidget;
 
 /**
 * 

@@ -2,11 +2,6 @@
 /**
  * @package  K7Church
  */
-namespace Inc\Controller;
-
-use Inc\Api\Church_SettingsApi;
-use Inc\Controller\Church_BaseController;
-use Inc\Api\Callbacks\Church_TestimonialCallbacks;
 
 /**
 * 
@@ -125,7 +120,7 @@ class Church_TestimonialController extends Church_BaseController
 	{
 		$labels = array(
 			'name' => 'Testimonials',
-			'singular_name' => esc_html__( 'Testimonial', 'k7')
+			'singular_name' => __( 'Testimonial', 'k7')
 		);
 
 		$args = array(
@@ -165,15 +160,15 @@ class Church_TestimonialController extends Church_BaseController
 		$featured = isset($data['featured']) ? $data['featured'] : false;
 		?>
 		<p>
-			<label class="meta-label" for="church_testimonial_author"><?php esc_html_e( 'Author Name', 'k7');?></label>
+			<label class="meta-label" for="church_testimonial_author"><?php _e( 'Author Name', 'k7');?></label>
 			<input type="text" id="church_testimonial_author" name="church_testimonial_author" class="widefat" value="<?php echo esc_attr( $name ); ?>">
 		</p>
 		<p>
-			<label class="meta-label" for="church_testimonial_email"><?php esc_html_e( 'Author Email', 'k7');?></label>
+			<label class="meta-label" for="church_testimonial_email"><?php _e( 'Author Email', 'k7');?></label>
 			<input type="email" id="church_testimonial_email" name="church_testimonial_email" class="widefat" value="<?php echo esc_attr( $email ); ?>">
 		</p>
 		<div class="meta-container">
-			<label class="meta-label w-50 text-left" for="church_testimonial_approved"><?php esc_html_e( 'Approved', 'k7');?></label>
+			<label class="meta-label w-50 text-left" for="church_testimonial_approved"><?php _e( 'Approved', 'k7');?></label>
 			<div class="text-right w-50 inline">
 				<div class="ui-toggle inline"><input type="checkbox" id="church_testimonial_approved" name="church_testimonial_approved" value="1" <?php echo $approved ? 'checked' : ''; ?>>
 					<label for="church_testimonial_approved"><div></div></label>
@@ -181,7 +176,7 @@ class Church_TestimonialController extends Church_BaseController
 			</div>
 		</div>
 		<div class="meta-container">
-			<label class="meta-label w-50 text-left" for="church_testimonial_featured"><?php esc_html_e( 'Featured', 'k7');?></label>
+			<label class="meta-label w-50 text-left" for="church_testimonial_featured"><?php _e( 'Featured', 'k7');?></label>
 			<div class="text-right w-50 inline">
 				<div class="ui-toggle inline"><input type="checkbox" id="church_testimonial_featured" name="church_testimonial_featured" value="1" <?php echo $featured ? 'checked' : ''; ?>>
 					<label for="church_testimonial_featured"><div></div></label>

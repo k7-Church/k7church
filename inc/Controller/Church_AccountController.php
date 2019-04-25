@@ -2,11 +2,6 @@
 /**
  * @package  K7Church
  */
-namespace Inc\Controller;
-
-use Inc\Api\Church_SettingsApi;
-use Inc\Controller\Church_BaseController;
-use Inc\Api\Callbacks\Church_AdminCallbacks;
 
 /**
 * 

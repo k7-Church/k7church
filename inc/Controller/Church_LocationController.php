@@ -2,12 +2,7 @@
 /**
  * @package  K7Church
  */
-namespace Inc\Controller;
-
-use Inc\Api\Church_SettingsApi;
-use Inc\Controller\Church_BaseController;
-use Inc\Api\Callbacks\Church_LocationCallbacks;
-
+ 
 class Church_LocationController extends Church_BaseController
 
 {
@@ -135,7 +130,7 @@ class Church_LocationController extends Church_BaseController
 
         add_meta_box(
             'location_meta_box', //id
-            esc_html__( 'Location Information', 'k7'), //name
+            __( 'Location Information', 'k7'), //name
             array($this, 'ch_location_meta_box_display'), //display function
             'locations', //post type
             'normal', //location
@@ -156,29 +151,29 @@ class Church_LocationController extends Church_BaseController
         $location_address = get_post_meta($post->ID, 'location_address', true);
 
         ?>
-        <p><?php esc_html_e('Enter additional information about your location', 'k7');?></p>
+        <p><?php _e('Enter additional information about your location', 'k7');?></p>
         <div class="field-container">
             <?php
             //before main form elementst hook
             do_action('location_admin_form_start');
             ?>
             <div class="field">
-                <label for="location_phone"><?php esc_html_e('Contact Phone', 'k7');?></label><br/>
-                <small><?php esc_html_e('main contact number', 'k7');?></small>
+                <label for="location_phone"><?php _e('Contact Phone', 'k7');?></label><br/>
+                <small><?php _e('main contact number', 'k7');?></small>
                 <input type="tel" name="location_phone" spellcheck="true" id="location_phone"
                        value="<?php echo $location_phone; ?>" autocomplete="off"/>
             </div>
             <hr>
             <div class="field">
-                <label for="location_email"><?php esc_html_e('Contact Email', 'k7');?></label><br/>
-                <small><?php esc_html_e('Email contact', 'k7');?></small>
+                <label for="location_email"><?php _e('Contact Email', 'k7');?></label><br/>
+                <small><?php _e('Email contact', 'k7');?></small>
                 <input type="email" name="location_email" id="location_email"
                        value="<?php echo $location_email; ?>" autocomplete="off"/>
             </div>
             <hr>
             <div class="field">
-                <label for="location_address"><?php esc_html_e('Address', 'k7');?></label><br/>
-                <small><?php esc_html_e('Physical address of your location', 'k7');?></small>
+                <label for="location_address"><?php _e('Address', 'k7');?></label><br/>
+                <small><?php _e('Physical address of your location', 'k7');?></small>
                 <textarea name="location_address"
                           id="location_address"><?php echo $location_address; ?></textarea>
             </div>
@@ -187,7 +182,7 @@ class Church_LocationController extends Church_BaseController
             if (!empty(self::$location_trading_hour_days)) {
                 echo '<div class="field">';
                 echo '<label>Trading Hours </label>';
-                echo '<small>'. esc_html__('Trading hours for the location (e.g 9am - 5pm) ', 'k7').'</small>';
+                echo '<small>'. __('Trading hours for the location (e.g 9am - 5pm) ', 'k7').'</small>';
                 //go through all of our registered trading hour days
                 foreach (self::$location_trading_hour_days as $day_key => $day_value) {
                     //collect trading hour meta data
@@ -234,25 +229,25 @@ class Church_LocationController extends Church_BaseController
             $html .= '<p classs="ch-row ch-col-12"><br>';
             //phone
             if (!empty($location_phone)) {
-                $html .= '<b>' . esc_html__( 'Location Phone', 'k7') . '</b> ' . esc_html($location_phone) . '</br>';
+                $html .= '<b>' . __( 'Location Phone', 'k7') . '</b> ' . __($location_phone) . '</br>';
             }
             //email
             if (!empty($location_email)) {
-                $html .= '<b>' . esc_html__( 'Location Email', 'k7') . '</b> ' . esc_html($location_email) . '</br>';
+                $html .= '<b>' . __( 'Location Email', 'k7') . '</b> ' . __($location_email) . '</br>';
             }
             //address
             if (!empty($location_address)) {
-                $html .= '<b class="teste">' . esc_html__( 'Location Address', 'k7') . '</b> ' . esc_html($location_address) . '</br>';
+                $html .= '<b class="teste">' . __( 'Location Address', 'k7') . '</b> ' . __($location_address) . '</br>';
             }
             $html .= '</p>';
 
             //location
             if (!empty(self::$location_trading_hour_days)) {
                 $html .= '<p>';
-                $html .= '<b>' . esc_html__( 'Location Trading Hours', 'k7') . ' </b></br>';
+                $html .= '<b>' . __( 'Location Trading Hours', 'k7') . ' </b></br>';
                 foreach (self::$location_trading_hour_days as $day_key => $day_value) {
                     $trading_hours = get_post_meta($post->ID, 'location_trading_hours_' . $day_key, true);
-                    $html .= '<span class="day">' . esc_html($day_key) . "\t". '</span><span class="hours">' . esc_html($trading_hours) . '</span></br>';
+                    $html .= '<span class="day">' . __($day_key) . "\t". '</span><span class="hours">' . __($trading_hours) . '</span></br>';
                 }
                 $html .= '</p>';
             }
@@ -359,10 +354,10 @@ class Church_LocationController extends Church_BaseController
                 if (!empty($location_phone) || !empty($location_email)) {
                     $html .= '<p class="phone_email">';
                     if (!empty($location_phone)) {
-                        $html .= '<b>' . esc_html__('Phone', 'k7') .': </b>' . $location_phone . '</br>';
+                        $html .= '<b>' . __('Phone', 'k7') .': </b>' . $location_phone . '</br>';
                     }
                     if (!empty($location_email)) {
-                        $html .= '<b>' . esc_html__('Email', 'k7') .': </b>' . $location_email;
+                        $html .= '<b>' . __('Email', 'k7') .': </b>' . $location_email;
                     }
                     $html .= '</p>';
                 }
@@ -372,7 +367,7 @@ class Church_LocationController extends Church_BaseController
                 $html = apply_filters('location_after_main_content', $html);
 
                 //readmore
-                $html .= '<a class="link" href="' . esc_url($location_permalink) . '" title="' . esc_attr__( 'view location', 'k7') . '">' . esc_html__('View Location', 'k7') .'</a>';
+                $html .= '<a class="link" href="' . esc_url($location_permalink) . '" title="' . esc_attr__( 'view location', 'k7') . '">' . __('View Location', 'k7') .'</a>';
                 $html .= '</section>';
             }
             $html .= '</article>';

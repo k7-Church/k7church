@@ -1,11 +1,11 @@
 <div class="wrap">
-	<h1><?php esc_html_e( 'Church Plugin', 'k7');?></h1>
+	<h1><?php _e( 'Church Plugin', 'k7');?></h1>
 	<?php settings_errors(); ?>
 
 	<ul class="nav nav-tabs">
-		<li class="active"><a href="#tab-1"><?php esc_html_e( 'Manage Settings', 'k7');?></a></li>
-		<li><a href="#tab-2"><?php esc_html_e( 'Updates', 'k7');?></a></li>
-		<li><a href="#tab-3"><?php esc_html_e( 'About', 'k7');?></a></li>
+		<li class="active"><a href="#tab-1"><?php _e( 'Manage Settings', 'k7');?></a></li>
+		<li><a href="#tab-2"><?php _e( 'Updates', 'k7');?></a></li>
+		<li><a href="#tab-3"><?php _e( 'About', 'k7');?></a></li>
 	</ul>
 
 	<div class="tab-content">
@@ -22,7 +22,7 @@
 		</div>
 
 		<div id="tab-2" class="tab-pane">
-			<h3><?php esc_html_e( 'Updates', 'k7');?></h3>
+			<h3><?php _e( 'Updates', 'k7');?></h3>
 			<p>
 				<code>
 				== Changelog ==
@@ -71,7 +71,7 @@
 		</div>
 
 		<div id="tab-3" class="tab-pane">
-			<h3><?php esc_html_e( 'About', 'k7');?></h3>
+			<h3><?php _e( 'About', 'k7');?></h3>
 
 			<h1>K7 CHURCH</h1>
 			<P>
