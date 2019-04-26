@@ -1,8 +1,12 @@
 <?php
 
 /**
- * @package  K7Church
+ * @version 1.0.13
+ *
+ * @package K7Church/inc/controller
  */
+
+defined('ABSPATH') || exit;
 
 namespace Inc\Api\DB;
 
@@ -11,8 +15,8 @@ class Church_Database
 
 
     public static $table_name;
-    private $primary_key;
     public $version;
+    private $primary_key;
 
     public function __construct()
     {
@@ -26,6 +30,14 @@ class Church_Database
 
         $this->init();
 
+
+    }
+
+    public function init()
+    {
+
+        register_uninstall_hook(__FILE__ , 'drop_database');
+        register_activation_hook(__FILE__ , 'create_table');
 
     }
 
@@ -50,15 +62,14 @@ class Church_Database
         dbDelta($sql);
 
 
-
-        update_option(self::$table_name . '_db_version', $this->version);
+        update_option(self::$table_name . '_db_version' , $this->version);
     }
 
-    public function insert_data( string $table, array $data, array $dataType)
+    public function insert_data(string $table , array $data , array $dataType)
     {
         global $wpdb;
 
-        return $wpdb->insert($table, $data, $dataType);
+        return $wpdb->insert($table , $data , $dataType);
 
 
     }
@@ -90,15 +101,6 @@ class Church_Database
         global $wpdb;
         $tabelas [] = $wpdb->query("DROP table IF EXISTS " . $wpdb->prefix . self::$table_name);
         return $tabelas;
-    }
-
-
-    public function init()
-    {
-
-        register_uninstall_hook(__FILE__, 'drop_database');
-        register_activation_hook(__FILE__, 'create_table');
-
     }
 
 }

@@ -1,70 +1,71 @@
 <div class="wrap">
-	<h1><?php _e( 'CPT Manager', 'k7');?></h1>
-	<?php settings_errors(); ?>
+    <h1><?php _e('CPT Manager' , 'k7'); ?></h1>
+    <?php settings_errors(); ?>
 
-	<ul class="nav nav-tabs">
-		<li class="<?php echo !isset($_POST["edit_post"]) ? 'active' : '' ?>"><a href="#tab-1"><?php _e( 'Your Custom Post Types', 'k7');?></a></li>
-		<li class="<?php echo isset($_POST["edit_post"]) ? 'active' : '' ?>">
-			<a href="#tab-2">
-				<?php echo isset($_POST["edit_post"]) ? 'Edit' : 'Add' ?> Custom Post Type
-			</a>
-		</li>
-		<li><a href="#tab-3"><?php _e( 'Export', 'k7');?></a></li>
-	</ul>
+    <ul class="nav nav-tabs">
+        <li class="<?php echo !isset($_POST["edit_post"]) ? 'active' : '' ?>"><a
+                    href="#tab-1"><?php _e('Your Custom Post Types' , 'k7'); ?></a></li>
+        <li class="<?php echo isset($_POST["edit_post"]) ? 'active' : '' ?>">
+            <a href="#tab-2">
+                <?php echo isset($_POST["edit_post"]) ? 'Edit' : 'Add' ?> Custom Post Type
+            </a>
+        </li>
+        <li><a href="#tab-3"><?php _e('Export' , 'k7'); ?></a></li>
+    </ul>
 
-	<div class="tab-content">
-		<div id="tab-1" class="tab-pane <?php echo !isset($_POST["edit_post"]) ? 'active' : '' ?>">
+    <div class="tab-content">
+        <div id="tab-1" class="tab-pane <?php echo !isset($_POST["edit_post"]) ? 'active' : '' ?>">
 
-			<h3><?php _e( 'Manage Your Custom Post Types', 'k7'); ?></h3>
+            <h3><?php _e('Manage Your Custom Post Types' , 'k7'); ?></h3>
 
-			<?php 
-				$options = get_option( 'church_plugin_cpt' ) ?: array();
+            <?php
+            $options = get_option('church_plugin_cpt') ?: array();
 
-				echo '<table class="cpt-table"><tr><th>' . __( "ID", "k7") . '</th><th>' . __( "Singular Name", "k7"). '</th><th>' . __( "Plural Name", "k7"). '</th><th class="text-center">' . __( "Public", "k7"). '</th><th class="text-center">' . __( "Archive", "k7"). '</th><th class="text-center">' . __( "Actions", "k7"). '</th></tr>';
+            echo '<table class="cpt-table"><tr><th>' . __("ID" , "k7") . '</th><th>' . __("Singular Name" , "k7") . '</th><th>' . __("Plural Name" , "k7") . '</th><th class="text-center">' . __("Public" , "k7") . '</th><th class="text-center">' . __("Archive" , "k7") . '</th><th class="text-center">' . __("Actions" , "k7") . '</th></tr>';
 
-				foreach ($options as $option) {
-					$public = isset($option['public']) ? "TRUE" : "FALSE";
-					$archive = isset($option['has_archive']) ? "TRUE" : "FALSE";
+            foreach ($options as $option) {
+                $public = isset($option['public']) ? "TRUE" : "FALSE";
+                $archive = isset($option['has_archive']) ? "TRUE" : "FALSE";
 
-					echo "<tr><td>{$option['post_type']}</td><td>{$option['singular_name']}</td><td>{$option['plural_name']}</td><td class=\"text-center\">{$public}</td><td class=\"text-center\">{$archive}</td><td class=\"text-center\">";
+                echo "<tr><td>{$option['post_type']}</td><td>{$option['singular_name']}</td><td>{$option['plural_name']}</td><td class=\"text-center\">{$public}</td><td class=\"text-center\">{$archive}</td><td class=\"text-center\">";
 
-					echo '<form method="post" action="" class="inline-block">';
-					echo '<input type="hidden" name="edit_post" value="' . $option['post_type'] . '">';
-					submit_button( 'Edit', 'primary small', 'submit', false);
-					echo '</form> ';
+                echo '<form method="post" action="" class="inline-block">';
+                echo '<input type="hidden" name="edit_post" value="' . $option['post_type'] . '">';
+                submit_button('Edit' , 'primary small' , 'submit' , false);
+                echo '</form> ';
 
-					echo '<form method="post" action="options.php" class="inline-block">';
-					settings_fields( 'church_plugin_cpt_settings' );
-					echo '<input type="hidden" name="remove" value="' . $option['post_type'] . '">';
-					submit_button( 'Delete', 'delete small', 'submit', false, array(
-						'onclick' => 'return confirm("' . __( "Are you sure you want to delete this Custom Post Type? The data associated with it will not be deleted.", "k7") .'" );'
-					));
-					echo '</form></td></tr>';
-				}
+                echo '<form method="post" action="options.php" class="inline-block">';
+                settings_fields('church_plugin_cpt_settings');
+                echo '<input type="hidden" name="remove" value="' . $option['post_type'] . '">';
+                submit_button('Delete' , 'delete small' , 'submit' , false , array(
+                    'onclick' => 'return confirm("' . __("Are you sure you want to delete this Custom Post Type? The data associated with it will not be deleted." , "k7") . '" );'
+                ));
+                echo '</form></td></tr>';
+            }
 
-				echo '</table>';
-			?>
-			
-		</div>
+            echo '</table>';
+            ?>
 
-		<div id="tab-2" class="tab-pane <?php echo isset($_POST["edit_post"]) ? 'active' : '' ?>">
-			<form method="post" action="options.php">
-				<?php 
-					settings_fields( 'church_plugin_cpt_settings' );
-					do_settings_sections( 'church_cpt' );
-					submit_button();
-				?>
-			</form>
-		</div>
+        </div>
 
-		<div id="tab-3" class="tab-pane">
-			<h3><?php _e( 'Export Your Custom Post Types', 'k7'); ?></h3>
+        <div id="tab-2" class="tab-pane <?php echo isset($_POST["edit_post"]) ? 'active' : '' ?>">
+            <form method="post" action="options.php">
+                <?php
+                settings_fields('church_plugin_cpt_settings');
+                do_settings_sections('church_cpt');
+                submit_button();
+                ?>
+            </form>
+        </div>
 
-			<?php foreach ($options as $option) { ?>
+        <div id="tab-3" class="tab-pane">
+            <h3><?php _e('Export Your Custom Post Types' , 'k7'); ?></h3>
 
-				<h3><?php echo $option['singular_name']; ?></h3>
+            <?php foreach ($options as $option) { ?>
 
-			<pre class="prettyprint">
+                <h3><?php echo $option['singular_name']; ?></h3>
+
+                <pre class="prettyprint">
 // Register Custom Post Type
 function custom_post_type() {
 
@@ -123,8 +124,8 @@ function custom_post_type() {
 add_action( 'init', 'custom_post_type', 0 );
 			</pre>
 
-			<?php } ?>
+            <?php } ?>
 
-		</div>
-	</div>
+        </div>
+    </div>
 </div>

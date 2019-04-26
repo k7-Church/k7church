@@ -1,94 +1,99 @@
-<?php 
+<?php
 /**
- * @package  K7Church
+ * @version 1.0.13
+ *
+ * @package K7Church/inc/api/callbacks
  */
- 
+
+defined('ABSPATH') || exit;
+
 
 class Church_TaxonomyCallbacks
 {
-	public function ch_taxSectionManager() {
-		echo 'Create as many Custom Taxonomies as you want.';
-	}
+    public function ch_taxSectionManager()
+    {
+        echo 'Create as many Custom Taxonomies as you want.';
+    }
 
-	public function ch_taxSanitize( $input )
-	{
-		$output = get_option('church_plugin_tax');
+    public function ch_taxSanitize($input)
+    {
+        $output = get_option('church_plugin_tax');
 
-		if ( isset($_POST["remove"]) ) {
-			unset($output[$_POST["remove"]]);
+        if (isset($_POST["remove"])) {
+            unset($output[$_POST["remove"]]);
 
-			return $output;
-		}
+            return $output;
+        }
 
-		if ( count($output) == 0 ) {
-			$output[$input['taxonomy']] = $input;
+        if (count($output) == 0) {
+            $output[$input['taxonomy']] = $input;
 
-			return $output;
-		}
+            return $output;
+        }
 
-		foreach ($output as $key => $value) {
-			if ($input['taxonomy'] === $key) {
-				$output[$key] = $input;
-			} else {
-				$output[$input['taxonomy']] = $input;
-			}
-		}
-		
-		return $output;
-	}
+        foreach ($output as $key => $value) {
+            if ($input['taxonomy'] === $key) {
+                $output[$key] = $input;
+            } else {
+                $output[$input['taxonomy']] = $input;
+            }
+        }
 
-	public function ch_textField( $args )
-	{
-		$name = $args['label_for'];
-		$option_name = $args['option_name'];
-		$value = '';
+        return $output;
+    }
 
-		if ( isset($_POST["edit_taxonomy"]) ) {
-			$input = get_option( $option_name );
-			$value = $input[$_POST["edit_taxonomy"]][$name];
-		}
+    public function ch_textField($args)
+    {
+        $name = $args['label_for'];
+        $option_name = $args['option_name'];
+        $value = '';
 
-		echo '<input type="text" class="regular-text" id="' . $name . '" name="' . $option_name . '[' . $name . ']" value="' . $value . '" placeholder="' . $args['placeholder'] . '" required>';
-	}
+        if (isset($_POST["edit_taxonomy"])) {
+            $input = get_option($option_name);
+            $value = $input[$_POST["edit_taxonomy"]][$name];
+        }
 
-	public function ch_checkboxField( $args )
-	{
-		$name = $args['label_for'];
-		$classes = $args['class'];
-		$option_name = $args['option_name'];
-		$checked = false;
+        echo '<input type="text" class="regular-text" id="' . $name . '" name="' . $option_name . '[' . $name . ']" value="' . $value . '" placeholder="' . $args['placeholder'] . '" required>';
+    }
 
-		if ( isset($_POST["edit_taxonomy"]) ) {
-			$checkbox = get_option( $option_name );
-			$checked = isset($checkbox[$_POST["edit_taxonomy"]][$name]) ?: false;
-		}
+    public function ch_checkboxField($args)
+    {
+        $name = $args['label_for'];
+        $classes = $args['class'];
+        $option_name = $args['option_name'];
+        $checked = false;
 
-		echo '<div class="' . $classes . '"><input type="checkbox" id="' . $name . '" name="' . $option_name . '[' . $name . ']" value="1" class="" ' . ( $checked ? 'checked' : '') . '><label for="' . $name . '"><div></div></label></div>';
-	}
+        if (isset($_POST["edit_taxonomy"])) {
+            $checkbox = get_option($option_name);
+            $checked = isset($checkbox[$_POST["edit_taxonomy"]][$name]) ?: false;
+        }
 
-	public function ch_checkboxPostTypesField( $args )
-	{
-		$output = '';
-		$name = $args['label_for'];
-		$classes = $args['class'];
-		$option_name = $args['option_name'];
-		$checked = false;
+        echo '<div class="' . $classes . '"><input type="checkbox" id="' . $name . '" name="' . $option_name . '[' . $name . ']" value="1" class="" ' . ($checked ? 'checked' : '') . '><label for="' . $name . '"><div></div></label></div>';
+    }
 
-		if ( isset($_POST["edit_taxonomy"]) ) {
-			$checkbox = get_option( $option_name );
-		}
+    public function ch_checkboxPostTypesField($args)
+    {
+        $output = '';
+        $name = $args['label_for'];
+        $classes = $args['class'];
+        $option_name = $args['option_name'];
+        $checked = false;
 
-		$post_types = get_post_types( array( 'show_ui' => true ) );
+        if (isset($_POST["edit_taxonomy"])) {
+            $checkbox = get_option($option_name);
+        }
 
-		foreach ($post_types as $post) {
+        $post_types = get_post_types(array('show_ui' => true));
 
-			if ( isset($_POST["edit_taxonomy"]) ) {
-				$checked = isset($checkbox[$_POST["edit_taxonomy"]][$name][$post]) ?: false;
-			}
+        foreach ($post_types as $post) {
 
-			$output .= '<div class="' . $classes . ' mb-10"><input type="checkbox" id="' . $post . '" name="' . $option_name . '[' . $name . '][' . $post . ']" value="1" class="" ' . ( $checked ? 'checked' : '') . '><label for="' . $post . '"><div></div></label> <strong>' . $post . '</strong></div>';
-		}
+            if (isset($_POST["edit_taxonomy"])) {
+                $checked = isset($checkbox[$_POST["edit_taxonomy"]][$name][$post]) ?: false;
+            }
 
-		echo $output;
-	}
+            $output .= '<div class="' . $classes . ' mb-10"><input type="checkbox" id="' . $post . '" name="' . $option_name . '[' . $name . '][' . $post . ']" value="1" class="" ' . ($checked ? 'checked' : '') . '><label for="' . $post . '"><div></div></label> <strong>' . $post . '</strong></div>';
+        }
+
+        echo $output;
+    }
 }

@@ -1,63 +1,65 @@
-<?php 
+<?php
 /**
- * @package  K7Church
+ * @version 1.0.13
+ *
+ * @package K7Church/inc/controller
  */
 
-/**
-* 
-*/
+defined('ABSPATH') || exit;
+
+
 class Church_TemplateController extends Church_BaseController
 {
-	public $templates;
+    public $templates;
 
-	public function ch_register()
-	{
-		if ( ! $this->ch_activated( 'templates_manager' ) ) return;
+    public function ch_register()
+    {
+        if (!$this->ch_activated('templates_manager')) return;
 
-		$this->templates = array(
-			'page-templates/location-template.php' => __( 'Location  Layout', 'k7')
-		);
+        $this->templates = array(
+            'page-templates/location-template.php' => __('Location  Layout' , 'k7')
+        );
 
-		add_filter( 'theme_page_templates', array( $this, 'ch_custom_template' ) );
-		add_filter( 'template_include', array( $this, 'ch_load_template' ) );
-	}
+        add_filter('theme_page_templates' , array($this , 'ch_custom_template'));
+        add_filter('template_include' , array($this , 'ch_load_template'));
+    }
 
-	public function ch_custom_template( $templates )
-	{
-		$templates = array_merge( $templates, $this->templates );
+    public function ch_custom_template($templates)
+    {
+        $templates = array_merge($templates , $this->templates);
 
-		return $templates;
-	}
+        return $templates;
+    }
 
-	public function ch_load_template( $template )
-	{
-		global $post;
+    public function ch_load_template($template)
+    {
+        global $post;
 
-		if ( ! $post ) {
-			return $template;
-		}
+        if (!$post) {
+            return $template;
+        }
 
-		// If is the front page, load a custom template
-		if ( is_front_page() ) {
-			$file = $this->plugin_path . 'page-templates/front-page.php';
+        // If is the front page, load a custom template
+        if (is_front_page()) {
+            $file = $this->plugin_path . 'page-templates/front-page.php';
 
-			if ( file_exists( $file ) ) {
-				return $file;
-			}
-		}
+            if (file_exists($file)) {
+                return $file;
+            }
+        }
 
-		$template_name = get_post_meta( $post->ID, '_wp_page_template', true );
+        $template_name = get_post_meta($post->ID , '_wp_page_template' , true);
 
-		if ( ! isset( $this->templates[$template_name] ) ) {
-			return $template;
-		}
+        if (!isset($this->templates[$template_name])) {
+            return $template;
+        }
 
-		$file = $this->plugin_path . $template_name;
+        $file = $this->plugin_path . $template_name;
 
-		if ( file_exists( $file ) ) {
-			return $file;
-		}
+        if (file_exists($file)) {
+            return $file;
+        }
 
-		return $template;
-	}
+        return $template;
+    }
 }
