@@ -40,7 +40,6 @@ class Church_NotificationCallbacks extends Church_BaseController
 
         <table id="venue">
             <tbody>
-            <?php /*
             <tr>
                 <td class="label"><?php _e( 'Address', 'k7' ); ?></td>
                 <td><input type="text" id="address" name="venue[address]" value="<?php echo $address; ?>" size="30" /></td>
@@ -49,7 +48,6 @@ class Church_NotificationCallbacks extends Church_BaseController
                 <td><?php _e( 'City', 'k7' ); ?></td>
                 <td><input type="text" id="city" name="venue[city]" value="<?php echo $city; ?>" size="30" /></td>
             </tr>
-            */ ?>
             <tr>
                 <td><?php _e('Country' , 'k7'); ?></td>
                 <td>
@@ -61,7 +59,7 @@ class Church_NotificationCallbacks extends Church_BaseController
                     </select>
                 </td>
             </tr>
-            <?php /* <tr>
+            <tr>
                 <td><?php _e( 'zip', 'k7' ); ?></td>
                 <td><input type="text" id="zip" name="venue[zip]" value="<?php echo $zip; ?>" size="30" /></td>
             </tr>
@@ -73,11 +71,10 @@ class Church_NotificationCallbacks extends Church_BaseController
                 <td><?php _e( 'Website', 'k7' ); ?></td>
                 <td><input type="text" id="website" name="venue[website]" value="<?php echo $website; ?>" size="30" /></td>
             </tr>
-            */ ?>
+            
             <tr>
                 <td><?php _e('Disable notification' , 'k7'); ?></td>
-                <td class="ui-toggle"><input class="ui-toggle" id="disable" type="checkbox" name="venue[disable]"
-                                             value="1" <?php checked($disable , 'true'); ?> /></td>
+                <td class="ui-toggle"><input class="ui-toggle" id="disable" type="checkbox" name="venue[disable]" value="1" <?php checked($disable , 'true'); ?> /></td>
             </tr>
 
             </tbody>

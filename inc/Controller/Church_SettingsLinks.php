@@ -22,3 +22,5 @@ class Church_SettingsLinks extends Church_BaseController
         return $links;
     }
 }
+
+

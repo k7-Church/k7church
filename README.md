@@ -1,5 +1,5 @@
 # k7church
-This is a plugin for church administration and religious ministries.
+K7 Church is a Wordpress plugin for churches that claims to be simple and objective for your church's website.
 
 
 

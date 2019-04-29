@@ -4,7 +4,7 @@ Tags: Form, Register, Locations, Location Widget, Media Widget, Custom Post Type
 Requires at least: 4.6
 Tested up to: 5.1.1
 Requires PHP: 5.6.20
-Stable tag: 1.0.13
+Stable tag: 1.0.14
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -56,45 +56,53 @@ can be found form for comentarios and a complete form to register users.
 
 
 == Changelog ==
-== 1.0.12 ==
+
+=1.0.14=
+fix bug
+
+=1.0.13= 
+fix bug
+add tabs abdbs pages for Sermon, testimony and location
+
+= 1.0.12 =
 filter by country to notify subscribers that a post or other event on the site has been triggered
 Advanced Notification System
 bug fix in Location  Layout and front-page 
 
-== 1.0.11 ==
+= 1.0.11 =
 Minimum update of the required PHP version
 
-== 1.0.10 ==
+= 1.0.10 =
 Add Custom Post Type Manager, Custom Taxonomy Manager
-fixe bug
+fix bug
 
-= 1.0.9
+= 1.0.9 =
 fix bug 
 
-= 1.0.8
+= 1.0.8 =
 fix bug 
 
-= 1.0.7
+= 1.0.7 =
 fix bug 
 
-= 1.0.6
+= 1.0.6 =
 fix bug 
 
-= 1.0.5
+= 1.0.5 =
 fix bug 
 
-= 1.0.4
+= 1.0.4 =
 fix bug 
 
-= 1.0.3
+= 1.0.3 =
 
 CSS style sheet repair, page fix for user account,
-= 1.0.2
+= 1.0.2 =
 
 has been added to the login page, register page, recaptcha login page
 fixe bug
  
-= 1.0.1
+= 1.0.1 =
 
 fixe bug
 = 1.0.0 =
@@ -102,4 +110,6 @@ fixe bug
 fixing various bugs
 
 == Upgrade Notice ==
-no
+
+= 1.0.13
+This version corrects an error related to security and others . Update immediately.

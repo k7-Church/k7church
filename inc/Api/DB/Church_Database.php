@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @version 1.0.13
  *
@@ -7,8 +6,6 @@
  */
 
 defined('ABSPATH') || exit;
-
-namespace Inc\Api\DB;
 
 class Church_Database
 {

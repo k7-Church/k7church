@@ -1,18 +1,18 @@
 <?php
 /**
- * @version 1.0.13
+ * @version 1.0.14
  *
  * @package K7Church
  */
 
 /**
  *  Plugin Name: K7 Church
- * /*  Description:  This is a plugin for church administration and religious ministries.
- * /*  Version:      1.0.13
- * /*  Author:       Márcio Zebedeu
- * /*  License:      GPL2
- * /*  License URI:  https://www.gnu.org/licenses/gpl-2.0.html
- *   Text Domain:  k7
+ *  Description:  K7 Church is a Wordpress plugin for churches that claims to be simple and objective for your church's website.
+ *  Version:      1.0.14
+ *  Author:       Márcio Zebedeu
+ *  License:      GPL2
+ *  License URI:  https://www.gnu.org/licenses/gpl-2.0.html
+ *  Text Domain:  k7
  *  Domain Path: /languages
  */
 
@@ -43,8 +43,10 @@ require_once(dirname(__FILE__) . '/inc/controller/Church_Deactivate.php');
 include_once(dirname(__FILE__) . '/inc/controller/Church_BaseController.php');
 
 require_once(dirname(__FILE__) . '/inc/pages/Church_Dashboard.php');
-require_once(dirname(__FILE__) . '/inc/Api/Church_SettingsApi.php');
+require_once(dirname(__FILE__) . '/inc/api/Church_SettingsApi.php');
 require_once(dirname(__FILE__) . '/inc/api/callbacks/Church_AdminCallbacks.php');
+require_once(dirname(__FILE__) . '/inc/api/callbacks/Church_SermonCallbacks.php');
+require_once(dirname(__FILE__) . '/inc/api/callbacks/Church_EventCallbacks.php');
 require_once(dirname(__FILE__) . '/inc/api/callbacks/Church_ManagerCallbacks.php');
 require_once(dirname(__FILE__) . '/inc/api/callbacks/Church_LocationCallbacks.php');
 require_once(dirname(__FILE__) . '/inc/api/callbacks/Church_NotificationCallbacks.php');
@@ -70,6 +72,7 @@ require_once(dirname(__FILE__) . '/inc/api/widgets/Church_LocationWidget.php');
 require_once(dirname(__FILE__) . '/inc/controller/Church_NotificationController.php');
 require_once(dirname(__FILE__) . '/inc/controller/Church_AccountController.php');
 require_once(dirname(__FILE__) . '/inc/controller/Church_WidgetController.php');
+require_once(dirname(__FILE__) . '/inc/controller/Church_EventController.php');
 
 
 /**
@@ -96,15 +99,18 @@ register_deactivation_hook(__FILE__ , 'deactivate_church_plugin');
  * Initialize all the core classes of the plugin
  */
 if (class_exists('Church_Init')) {
+
     Church_Init::ch_registerServices();
 
 }
 
+
 // Load plugin textdomain.
+
+add_action('init' , 'ch_load_textdomain');
 function ch_load_textdomain()
 {
     unload_textdomain('k7');
     load_plugin_textdomain('k7' , false , basename(plugin_basename(__FILE__)) . '/languages');
 }
 
-add_action('init' , 'ch_load_textdomain');

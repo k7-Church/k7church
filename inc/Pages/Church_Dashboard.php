@@ -42,12 +42,12 @@ class Church_Dashboard extends Church_BaseController
     {
         $this->pages = array(
             array(
-                'page_title' => 'Church Plugin' ,
-                'menu_title' => 'Church' ,
-                'capability' => 'manage_options' ,
-                'menu_slug' => 'church_plugin' ,
-                'callback' => array($this->callbacks , 'ch_adminDashboard') ,
-                'icon_url' => 'dashicons-store' ,
+                'page_title' => 'Church Plugin',
+                'menu_title' => 'Church',
+                'capability' => 'manage_options',
+                'menu_slug' => 'church_plugin',
+                'callback' => array($this->callbacks, 'ch_adminDashboard'),
+                'icon_url' => 'dashicons-store',
                 'position' => 110
             )
         );
@@ -57,15 +57,10 @@ class Church_Dashboard extends Church_BaseController
     {
         $args = array(
             array(
-                'option_group' => 'church_plugin_settings' ,
-                'option_name' => 'church_plugin' ,
-                'callback' => array($this->callbacks_mngr , 'ch_checkboxSanitize')
-            ) ,
-            array(
-                'option_group' => 'church_plugin_settings_outro' ,
-                'option_name' => 'church_plugin_outro' ,
-                'callback' => array($this->callbacks_mngr , 'ch_checkboxSanitize_outro')
-            )
+                'option_group' => 'church_plugin_settings',
+                'option_name' => 'church_plugin',
+                'callback' => array($this->callbacks_mngr, 'ch_checkboxSanitize')
+           )
         );
 
         $this->settings->ch_setSettings($args);
@@ -75,16 +70,10 @@ class Church_Dashboard extends Church_BaseController
     {
         $args = array(
             array(
-                'id' => 'church_admin_index' ,
-                'title' => 'Settings Manager' ,
-                'callback' => array($this->callbacks_mngr , 'ch_adminSectionManager') ,
+                'id' => 'church_admin_index',
+                'title' => 'Settings Manager',
+                'callback' => array($this->callbacks_mngr, 'ch_adminSectionManager'),
                 'page' => 'church_plugin'
-            ) ,
-            array(
-                'id' => 'church_admin_index_outro' ,
-                'title' => 'Settings Manager' ,
-                'callback' => array($this->callbacks_mngr , 'ch_adminSectionManager_outro') ,
-                'page' => 'church_plugin_outro'
             )
         );
 
@@ -97,14 +86,14 @@ class Church_Dashboard extends Church_BaseController
 
         foreach ($this->managers as $key => $value) {
             $args[] = array(
-                'id' => $key ,
-                'title' => $value ,
-                'callback' => array($this->callbacks_mngr , 'ch_checkboxField') ,
-                'page' => 'church_plugin' ,
-                'section' => 'church_admin_index' ,
+                'id' => $key,
+                'title' => $value,
+                'callback' => array($this->callbacks_mngr, 'ch_checkboxField'),
+                'page' => 'church_plugin',
+                'section' => 'church_admin_index',
                 'args' => array(
-                    'option_name' => 'church_plugin' ,
-                    'label_for' => $key ,
+                    'option_name' => 'church_plugin',
+                    'label_for' => $key,
                     'class' => 'ui-toggle'
                 )
             );

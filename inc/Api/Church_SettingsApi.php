@@ -7,7 +7,7 @@
 
 defined('ABSPATH') || exit;
 
-class church_SettingsApi
+final class church_SettingsApi
 {
     public $admin_pages = array();
 

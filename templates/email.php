@@ -55,17 +55,17 @@
                                 <td align="center" style="padding: 56px 56px 28px 56px;" valign="top">
                                     <a style="color: #3498DB; text-decoration: none;"
                                        href="https://www.getrevue.co/profile/brightonsmith?utm_campaign=Subscription+confirmation&amp;utm_content=profile-image&amp;utm_medium=email&amp;utm_source=confirmation"
-                                       target="_blank"><h1>%SITE_NAME%</h1>
+                                       target="_blank"><h1>%comercial%</h1>
                                     </a></td>
                             </tr>
                             <tr>
                                 <td align="center" style="padding: 0 56px 28px 56px;" valign="top">
                                     <div style="font-family: &quot;lato&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; line-height: 28px;font-size: 20px; color: #333;">
 
-                                        <p>%body%</p>
+                                        <p>%username%</p>
 
                                         <p>Obrigado,</p>
-                                        <p>Seus amigos no %SITE_NAME% </p>
+                                        <p>Seus amigos no %comercial% </p>
 
                                     </div>
                                 </td>
@@ -91,7 +91,7 @@
                             <tr>
                                 <td align="center" style="padding: 28px 56px;" valign="top">
                                     <div style="font-family: &quot;lato&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; line-height: 28px;font-size: 16px; line-height: 24px; color: #A7ADB5;">
-                                        Certifique-se de adicionar este endereço de e-mail (%comercial%) ao seu catálogo
+                                        Certifique-se de adicionar este endereço de e-mail (%username%) ao seu catálogo
                                         de endereços. Desta forma, você não perderá um único boletim informativo.
                                     </div>
                                 </td>
@@ -108,7 +108,7 @@
                                 <td align="center" style="padding: 0 56px 28px 56px;" valign="middle">
                                     <span style="font-family: &quot;lato&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; line-height: 28px;font-size: 16px; color: #A7ADB5; vertical-align: middle;">Powered by</span>
                                     &nbsp;
-                                    <a style="border: 0;" href="<?php echo URL; ?>" target="_blank"><h1>%SITE_NAME%</h1>
+                                    <a style="border: 0;" href="<?php echo URL; ?>" target="_blank"><h1>%comercial%</h1>
                                     </a></td>
                             </tr>
                             </tbody>

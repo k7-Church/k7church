@@ -63,10 +63,8 @@ class Church_SermonController extends Church_BaseController
 
         $this->settings = new Church_SettingsApi();
 
-        // $this->callbacks = new Church_SermonCallbacks();
+        $this->callbacks = new Church_SermonCallbacks();
 
-
-        add_action('' , array($this , 'ch_chortcode_sermon'));
 
         add_action('init' , array($this , 'ch_Sermon_cpt')); //register sermon content type
         add_action('add_meta_boxes' , array($this , 'ch_add_sermon_meta_boxes')); //add meta boxes
@@ -82,11 +80,11 @@ class Church_SermonController extends Church_BaseController
         $subpage = array(
             array(
                 'parent_slug' => 'edit.php?post_type=sermon' ,
-                'page_title' => 'Shortcodes' ,
-                'menu_title' => 'Shortcodes' ,
+                'page_title' => 'Settings' ,
+                'menu_title' => 'Settings' ,
                 'capability' => 'manage_options' ,
-                'menu_slug' => 'church_sermon_shortcode' ,
-                'callback' => array($this->callbacks , 'ch_shortcodePage')
+                'menu_slug' => 'church_sermon_settings' ,
+                'callback' => array($this->callbacks , 'ch_sermonSettings')
             )
         );
 
@@ -163,6 +161,7 @@ class Church_SermonController extends Church_BaseController
                 $sermon_permalink = get_permalink($sermon_id);
                 $sermon_vers = get_post_meta($sermon_id , 'sermon_vers' , true);
                 $sermon_author = get_post_meta($sermon_id , 'sermon_author' , true);
+                $sermon_image = get_post_meta($sermon_id , 'sermon_image' , true);
 
                 //apply the filter before our main content starts
                 //(lets third parties hook into the HTML output to output data)
@@ -232,6 +231,7 @@ class Church_SermonController extends Church_BaseController
             'normal' , //sermon
             'default' //priority
         );
+
     }
 
     public function ch_sermon_meta_box_display($post)
@@ -244,6 +244,8 @@ class Church_SermonController extends Church_BaseController
         $sermon_vers = get_post_meta($post->ID , 'sermon_vers' , true);
         $sermon_author = get_post_meta($post->ID , 'sermon_author' , true);
         $sermon_description = get_post_meta($post->ID , 'sermon_description' , true);
+        $sermon_image = get_post_meta($post->ID , 'sermon_image' , true);
+
 
         ?>
         <p><?php _e('Enter additional information about your sermon' , 'k7'); ?></p>
@@ -263,6 +265,14 @@ class Church_SermonController extends Church_BaseController
                 <label for="sermon_author"><?php _e('Author' , 'k7'); ?></label><br/>
                 <input type="text" name="sermon_author" id="sermon_author"
                        value="<?php echo $sermon_author; ?>" autocomplete="off"/>
+            </div>
+            <div class="field">
+                <label for="sermon_author"><?php _e('Author' , 'k7'); ?></label><br/>
+            <input class="widefat image-upload" id=" "
+                   name="sermon_image" type="text"
+                   value="<?php echo $sermon_image; ?>">
+            <button type="button" class="button button-primary js-image-upload">Select Image</button>
+            <img src="<?php echo $sermon_image; ?>">
             </div>
             <hr>
             <div class="field">
@@ -357,11 +367,13 @@ class Church_SermonController extends Church_BaseController
         $sermon_vers = isset($_POST['sermon_vers']) ? sanitize_text_field($_POST['sermon_vers']) : '';
         $sermon_author = isset($_POST['sermon_author']) ? sanitize_text_field($_POST['sermon_author']) : '';
         $sermon_description = isset($_POST['sermon_description']) ? sanitize_textarea_field($_POST['sermon_description']) : '';
+        $sermon_image = isset($_POST['sermon_image']) ? sanitize_textarea_field($_POST['sermon_image']) : '';
 
         //update phone, memil and description fields
         update_post_meta($post_id , 'sermon_vers' , $sermon_vers);
         update_post_meta($post_id , 'sermon_author' , $sermon_author);
         update_post_meta($post_id , 'sermon_description' , $sermon_description);
+        update_post_meta($post_id , 'sermon_image' , $sermon_image);
 
 
         //sermon save hook
@@ -372,3 +384,4 @@ class Church_SermonController extends Church_BaseController
     }
 
 }
+

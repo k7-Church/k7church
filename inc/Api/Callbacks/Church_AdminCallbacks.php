@@ -12,7 +12,7 @@ class Church_AdminCallbacks extends Church_BaseController
 {
     public function ch_adminDashboard()
     {
-        return require_once("$this->plugin_path/templates/admin.php");
+        return require_once("$this->plugin_path/templates/admin/admin.php");
     }
 
     public function ch_adminCpt()

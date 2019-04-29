@@ -36,4 +36,5 @@ class Church_ManagerCallbacks extends Church_BaseController
 
         echo '<div class="' . $classes . '"><input type="checkbox" id="' . $name . '" name="' . $option_name . '[' . $name . ']" value="1" class="" ' . ($checked ? 'checked' : '') . '><label for="' . $name . '"><div></div></label></div>';
     }
+
 }

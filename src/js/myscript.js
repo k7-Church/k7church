@@ -36,7 +36,7 @@ jQuery(document).ready(function ($) {
         var file_frame = wp.media.frames.file_frame = wp.media({
             title: 'Select or Upload an Image',
             library: {
-                type: 'image' // mime type
+                type: ['image'] // mime type
             },
             button: {
                 text: 'Select Image'
