@@ -33,8 +33,8 @@ class Church_Database
     public function init()
     {
 
-        register_uninstall_hook(__FILE__ , 'drop_database');
-        register_activation_hook(__FILE__ , 'create_table');
+        register_uninstall_hook(__FILE__, 'drop_database');
+        register_activation_hook(__FILE__, 'create_table');
 
     }
 
@@ -59,14 +59,14 @@ class Church_Database
         dbDelta($sql);
 
 
-        update_option(self::$table_name . '_db_version' , $this->version);
+        update_option(self::$table_name . '_db_version', $this->version);
     }
 
-    public function insert_data(string $table , array $data , array $dataType)
+    public function insert_data(string $table, array $data, array $dataType)
     {
         global $wpdb;
 
-        return $wpdb->insert($table , $data , $dataType);
+        return $wpdb->insert($table, $data, $dataType);
 
 
     }

@@ -31,12 +31,12 @@ class Church_ChatController extends Church_BaseController
     {
         $this->subpages = array(
             array(
-                'parent_slug' => 'church_plugin' ,
-                'page_title' => __('Chat Manager' , 'k7') ,
-                'menu_title' => __('Chat Manager' , 'k7') ,
-                'capability' => 'manage_options' ,
-                'menu_slug' => 'church_chat' ,
-                'callback' => array($this->callbacks , 'ch_adminChat')
+                'parent_slug' => 'church_plugin',
+                'page_title' => __('Chat Manager', 'k7'),
+                'menu_title' => __('Chat Manager', 'k7'),
+                'capability' => 'manage_options',
+                'menu_slug' => 'church_chat',
+                'callback' => array($this->callbacks, 'ch_adminChat')
             )
         );
     }

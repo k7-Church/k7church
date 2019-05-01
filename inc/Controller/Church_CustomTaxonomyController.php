@@ -43,7 +43,7 @@ class Church_CustomTaxonomyController extends Church_BaseController
         $this->ch_storeCustomTaxonomies();
 
         if (!empty($this->taxonomies)) {
-            add_action('init' , array($this , 'ch_registerCustomTaxonomy'));
+            add_action('init', array($this, 'ch_registerCustomTaxonomy'));
         }
     }
 
@@ -51,12 +51,12 @@ class Church_CustomTaxonomyController extends Church_BaseController
     {
         $this->subpages = array(
             array(
-                'parent_slug' => 'church_plugin' ,
-                'page_title' => __('Custom Taxonomies' , 'k7') ,
-                'menu_title' => __('Taxonomy Manager' , 'k7') ,
-                'capability' => 'manage_options' ,
-                'menu_slug' => 'church_taxonomy' ,
-                'callback' => array($this->callbacks , 'ch_adminTaxonomy')
+                'parent_slug' => 'church_plugin',
+                'page_title' => __('Custom Taxonomies', 'k7'),
+                'menu_title' => __('Taxonomy Manager', 'k7'),
+                'capability' => 'manage_options',
+                'menu_slug' => 'church_taxonomy',
+                'callback' => array($this->callbacks, 'ch_adminTaxonomy')
             )
         );
     }
@@ -65,9 +65,9 @@ class Church_CustomTaxonomyController extends Church_BaseController
     {
         $args = array(
             array(
-                'option_group' => 'church_plugin_tax_settings' ,
-                'option_name' => 'church_plugin_tax' ,
-                'callback' => array($this->tax_callbacks , 'ch_taxSanitize')
+                'option_group' => 'church_plugin_tax_settings',
+                'option_name' => 'church_plugin_tax',
+                'callback' => array($this->tax_callbacks, 'ch_taxSanitize')
             )
         );
 
@@ -78,9 +78,9 @@ class Church_CustomTaxonomyController extends Church_BaseController
     {
         $args = array(
             array(
-                'id' => 'church_tax_index' ,
-                'title' => __('Custom Taxonomy Manager' , 'k7') ,
-                'callback' => array($this->tax_callbacks , 'ch_taxSectionManager') ,
+                'id' => 'church_tax_index',
+                'title' => __('Custom Taxonomy Manager', 'k7'),
+                'callback' => array($this->tax_callbacks, 'ch_taxSectionManager'),
                 'page' => 'church_taxonomy'
             )
         );
@@ -92,54 +92,54 @@ class Church_CustomTaxonomyController extends Church_BaseController
     {
         $args = array(
             array(
-                'id' => 'taxonomy' ,
-                'title' => __('Custom Taxonomy ID' , 'k7') ,
-                'callback' => array($this->tax_callbacks , 'ch_textField') ,
-                'page' => 'church_taxonomy' ,
-                'section' => 'church_tax_index' ,
+                'id' => 'taxonomy',
+                'title' => __('Custom Taxonomy ID', 'k7'),
+                'callback' => array($this->tax_callbacks, 'ch_textField'),
+                'page' => 'church_taxonomy',
+                'section' => 'church_tax_index',
                 'args' => array(
-                    'option_name' => 'church_plugin_tax' ,
-                    'label_for' => 'taxonomy' ,
-                    'placeholder' => __('eg. genre' , 'k7') ,
+                    'option_name' => 'church_plugin_tax',
+                    'label_for' => 'taxonomy',
+                    'placeholder' => __('eg. genre', 'k7'),
                     'array' => 'taxonomy'
                 )
-            ) ,
+            ),
             array(
-                'id' => 'singular_name' ,
-                'title' => __('Singular Name' , 'k7') ,
-                'callback' => array($this->tax_callbacks , 'ch_textField') ,
-                'page' => 'church_taxonomy' ,
-                'section' => 'church_tax_index' ,
+                'id' => 'singular_name',
+                'title' => __('Singular Name', 'k7'),
+                'callback' => array($this->tax_callbacks, 'ch_textField'),
+                'page' => 'church_taxonomy',
+                'section' => 'church_tax_index',
                 'args' => array(
-                    'option_name' => 'church_plugin_tax' ,
-                    'label_for' => 'singular_name' ,
-                    'placeholder' => __('eg. Genre' , 'k7') ,
+                    'option_name' => 'church_plugin_tax',
+                    'label_for' => 'singular_name',
+                    'placeholder' => __('eg. Genre', 'k7'),
                     'array' => 'taxonomy'
                 )
-            ) ,
+            ),
             array(
-                'id' => 'hierarchical' ,
-                'title' => __('Hierarchical' , 'k7') ,
-                'callback' => array($this->tax_callbacks , 'ch_checkboxField') ,
-                'page' => 'church_taxonomy' ,
-                'section' => 'church_tax_index' ,
+                'id' => 'hierarchical',
+                'title' => __('Hierarchical', 'k7'),
+                'callback' => array($this->tax_callbacks, 'ch_checkboxField'),
+                'page' => 'church_taxonomy',
+                'section' => 'church_tax_index',
                 'args' => array(
-                    'option_name' => 'church_plugin_tax' ,
-                    'label_for' => 'hierarchical' ,
-                    'class' => 'ui-toggle' ,
+                    'option_name' => 'church_plugin_tax',
+                    'label_for' => 'hierarchical',
+                    'class' => 'ui-toggle',
                     'array' => 'taxonomy'
                 )
-            ) ,
+            ),
             array(
-                'id' => 'objects' ,
-                'title' => __('Post Types' , 'k7') ,
-                'callback' => array($this->tax_callbacks , 'ch_checkboxPostTypesField') ,
-                'page' => 'church_taxonomy' ,
-                'section' => 'church_tax_index' ,
+                'id' => 'objects',
+                'title' => __('Post Types', 'k7'),
+                'callback' => array($this->tax_callbacks, 'ch_checkboxPostTypesField'),
+                'page' => 'church_taxonomy',
+                'section' => 'church_tax_index',
                 'args' => array(
-                    'option_name' => 'church_plugin_tax' ,
-                    'label_for' => 'objects' ,
-                    'class' => 'ui-toggle' ,
+                    'option_name' => 'church_plugin_tax',
+                    'label_for' => 'objects',
+                    'class' => 'ui-toggle',
                     'array' => 'taxonomy'
                 )
             )
@@ -154,27 +154,27 @@ class Church_CustomTaxonomyController extends Church_BaseController
 
         foreach ($options as $option) {
             $labels = array(
-                'name' => $option['singular_name'] ,
-                'singular_name' => $option['singular_name'] ,
-                'search_items' => 'Search ' . $option['singular_name'] ,
-                'all_items' => 'All ' . $option['singular_name'] ,
-                'parent_item' => 'Parent ' . $option['singular_name'] ,
-                'parent_item_colon' => 'Parent ' . $option['singular_name'] . ':' ,
-                'edit_item' => 'Edit ' . $option['singular_name'] ,
-                'update_item' => 'Update ' . $option['singular_name'] ,
-                'add_new_item' => 'Add New ' . $option['singular_name'] ,
-                'new_item_name' => 'New ' . $option['singular_name'] . ' Name' ,
-                'menu_name' => $option['singular_name'] ,
+                'name' => $option['singular_name'],
+                'singular_name' => $option['singular_name'],
+                'search_items' => 'Search ' . $option['singular_name'],
+                'all_items' => 'All ' . $option['singular_name'],
+                'parent_item' => 'Parent ' . $option['singular_name'],
+                'parent_item_colon' => 'Parent ' . $option['singular_name'] . ':',
+                'edit_item' => 'Edit ' . $option['singular_name'],
+                'update_item' => 'Update ' . $option['singular_name'],
+                'add_new_item' => 'Add New ' . $option['singular_name'],
+                'new_item_name' => 'New ' . $option['singular_name'] . ' Name',
+                'menu_name' => $option['singular_name'],
             );
 
             $this->taxonomies[] = array(
-                'hierarchical' => isset($option['hierarchical']) ? true : false ,
-                'labels' => $labels ,
-                'show_ui' => true ,
-                'show_admin_column' => true ,
-                'query_var' => true ,
-                'show_in_rest' => true ,
-                'rewrite' => array('slug' => $option['taxonomy']) ,
+                'hierarchical' => isset($option['hierarchical']) ? true : false,
+                'labels' => $labels,
+                'show_ui' => true,
+                'show_admin_column' => true,
+                'query_var' => true,
+                'show_in_rest' => true,
+                'rewrite' => array('slug' => $option['taxonomy']),
                 'objects' => isset($option['objects']) ? $option['objects'] : null
             );
 
@@ -186,7 +186,7 @@ class Church_CustomTaxonomyController extends Church_BaseController
     {
         foreach ($this->taxonomies as $taxonomy) {
             $objects = isset($taxonomy['objects']) ? array_keys($taxonomy['objects']) : null;
-            register_taxonomy($taxonomy['rewrite']['slug'] , $objects , $taxonomy);
+            register_taxonomy($taxonomy['rewrite']['slug'], $objects, $taxonomy);
         }
     }
 }

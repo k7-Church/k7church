@@ -25,22 +25,22 @@ class Church_MediaWidget extends \WP_Widget
         $this->widget_name = 'Church Media Widget';
 
         $this->widget_options = array(
-            'classname' => $this->widget_ID ,
-            'description' => $this->widget_name ,
-            'customize_selective_refresh' => true ,
+            'classname' => $this->widget_ID,
+            'description' => $this->widget_name,
+            'customize_selective_refresh' => true,
         );
 
         $this->control_options = array(
-            'width' => 400 ,
-            'height' => 350 ,
+            'width' => 400,
+            'height' => 350,
         );
     }
 
     public function ch_register()
     {
-        parent::__construct($this->widget_ID , $this->widget_name , $this->widget_options , $this->control_options);
+        parent::__construct($this->widget_ID, $this->widget_name, $this->widget_options, $this->control_options);
 
-        add_action('widgets_init' , array($this , 'ch_widgetsInit'));
+        add_action('widgets_init', array($this, 'ch_widgetsInit'));
     }
 
     public function ch_widgetsInit()
@@ -48,11 +48,11 @@ class Church_MediaWidget extends \WP_Widget
         register_widget($this);
     }
 
-    public function widget($args , $instance)
+    public function widget($args, $instance)
     {
         echo $args['before_widget'];
         if (!empty($instance['title'])) {
-            echo $args['before_title'] . apply_filters('widget_title' , $instance['title']) . $args['after_title'];
+            echo $args['before_title'] . apply_filters('widget_title', $instance['title']) . $args['after_title'];
         }
         if (!empty($instance['image'])) {
             echo '<img src="' . esc_url($instance['image']) . '" alt="">';
@@ -66,13 +66,13 @@ class Church_MediaWidget extends \WP_Widget
         $image = !empty($instance['image']) ? $instance['image'] : '';
         ?>
         <p>
-            <label for="<?php echo esc_attr($this->get_field_id('title')); ?>"><?php esc_attr_e('Title:' , 'k7'); ?></label>
+            <label for="<?php echo esc_attr($this->get_field_id('title')); ?>"><?php esc_attr_e('Title:', 'k7'); ?></label>
             <input class="widefat" id="<?php echo esc_attr($this->get_field_id('title')); ?>"
                    name="<?php echo esc_attr($this->get_field_name('title')); ?>" type="text"
                    value="<?php echo esc_attr($title); ?>">
         </p>
         <p>
-            <label for="<?php echo esc_attr($this->get_field_id('image')); ?>"><?php esc_attr_e('Image:' , 'k7'); ?></label>
+            <label for="<?php echo esc_attr($this->get_field_id('image')); ?>"><?php esc_attr_e('Image:', 'k7'); ?></label>
             <input class="widefat image-upload" id="<?php echo esc_attr($this->get_field_id('image')); ?>"
                    name="<?php echo esc_attr($this->get_field_name('image')); ?>" type="text"
                    value="<?php echo esc_url($image); ?>">
@@ -81,7 +81,7 @@ class Church_MediaWidget extends \WP_Widget
         <?php
     }
 
-    public function update($new_instance , $old_instance)
+    public function update($new_instance, $old_instance)
     {
         $instance = $old_instance;
         $instance['title'] = sanitize_text_field($new_instance['title']);

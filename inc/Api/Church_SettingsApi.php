@@ -23,11 +23,11 @@ final class church_SettingsApi
     public function ch_register()
     {
         if (!empty($this->admin_pages) || !empty($this->admin_subpages)) {
-            add_action('admin_menu' , array($this , 'ch_addAdminMenu'));
+            add_action('admin_menu', array($this, 'ch_addAdminMenu'));
         }
 
         if (!empty($this->settings)) {
-            add_action('admin_init' , array($this , 'ch_registerCustomFields'));
+            add_action('admin_init', array($this, 'ch_registerCustomFields'));
         }
     }
 
@@ -48,11 +48,11 @@ final class church_SettingsApi
 
         $subpage = array(
             array(
-                'parent_slug' => $admin_page['menu_slug'] ,
-                'page_title' => $admin_page['page_title'] ,
-                'menu_title' => ($title) ? $title : $admin_page['menu_title'] ,
-                'capability' => $admin_page['capability'] ,
-                'menu_slug' => $admin_page['menu_slug'] ,
+                'parent_slug' => $admin_page['menu_slug'],
+                'page_title' => $admin_page['page_title'],
+                'menu_title' => ($title) ? $title : $admin_page['menu_title'],
+                'capability' => $admin_page['capability'],
+                'menu_slug' => $admin_page['menu_slug'],
                 'callback' => $admin_page['callback']
             )
         );
@@ -64,7 +64,7 @@ final class church_SettingsApi
 
     public function ch_addSubPages(array $pages)
     {
-        $this->admin_subpages = array_merge($this->admin_subpages , $pages);
+        $this->admin_subpages = array_merge($this->admin_subpages, $pages);
 
         return $this;
     }
@@ -72,11 +72,11 @@ final class church_SettingsApi
     public function ch_addAdminMenu()
     {
         foreach ($this->admin_pages as $page) {
-            add_menu_page($page['page_title'] , $page['menu_title'] , $page['capability'] , $page['menu_slug'] , $page['callback'] , $page['icon_url'] , $page['position']);
+            add_menu_page($page['page_title'], $page['menu_title'], $page['capability'], $page['menu_slug'], $page['callback'], $page['icon_url'], $page['position']);
         }
 
         foreach ($this->admin_subpages as $page) {
-            add_submenu_page($page['parent_slug'] , $page['page_title'] , $page['menu_title'] , $page['capability'] , $page['menu_slug'] , $page['callback']);
+            add_submenu_page($page['parent_slug'], $page['page_title'], $page['menu_title'], $page['capability'], $page['menu_slug'], $page['callback']);
         }
     }
 
@@ -105,17 +105,17 @@ final class church_SettingsApi
     {
         // register setting
         foreach ($this->settings as $setting) {
-            register_setting($setting["option_group"] , $setting["option_name"] , (isset($setting["callback"]) ? $setting["callback"] : ''));
+            register_setting($setting["option_group"], $setting["option_name"], (isset($setting["callback"]) ? $setting["callback"] : ''));
         }
 
         // add settings section
         foreach ($this->sections as $section) {
-            add_settings_section($section["id"] , $section["title"] , (isset($section["callback"]) ? $section["callback"] : '') , $section["page"]);
+            add_settings_section($section["id"], $section["title"], (isset($section["callback"]) ? $section["callback"] : ''), $section["page"]);
         }
 
         // add settings field
         foreach ($this->fields as $field) {
-            add_settings_field($field["id"] , $field["title"] , (isset($field["callback"]) ? $field["callback"] : '') , $field["page"] , $field["section"] , (isset($field["args"]) ? $field["args"] : ''));
+            add_settings_field($field["id"], $field["title"], (isset($field["callback"]) ? $field["callback"] : ''), $field["page"], $field["section"], (isset($field["args"]) ? $field["args"] : ''));
         }
     }
 }

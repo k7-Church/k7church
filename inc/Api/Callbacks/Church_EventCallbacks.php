@@ -18,9 +18,28 @@ class Church_EventCallbacks extends Church_BaseController
      
     }
 
-    public function ch_event_sanitize($input){
+    public function ch_event_sanitize( $input ){
 
-    	var_dump($_POST); die;
+    // if ( isset( $input['event_border_color'] ) ) {
+    //     $output['event_border_color'] = sanitize_text_field( $input['event_border_color'] );
+
+    // }
+    // if ( isset( $input['event_status_started'] ) ) {
+    //     $output['event_status_started'] = sanitize_text_field( $input['event_status_started'] );
+
+    // }
+    // if ( isset( $input['event_status_finished'] ) ) {
+    //     $output['event_status_finished'] = sanitize_text_field( $input['event_status_finished'] );
+
+    // }
+    // if ( isset( $input['event_status_soon'] ) ) {
+    //     $output['event_status_soon'] = sanitize_text_field( $input['event_status_soon'] );
+
+    // }
+    // if ( isset( $input['event_status_button'] ) ) {
+    //     $output['event_status_button'] = sanitize_text_field( $input['event_status_button'] );
+
+    // }
     	return $input;
     }
 

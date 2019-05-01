@@ -33,18 +33,18 @@ get_header(); ?>
                     while ($query->have_posts()) : $query->the_post();
                         ?>
                         <div class="ch-row ch-col-6" style="color: #000;">
-                            <?php the_title(sprintf('<h2 class="entry-title"><a href="%s" rel="bookmark">' , esc_url(get_permalink())) , '</a></h2>'); ?>
+                            <?php the_title(sprintf('<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url(get_permalink())), '</a></h2>'); ?>
                             <?php
                             the_excerpt();
                             $args = array(
-                                'before' => '<div class="page-links-XXX"><span class="page-link-text">' . __('More pages: ' , 'textdomain') . '</span>' ,
-                                'after' => '</div>' ,
-                                'link_before' => '<span class="page-link">' ,
-                                'link_after' => '</span>' ,
-                                'next_or_number' => 'next' ,
-                                'separator' => ' | ' ,
-                                'nextpagelink' => __('Next &raquo' , 'textdomain') ,
-                                'previouspagelink' => __('&laquo Previous' , 'textdomain') ,
+                                'before' => '<div class="page-links-XXX"><span class="page-link-text">' . __('More pages: ', 'textdomain') . '</span>',
+                                'after' => '</div>',
+                                'link_before' => '<span class="page-link">',
+                                'link_after' => '</span>',
+                                'next_or_number' => 'next',
+                                'separator' => ' | ',
+                                'nextpagelink' => __('Next &raquo', 'textdomain'),
+                                'previouspagelink' => __('&laquo Previous', 'textdomain'),
                             );
 
                             wp_link_pages($args);
@@ -52,7 +52,7 @@ get_header(); ?>
                         </div>
                     <?php endwhile;
                 else :
-                    get_template_part('content' , 'none');
+                    get_template_part('content', 'none');
                 endif;
                 ?>
 

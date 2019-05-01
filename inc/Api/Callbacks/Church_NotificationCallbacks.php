@@ -26,15 +26,15 @@ class Church_NotificationCallbacks extends Church_BaseController
     {
 
         // Add a nonce field
-        wp_nonce_field('ch_meta_box' , 'ch_meta_box_nonce');
+        wp_nonce_field('ch_meta_box', 'ch_meta_box_nonce');
 
-        $address = esc_attr(get_post_meta(get_the_ID() , 'address' , true));
-        $city = esc_attr(get_post_meta(get_the_ID() , 'city' , true));
-        $country = esc_attr(get_post_meta(get_the_ID() , 'country' , true));
-        $zip = esc_attr(get_post_meta(get_the_ID() , 'zip' , true));
-        $phone = esc_attr(get_post_meta(get_the_ID() , 'phone' , true));
-        $website = esc_attr(get_post_meta(get_the_ID() , 'website' , true));
-        $disable = esc_attr(get_post_meta(get_the_ID() , 'disable' , true));
+        $address = esc_attr(get_post_meta(get_the_ID(), 'address', true));
+        $city = esc_attr(get_post_meta(get_the_ID(), 'city', true));
+        $country = esc_attr(get_post_meta(get_the_ID(), 'country', true));
+        $zip = esc_attr(get_post_meta(get_the_ID(), 'zip', true));
+        $phone = esc_attr(get_post_meta(get_the_ID(), 'phone', true));
+        $website = esc_attr(get_post_meta(get_the_ID(), 'website', true));
+        $disable = esc_attr(get_post_meta(get_the_ID(), 'disable', true));
 
         ?>
 
@@ -49,12 +49,12 @@ class Church_NotificationCallbacks extends Church_BaseController
                 <td><input type="text" id="city" name="venue[city]" value="<?php echo $city; ?>" size="30" /></td>
             </tr>
             <tr>
-                <td><?php _e('Country' , 'k7'); ?></td>
+                <td><?php _e('Country', 'k7'); ?></td>
                 <td>
                     <select name="venue[country]">
-                        <option value="" <?php selected($country , ""); ?>>Select</option>
+                        <option value="" <?php selected($country, ""); ?>>Select</option>
                         <?php foreach ($this->notify->ch_setCountry() as $key => $value) { ?>
-                            <option value="<?php echo $key; ?>" <?php selected($country , $key); ?>><?php echo $value; ?></option>
+                            <option value="<?php echo $key; ?>" <?php selected($country, $key); ?>><?php echo $value; ?></option>
                         <?php } ?>
                     </select>
                 </td>
@@ -73,8 +73,8 @@ class Church_NotificationCallbacks extends Church_BaseController
             </tr>
             
             <tr>
-                <td><?php _e('Disable notification' , 'k7'); ?></td>
-                <td class="ui-toggle"><input class="ui-toggle" id="disable" type="checkbox" name="venue[disable]" value="1" <?php checked($disable , 'true'); ?> /></td>
+                <td><?php _e('Disable notification', 'k7'); ?></td>
+                <td class="ui-toggle"><input class="ui-toggle" id="disable" type="checkbox" name="venue[disable]" value="1" <?php checked($disable, 'true'); ?> /></td>
             </tr>
 
             </tbody>

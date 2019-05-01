@@ -44,7 +44,7 @@ class Church_LocationController extends Church_BaseController
         $arguments = shortcode_atts(array(
                 'location_id' => '',
                 'number_of_locations' => -1)
-            , $atts, $tag);
+           , $atts, $tag);
 
 
 

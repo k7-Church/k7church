@@ -3,6 +3,21 @@ div {
     column-rule: 1px solid red;
 }
 
+.ch-text-a {
+  text-align: center;
+}
+
+.ch-text-b {
+  text-align: left;
+}
+
+.ch-text-c {
+  text-align: right;
+} 
+
+..ch-text-d {
+  text-align: justify;
+} 
 .ch-row::after {
     content: "";
     clear: both;

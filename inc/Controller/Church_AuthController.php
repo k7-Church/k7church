@@ -14,15 +14,15 @@ class Church_AuthController extends Church_BaseController
     {
         if (!$this->ch_activated('login_manager')) return;
 
-        add_action('wp_enqueue_scripts' , array($this , 'ch_enqueue'));
-        add_action('wp_head' , array($this , 'ch_add_auth_template'));
-        add_action('wp_ajax_nopriv_church_login' , array($this , 'login'));
+        add_action('wp_enqueue_scripts', array($this, 'ch_enqueue'));
+        add_action('wp_head', array($this, 'ch_add_auth_template'));
+        add_action('wp_ajax_nopriv_church_login', array($this, 'login'));
     }
 
     public function ch_enqueue()
     {
-        wp_enqueue_style('authstyle' , $this->plugin_url . 'assets/auth.css');
-        wp_enqueue_script('authscript' , $this->plugin_url . 'assets/auth.js');
+        wp_enqueue_style('authstyle', $this->plugin_url . 'assets/auth.css');
+        wp_enqueue_script('authscript', $this->plugin_url . 'assets/auth.js');
     }
 
     public function ch_add_auth_template()
@@ -32,7 +32,7 @@ class Church_AuthController extends Church_BaseController
         $file = $this->plugin_path . 'templates/auth.php';
 
         if (file_exists($file)) {
-            load_template($file , true);
+            load_template($file, true);
         }
 
 
@@ -40,7 +40,7 @@ class Church_AuthController extends Church_BaseController
 
     public function login()
     {
-        check_ajax_referer('ajax-login-nonce' , 'church_auth');
+        check_ajax_referer('ajax-login-nonce', 'church_auth');
 
         $info = array();
 
@@ -48,11 +48,11 @@ class Church_AuthController extends Church_BaseController
         $info['user_password'] = $_POST['password'];
         $info['remember'] = true;
 
-        $user_lognon = wp_signon($info , false);
+        $user_lognon = wp_signon($info, false);
         if (is_wp_error($user_lognon)) {
             echo json_encode(
                 array(
-                    'status' => false ,
+                    'status' => false,
                     'message' => 'Wrong username or password .'
                 )
             );
@@ -61,7 +61,7 @@ class Church_AuthController extends Church_BaseController
         }
         echo json_encode(
             array(
-                'status' => false ,
+                'status' => false,
                 'message' => 'Login sucessful, redirecting....'
             )
         );

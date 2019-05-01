@@ -8,7 +8,7 @@
 /**
  *  Plugin Name: K7 Church
  *  Description:  K7 Church is a Wordpress plugin for churches that claims to be simple and objective for your church's website.
- *  Version:      1.0.14
+ *  Version:      1.0.15
  *  Author:       Márcio Zebedeu
  *  License:      GPL2
  *  License URI:  https://www.gnu.org/licenses/gpl-2.0.html
@@ -44,6 +44,7 @@ include_once(dirname(__FILE__) . '/inc/controller/Church_BaseController.php');
 
 require_once(dirname(__FILE__) . '/inc/pages/Church_Dashboard.php');
 require_once(dirname(__FILE__) . '/inc/api/Church_SettingsApi.php');
+require_once(dirname(__FILE__) . '/inc/api/WP_API_Client.php');
 require_once(dirname(__FILE__) . '/inc/api/callbacks/Church_AdminCallbacks.php');
 require_once(dirname(__FILE__) . '/inc/api/callbacks/Church_SermonCallbacks.php');
 require_once(dirname(__FILE__) . '/inc/api/callbacks/Church_EventCallbacks.php');
@@ -54,6 +55,7 @@ require_once(dirname(__FILE__) . '/inc/api/callbacks/Church_TestimonialCallbacks
 require_once(dirname(__FILE__) . '/inc/api/callbacks/Church_CptCallbacks.php');
 require_once(dirname(__FILE__) . '/inc/api/callbacks/Church_TaxonomyCallbacks.php');
 require_once(dirname(__FILE__) . '/inc/api/widgets/Church_MediaWidget.php');
+require_once(dirname(__FILE__) . '/inc/api/widgets/Church_LocationWidget.php');
 require_once(dirname(__FILE__) . '/inc/controller/Church_Enqueue.php');
 require_once(dirname(__FILE__) . '/inc/controller/Church_SettingsLinks.php');
 require_once(dirname(__FILE__) . '/inc/controller/Church_CustomPostTypeController.php');
@@ -68,7 +70,6 @@ require_once(dirname(__FILE__) . '/inc/controller/Church_ChatController.php');
 require_once(dirname(__FILE__) . '/inc/controller/Church_LocationController.php');
 require_once(dirname(__FILE__) . '/inc/controller/Church_SermonController.php');
 require_once(dirname(__FILE__) . '/inc/controller/Church_RegisterController.php');
-require_once(dirname(__FILE__) . '/inc/api/widgets/Church_LocationWidget.php');
 require_once(dirname(__FILE__) . '/inc/controller/Church_NotificationController.php');
 require_once(dirname(__FILE__) . '/inc/controller/Church_AccountController.php');
 require_once(dirname(__FILE__) . '/inc/controller/Church_WidgetController.php');
@@ -83,7 +84,7 @@ function activate_church_plugin()
     Church_Activate::ch_activate();
 }
 
-register_activation_hook(__FILE__ , 'activate_church_plugin');
+register_activation_hook(__FILE__, 'activate_church_plugin');
 
 /**
  * The code that runs during plugin deactivation
@@ -93,7 +94,7 @@ function deactivate_church_plugin()
     Church_Deactivate::ch_deactivate();
 }
 
-register_deactivation_hook(__FILE__ , 'deactivate_church_plugin');
+register_deactivation_hook(__FILE__, 'deactivate_church_plugin');
 
 /**
  * Initialize all the core classes of the plugin
@@ -107,10 +108,10 @@ if (class_exists('Church_Init')) {
 
 // Load plugin textdomain.
 
-add_action('init' , 'ch_load_textdomain');
+add_action('init', 'ch_load_textdomain');
 function ch_load_textdomain()
 {
     unload_textdomain('k7');
-    load_plugin_textdomain('k7' , false , basename(plugin_basename(__FILE__)) . '/languages');
+    load_plugin_textdomain('k7', false, basename(plugin_basename(__FILE__)) . '/languages');
 }
 

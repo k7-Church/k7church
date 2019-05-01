@@ -17,16 +17,16 @@ class Church_TemplateController extends Church_BaseController
         if (!$this->ch_activated('templates_manager')) return;
 
         $this->templates = array(
-            'page-templates/location-template.php' => __('Location  Layout' , 'k7')
+            'page-templates/location-template.php' => __('Location  Layout', 'k7')
         );
 
-        add_filter('theme_page_templates' , array($this , 'ch_custom_template'));
-        add_filter('template_include' , array($this , 'ch_load_template'));
+        add_filter('theme_page_templates', array($this, 'ch_custom_template'));
+        add_filter('template_include', array($this, 'ch_load_template'));
     }
 
     public function ch_custom_template($templates)
     {
-        $templates = array_merge($templates , $this->templates);
+        $templates = array_merge($templates, $this->templates);
 
         return $templates;
     }
@@ -48,7 +48,7 @@ class Church_TemplateController extends Church_BaseController
             }
         }
 
-        $template_name = get_post_meta($post->ID , '_wp_page_template' , true);
+        $template_name = get_post_meta($post->ID, '_wp_page_template', true);
 
         if (!isset($this->templates[$template_name])) {
             return $template;

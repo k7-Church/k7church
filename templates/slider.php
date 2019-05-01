@@ -1,13 +1,13 @@
 <?php
 
 $args = array(
-    'post_type' => 'testimonial' ,
-    'post_status' => 'publish' ,
-    'posts_per_page' => 5 ,
+    'post_type' => 'testimonial',
+    'post_status' => 'publish',
+    'posts_per_page' => 5,
     'meta_query' => array(
         array(
-            'key' => '_church_testimonial_key' ,
-            'value' => 's:8:"approved";i:1;s:8:"featured";i:1;' ,
+            'key' => '_church_testimonial_key',
+            'value' => 's:8:"approved";i:1;s:8:"featured";i:1;',
             'compare' => 'LIKE'
         )
     )
@@ -21,7 +21,7 @@ if ($query->have_posts()) :
     echo '<div class="ac-slider--wrapper"><div class="ac-slider--container"><div class="ac-slider--view"><ul>';
 
     while ($query->have_posts()) : $query->the_post();
-        $name = get_post_meta(get_the_ID() , '_church_testimonial_key' , true)['name'] ?? '';
+        $name = get_post_meta(get_the_ID(), '_church_testimonial_key', true)['name'] ?? '';
 
         echo '<li class="ac-slider--view__slides' . ($i === 1 ? ' is-active' : '') . '"><p class="testimonial-quote">"' . get_the_content() . '"</p><p class="testimonial-author">~ ' . $name . ' ~</p></li>';
 

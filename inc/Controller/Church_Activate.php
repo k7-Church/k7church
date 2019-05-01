@@ -17,15 +17,15 @@ class Church_Activate
         $default = array();
 
         if (!get_option('church_plugin')) {
-            update_option('church_plugin' , $default);
+            update_option('church_plugin', $default);
         }
 
         if (!get_option('church_plugin_cpt')) {
-            update_option('church_plugin_cpt' , $default);
+            update_option('church_plugin_cpt', $default);
         }
 
         if (!get_option('church_plugin_tax')) {
-            update_option('church_plugin_tax' , $default);
+            update_option('church_plugin_tax', $default);
         }
     }
 }

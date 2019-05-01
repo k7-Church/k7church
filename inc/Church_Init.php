@@ -22,7 +22,7 @@ final class Church_Init
 
         foreach (self::ch_getServices() as $class) {
             $service = self::ch_instantiate($class);
-            if (method_exists($service , 'ch_register')) {
+            if (method_exists($service, 'ch_register')) {
                 $service->ch_register();
             }
         }

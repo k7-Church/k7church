@@ -22,12 +22,12 @@ get_header(); ?>
                         ?>
                         <div class="ch-row" style="background:; color: #ffffff;">
                             <?php
-                            the_content($more_link_text = null , $strip_teaser = false);
+                            the_content($more_link_text = null, $strip_teaser = false);
                             ?>
                         </div>
                     <?php endwhile;
                 else :
-                    get_template_part('content' , 'none');
+                    get_template_part('content', 'none');
                 endif;
                 ?>
 
