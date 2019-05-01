@@ -3,6 +3,10 @@ div {
     column-rule: 1px solid red;
 }
 
+.ch-svg {
+    width: 20px;
+    height: 20px;
+}
 .ch-text-a {
   text-align: center;
 }

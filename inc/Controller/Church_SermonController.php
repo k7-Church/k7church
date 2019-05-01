@@ -161,7 +161,7 @@ class Church_SermonController extends Church_BaseController
                 $sermon_permalink = get_permalink($sermon_id);
                 $sermon_vers = get_post_meta($sermon_id, 'sermon_vers', true);
                 $sermon_author = get_post_meta($sermon_id, 'sermon_author', true);
-                $sermon_image = get_post_meta($sermon_id, 'sermon_image', true);
+                // $sermon_image = get_post_meta($sermon_id, 'sermon_image', true);
 
                 //apply the filter before our main content starts
                 //(lets third parties hook into the HTML output to output data)
@@ -244,7 +244,8 @@ class Church_SermonController extends Church_BaseController
         $sermon_vers = get_post_meta($post->ID, 'sermon_vers', true);
         $sermon_author = get_post_meta($post->ID, 'sermon_author', true);
         $sermon_description = get_post_meta($post->ID, 'sermon_description', true);
-        $sermon_image = get_post_meta($post->ID, 'sermon_image', true);
+        // $sermon_image = get_post_meta($post->ID, 'sermon_image', true);
+        $sermon_video = get_post_meta($post->ID, 'sermon_video', true);
 
 
         ?>
@@ -266,6 +267,7 @@ class Church_SermonController extends Church_BaseController
                 <input type="text" name="sermon_author" id="sermon_author"
                        value="<?php echo $sermon_author; ?>" autocomplete="off"/>
             </div>
+            <?php /**
             <div class="field">
                 <label for="sermon_author"><?php _e('Author', 'k7'); ?></label><br/>
             <input class="widefat image-upload" id=" "
@@ -274,6 +276,13 @@ class Church_SermonController extends Church_BaseController
             <button type="button" class="button button-primary js-image-upload">Select Image</button>
             <img src="<?php echo $sermon_image; ?>">
             </div>
+            */?>
+            <div class="field">
+                <label for="sermon_video"><?php _e('Embed video URL', 'k7'); ?></label><br/>
+                <input type="text" name="sermon_video" id="sermon_video"
+                       value="<?php echo $sermon_video; ?>" autocomplete="off"/>
+            </div>
+
             <hr>
             <div class="field">
                 <label for="sermon_description"><?php _e('Description', 'k7'); ?></label><br/>
@@ -304,6 +313,7 @@ class Church_SermonController extends Church_BaseController
             $sermon_id = $post->ID;
             $sermon_vers = get_post_meta($post->ID, 'sermon_vers', true);
             $sermon_author = get_post_meta($post->ID, 'sermon_author', true);
+            $sermon_video = get_post_meta($post->ID, 'sermon_video', true);
             $sermon_description = get_post_meta($post->ID, 'sermon_description', true);
 
             //display
@@ -328,6 +338,13 @@ class Church_SermonController extends Church_BaseController
             if (!empty($sermon_description)) {
                 $html .= '<b class="ch-right">' . __('Description of the Sermon:', 'k7') . '</b><br><br><i>' .  esc_html($sermon_description) . '</i></br>';
             }
+
+            // video
+            if (!empty($sermon_video)) {
+
+                $html .= wp_oembed_get($sermon_video) . '</br>';
+            }
+
             $html .= '</p><img src=' .$this->plugin_url.'/assets/icon/straight-horizontal-line.svg style="width:45%; height:100px;"><img src=' .$this->plugin_url.'/assets/icon/cross.svg style="width:40px; height:80px;"><img src=' .$this->plugin_url.'/assets/icon/straight-horizontal-line.svg style="width:45%; height:100px;">';
 
             //hook for outputting additional meta data (at the end of the form)
@@ -367,13 +384,14 @@ class Church_SermonController extends Church_BaseController
         $sermon_vers = isset($_POST['sermon_vers']) ? sanitize_text_field($_POST['sermon_vers']) : '';
         $sermon_author = isset($_POST['sermon_author']) ? sanitize_text_field($_POST['sermon_author']) : '';
         $sermon_description = isset($_POST['sermon_description']) ? sanitize_textarea_field($_POST['sermon_description']) : '';
-        $sermon_image = isset($_POST['sermon_image']) ? sanitize_textarea_field($_POST['sermon_image']) : '';
+        // $sermon_image = isset($_POST['sermon_image']) ? sanitize_textarea_field($_POST['sermon_image']) : '';
+        $sermon_video = isset($_POST['sermon_video']) ? sanitize_textarea_field($_POST['sermon_video']) : '';
 
         //update phone, memil and description fields
         update_post_meta($post_id, 'sermon_vers', $sermon_vers);
         update_post_meta($post_id, 'sermon_author', $sermon_author);
         update_post_meta($post_id, 'sermon_description', $sermon_description);
-        update_post_meta($post_id, 'sermon_image', $sermon_image);
+        update_post_meta($post_id, 'sermon_video', $sermon_video);
 
 
         //sermon save hook
