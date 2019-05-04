@@ -56,7 +56,7 @@ class Church_LocationWidget extends \WP_Widget
         $number_of_locations = (isset($instance['number_of_locations']) ? $instance['number_of_locations'] : 5);
 
         ?>
-        <p>Select your options below</p>
+        <p><?php _e( 'Select your options below', 'k7');?></p>
         <p>
             <label for="<?php echo $this->get_field_name('location_id'); ?>"><?php _e('Location to display', 'k7'); ?></label>
             <select class="widefat" name="<?php echo $this->get_field_name('location_id'); ?>"

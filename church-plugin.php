@@ -1,6 +1,6 @@
 <?php
 /**
- * @version 1.0.14
+ * @version 1.0.15
  *
  * @package K7Church
  */
@@ -8,7 +8,7 @@
 /**
  *  Plugin Name: K7 Church
  *  Description:  K7 Church is a Wordpress plugin for churches that claims to be simple and objective for your church's website.
- *  Version:      1.0.15
+ *  Version:      1.0.16
  *  Author:       Márcio Zebedeu
  *  License:      GPL2
  *  License URI:  https://www.gnu.org/licenses/gpl-2.0.html

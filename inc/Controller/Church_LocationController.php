@@ -18,34 +18,33 @@ class Church_LocationController extends Church_BaseController
 
     public function ch_register()
     {
-        if ( ! $this->ch_activated( 'location_manager' ) ) return;
+        if (!$this->ch_activated('location_manager')) return;
 
         $this->settings = new Church_SettingsApi();
 
         $this->callbacks = new Church_LocationCallbacks();
 
- 
-        add_action('init', array($this, 'ch_set_location_trading_hour_days')); //sets the default trading hour days (used by the content type)
-        add_action('init', array($this, 'ch_Location_cpt')); //register location content type
-        add_action('add_meta_boxes', array($this, 'ch_add_location_meta_boxes')); //add meta boxes
-        add_action('save_post_locations', array($this, 'ch_save_location')); //save location
-        add_filter('the_content', array($this, 'ch_prepend_location_meta_to_content')); //gets our meta data and dispayed it before the content
-                $this->ch_setLocationSettingsPage();
 
-        add_shortcode('locations', array($this, 'ch_location_shortcode_output'));
+        add_action('init' , array($this , 'ch_set_location_trading_hour_days')); //sets the default trading hour days (used by the content type)
+        add_action('init' , array($this , 'ch_Location_cpt')); //register location content type
+        add_action('add_meta_boxes' , array($this , 'ch_add_location_meta_boxes')); //add meta boxes
+        add_action('save_post_locations' , array($this , 'ch_save_location')); //save location
+        add_filter('the_content' , array($this , 'ch_prepend_location_meta_to_content')); //gets our meta data and dispayed it before the content
+        $this->ch_setLocationSettingsPage();
+
+        add_shortcode('locations' , array($this , 'ch_location_shortcode_output'));
     }
 
 
     //shortcode display
-    public function ch_location_shortcode_output($atts, $content = '', $tag)
+    public function ch_location_shortcode_output($atts , $content = '' , $tag)
     {
 
         //build default arguments
         $arguments = shortcode_atts(array(
-                'location_id' => '',
+                'location_id' => '' ,
                 'number_of_locations' => -1)
-           , $atts, $tag);
-
+            , $atts , $tag);
 
 
         //uses the main output function of the location class
@@ -57,16 +56,16 @@ class Church_LocationController extends Church_BaseController
     {
         $subpage = array(
             array(
-                'parent_slug' => 'edit.php?post_type=locations',
-                'page_title' => 'Settings',
-                'menu_title' => 'Settings',
-                'capability' => 'manage_options',
-                'menu_slug' => 'church_location_settings',
-                'callback' => array( $this->callbacks, 'ch_locationSettings' )
+                'parent_slug' => 'edit.php?post_type=locations' ,
+                'page_title' => 'Settings' ,
+                'menu_title' => 'Settings' ,
+                'capability' => 'manage_options' ,
+                'menu_slug' => 'church_location_settings' ,
+                'callback' => array($this->callbacks , 'ch_locationSettings')
             )
         );
 
-        $this->settings->ch_addSubPages( $subpage )->ch_register();
+        $this->settings->ch_addSubPages($subpage)->ch_register();
     }
 
 
@@ -75,14 +74,14 @@ class Church_LocationController extends Church_BaseController
      */
     public static function ch_set_location_trading_hour_days()
     {
-        self::$location_trading_hour_days = apply_filters('location_trading_hours_days',
-            array('monday' => __('Monday', 'k7'),
-                'tuesday' => __('Tuesday', 'k7'),
-                'wednesday' => __('Wednesday', 'k7'),
-                'thursday' => __('Thursday', 'k7'),
-                'friday' => __('Friday', 'k7'),
-                'saturday' => __('Saturday', 'k7'),
-                'sunday' => __('Sunday', 'k7'),
+        self::$location_trading_hour_days = apply_filters('location_trading_hours_days' ,
+            array('monday' => __('Monday' , 'k7') ,
+                'tuesday' => __('Tuesday' , 'k7') ,
+                'wednesday' => __('Wednesday' , 'k7') ,
+                'thursday' => __('Thursday' , 'k7') ,
+                'friday' => __('Friday' , 'k7') ,
+                'saturday' => __('Saturday' , 'k7') ,
+                'sunday' => __('Sunday' , 'k7') ,
             )
         );
 
@@ -93,39 +92,39 @@ class Church_LocationController extends Church_BaseController
 
         //Labels for post type
         $labels = array(
-            'name' => __('Location', 'k7'),
-            'singular_name' => __('Location', 'k7'),
-            'menu_name' => __('Locations', 'k7'),
-            'name_admin_bar' => __('Location', 'k7'),
-            'add_new' => __('Add New', 'k7'),
-            'add_new_item' => __('Add New Location', 'k7'),
-            'new_item' => __('New Location', 'k7'),
-            'edit_item' => __('Edit Location', 'k7'),
-            'view_item' => __('View Location', 'k7'),
-            'all_items' => __('All Locations', 'k7'),
-            'search_items' => __('Search Locations', 'k7'),
-            'parent_item_colon' => __('Parent Location:', 'k7'),
-            'not_found' => 'No Locations found.',
-            'not_found_in_trash' => __('No Locations found in Trash.', 'k7'),
+            'name' => __('Location' , 'k7') ,
+            'singular_name' => __('Location' , 'k7') ,
+            'menu_name' => __('Locations' , 'k7') ,
+            'name_admin_bar' => __('Location' , 'k7') ,
+            'add_new' => __('Add New' , 'k7') ,
+            'add_new_item' => __('Add New Location' , 'k7') ,
+            'new_item' => __('New Location' , 'k7') ,
+            'edit_item' => __('Edit Location' , 'k7') ,
+            'view_item' => __('View Location' , 'k7') ,
+            'all_items' => __('All Locations' , 'k7') ,
+            'search_items' => __('Search Locations' , 'k7') ,
+            'parent_item_colon' => __('Parent Location:' , 'k7') ,
+            'not_found' => 'No Locations found.' ,
+            'not_found_in_trash' => __('No Locations found in Trash.' , 'k7') ,
         );
         //arguments for post type
         $args = array(
-            'labels' => $labels,
-            'public' => true,
-            'publicly_queryable' => true,
-            'show_ui' => true,
-            'show_in_nav' => true,
-            'query_var' => true,
-            'hierarchical' => false,
-            'supports' => array('title', 'thumbnail', 'editor'),
-            'has_archive' => true,
-            'menu_position' => 20,
-            'show_in_admin_bar' => true,
-            'menu_icon' => 'dashicons-location-alt',
-            'rewrite' => array('slug' => 'locations', 'with_front' => 'true')
+            'labels' => $labels ,
+            'public' => true ,
+            'publicly_queryable' => true ,
+            'show_ui' => true ,
+            'show_in_nav' => true ,
+            'query_var' => true ,
+            'hierarchical' => false ,
+            'supports' => array('title' , 'thumbnail' , 'editor') ,
+            'has_archive' => true ,
+            'menu_position' => 20 ,
+            'show_in_admin_bar' => true ,
+            'menu_icon' => 'dashicons-location-alt' ,
+            'rewrite' => array('slug' => 'locations' , 'with_front' => 'true')
         );
         //register post type
-        register_post_type('locations', $args);
+        register_post_type('locations' , $args);
     }
 
     //adding meta boxes for the location content type*/
@@ -133,11 +132,11 @@ class Church_LocationController extends Church_BaseController
     {
 
         add_meta_box(
-            'location_meta_box', //id
-            __( 'Location Information', 'k7'), //name
-            array($this, 'ch_location_meta_box_display'), //display function
-            'locations', //post type
-            'normal', //location
+            'location_meta_box' , //id
+            __('Location Information' , 'k7') , //name
+            array($this , 'ch_location_meta_box_display') , //display function
+            'locations' , //post type
+            'normal' , //location
             'default' //priority
         );
     }
@@ -147,54 +146,76 @@ class Church_LocationController extends Church_BaseController
     {
 
         //set nonce field
-        wp_nonce_field('location_nonce', 'location_nonce_field');
+        wp_nonce_field('location_nonce' , 'location_nonce_field');
 
         //collect variables
-        $location_phone = get_post_meta($post->ID, 'location_phone', true);
-        $location_email = get_post_meta($post->ID, 'location_email', true);
-        $location_address = get_post_meta($post->ID, 'location_address', true);
+        $location_phone = get_post_meta($post->ID , '_ch_location_phone' , true);
+        $location_email = get_post_meta($post->ID , '_ch_location_email' , true);
+        $location_address = get_post_meta($post->ID , '_ch_location_address' , true);
+        $location_country = get_post_meta($post->ID , '_ch_location_country' , true);
+        $location_city = get_post_meta($post->ID , '_ch_location_city' , true);
+        $location_address = get_post_meta($post->ID , '_ch_location_address' , true);
+        $location_street = get_post_meta($post->ID , '_ch_location_street' , true);
 
         ?>
-        <p><?php _e('Enter additional information about your location', 'k7');?></p>
+        <p><?php _e('Enter additional information about your location' , 'k7'); ?></p>
         <div class="field-container">
             <?php
             //before main form elementst hook
             do_action('location_admin_form_start');
             ?>
             <div class="field">
-                <label for="location_phone"><?php _e('Contact Phone', 'k7');?></label><br/>
-                <small><?php _e('main contact number', 'k7');?></small>
-                <input type="tel" name="location_phone" spellcheck="true" id="location_phone"
+                <label for="_ch_location_phone"><?php _e('Contact Phone' , 'k7'); ?></label><br/>
+                <small><?php _e('main contact number' , 'k7'); ?></small>
+                <input type="tel" name="_ch_location_phone" spellcheck="true" id="location_phone"
                        value="<?php echo $location_phone; ?>" autocomplete="off"/>
             </div>
             <hr>
             <div class="field">
-                <label for="location_email"><?php _e('Contact Email', 'k7');?></label><br/>
-                <small><?php _e('Email contact', 'k7');?></small>
-                <input type="email" name="location_email" id="location_email"
+                <label for="_ch_location_email"><?php _e('Contact Email' , 'k7'); ?></label><br/>
+                <small><?php _e('Email contact' , 'k7'); ?></small>
+                <input type="email" name="_ch_location_email" id="location_email"
                        value="<?php echo $location_email; ?>" autocomplete="off"/>
             </div>
             <hr>
             <div class="field">
-                <label for="location_address"><?php _e('Address', 'k7');?></label><br/>
-                <small><?php _e('Physical address of your location', 'k7');?></small>
-                <textarea name="location_address"
-                          id="location_address"><?php echo $location_address; ?></textarea>
+                <label for="_ch_location_country"><?php _e('Event Country:'); ?></label><br>
+                <small><?php _e('location where the event will take place' , 'k7'); ?></small>
+                <input type="text" name="_ch_location_country" value="<?php echo $location_country; ?>"/>
+            </div>
+
+            <hr>
+            <div class="field">
+                <label for="_event_city"><?php _e('City:'); ?></label><br>
+                <small><?php _e('City/Province where the event will take place' , 'k7'); ?></small>
+                <input type="text" name="_ch_location_city" value="<?php echo $location_city; ?>"/>
+            </div>
+
+            <hr>
+            <div class="field">
+                <label for="_ch_location_address"><?php _e('Address:'); ?></label><br>
+                <small><?php _e('Event Address' , 'k7'); ?></small>
+                <input type="text" name="_ch_location_address" value="<?php echo $location_address; ?>"/>
+            </div>
+            <div class="field">
+                <label for="_ch_location_street"><?php _e('Event Street:'); ?></label><br>
+                <small><?php _e('Event Streer' , 'k7'); ?></small>
+                <input type="text" name="_ch_location_street" value="<?php echo $location_street; ?>"/>
             </div>
             <?php
             //trading hours
             if (!empty(self::$location_trading_hour_days)) {
                 echo '<div class="field">';
                 echo '<label>Trading Hours </label>';
-                echo '<small>'. __('Trading hours for the location (e.g 9am - 5pm) ', 'k7').'</small>';
+                echo '<small>' . __('Trading hours for the location (e.g 9am - 5pm) ' , 'k7') . '</small>';
                 //go through all of our registered trading hour days
                 foreach (self::$location_trading_hour_days as $day_key => $day_value) {
                     //collect trading hour meta data
-                    $location_trading_hour_value = get_post_meta($post->ID, 'location_trading_hours_' . $day_key, true);
+                    $location_trading_hour_value = get_post_meta($post->ID , 'location_trading_hours_' . $day_key , true);
                     //dsiplay label and input
                     echo '<br>';
-                    echo '<label for="location_trading_hours_' . $day_key . '">' .ucfirst($day_key) . '</label>';
-                    echo '<input type="text" name="location_trading_hours_' . $day_key . '" id="location_trading_hours_' . $day_key . '" value="' . $location_trading_hour_value . '" autocomplete="off"/>';
+                    echo '<label for="_ch_location_trading_hours_' . $day_key . '">' . ucfirst($day_key) . '</label>';
+                    echo '<input type="text" name="_ch_location_trading_hours_' . $day_key . '" id="location_trading_hours_' . $day_key . '" value="' . $location_trading_hour_value . '" autocomplete="off"/>';
                 }
                 echo '</div>';
             }
@@ -211,16 +232,19 @@ class Church_LocationController extends Church_BaseController
     public function ch_prepend_location_meta_to_content($content)
     {
 
-        global $post, $post_type;
+        global $post , $post_type;
 
         //display meta only on our locations (and if its a single location)
         if ($post_type == 'locations' && is_singular('locations')) {
 
             //collect variables
             $location_id = $post->ID;
-            $location_phone = get_post_meta($post->ID, 'location_phone', true);
-            $location_email = get_post_meta($post->ID, 'location_email', true);
-            $location_address = get_post_meta($post->ID, 'location_address', true);
+        $location_phone = get_post_meta($post->ID , '_ch_location_phone' , true);
+        $location_email = get_post_meta($post->ID , '_ch_location_email' , true);
+        $location_address = get_post_meta($post->ID , '_ch_location_address' , true);
+        $location_country = get_post_meta($post->ID , '_ch_location_country' , true);
+        $location_city = get_post_meta($post->ID , '_ch_location_city' , true);
+        $location_street = get_post_meta($post->ID , '_ch_location_street' , true); 
 
             //display
             $html = '';
@@ -228,36 +252,42 @@ class Church_LocationController extends Church_BaseController
             $html .= '<section class="ch-col-12 meta-data">';
 
             //hook for outputting additional meta data (at the start of the form)
-            do_action('location_meta_data_output_start', $location_id);
+            do_action('location_meta_data_output_start' , $location_id);
 
-            $html .= '<p classs="ch-row ch-col-12"><br>';
+            $html .= '<div class="ch-col-12">';
+            $html .= '<div class="ch-row">';
+            $html .= '<div class="ch-col-6"><br>';
             //phone
             if (!empty($location_phone)) {
-                $html .= '<b>' . __( 'Location Phone:', 'k7') . '</b> ' . __($location_phone) . '</br>';
+                $html .= '<img src="' . $this->plugin_url . '/assets/icon/phone2.svg" style="width:20px; height:20px;">'."\t\n".'<b>' . __('Location Phone:' , 'k7') . '</b> ' . __($location_phone) . '<br>';
             }
             //email
             if (!empty($location_email)) {
-                $html .= '<b>' . __( 'Location Email:', 'k7') . '</b> ' . __($location_email) . '</br>';
+                $html .= '<img src="' . $this->plugin_url . '/assets/icon/mail.svg" style="width:20px; height:20px;">'."\t\n". '<b>' . __('Location Email:' , 'k7') . '</b> ' . __($location_email) . '<br>';
             }
             //address
             if (!empty($location_address)) {
-                $html .= '<b class="teste">' . __( 'Location Address:', 'k7') . '</b> ' . __($location_address) . '</br>';
+                $html .= '<hr><img src="' . $this->plugin_url . '/assets/icon/location.svg" style="width:20px; height:20px;">'."\t\n".'<b class="teste">' . __('Location Address:' , 'k7') . '</b><br>'. __($location_country) . '<br>'. __($location_city). '<br>'. __($location_street). '<br>'. __($location_address) . '<br>';
             }
-            $html .= '</p>';
-
+            $html .= '</div>';
+            $html .= '<div class="ch-col-6">';
             //location
             if (!empty(self::$location_trading_hour_days)) {
                 $html .= '<p>';
-                $html .= '<b>' . __( 'Location Trading Hours', 'k7') . ' </b></br>';
+                $html .= '<b>' . __('Location Trading Hours' , 'k7') . ' </b></br><br>';
                 foreach (self::$location_trading_hour_days as $day_key => $day_value) {
-                    $trading_hours = get_post_meta($post->ID, 'location_trading_hours_' . $day_key, true);
-                    $html .= '<span class="day">' . __($day_key) . "\t". '</span><span class="hours">' . ucfirst( __($trading_hours)) . '</span></br>';
+                    $trading_hours = get_post_meta($post->ID , 'location_trading_hours_' . $day_key , true);
+                    $html .= '<img src="' . $this->plugin_url . '/assets/icon/clock.svg" style="width:20px; height:20px;">'."\t\n".'<span class="day">' . ucfirst(__($day_key)) . ": \t" . '</span><span class="hours">' . $trading_hours . '</span></br>';
                 }
                 $html .= '</p>';
+
             }
+            $html .= '</div>';
+            $html .= '</div>';
+            $html .= '</div>';
 
             //hook for outputting additional meta data (at the end of the form)
-            do_action('location_meta_data_output_end', $location_id);
+            do_action('location_meta_data_output_end' , $location_id);
 
             $html .= '</section>';
             $html .= $content;
@@ -278,8 +308,8 @@ class Church_LocationController extends Church_BaseController
 
         //default args
         $default_args = array(
-            'location_id' => '',
-            'number_of_locations' => -1,
+            'location_id' => '' ,
+            'number_of_locations' => -1 ,
         );
 
         //update default args if we passed in new args
@@ -287,7 +317,7 @@ class Church_LocationController extends Church_BaseController
             //go through each supplied argument
             foreach ($arguments as $arg_key => $arg_val) {
                 //if this argument exists in our default argument, update its value
-                if (array_key_exists($arg_key, $default_args)) {
+                if (array_key_exists($arg_key , $default_args)) {
                     $default_args[$arg_key] = $arg_val;
                 }
             }
@@ -295,9 +325,9 @@ class Church_LocationController extends Church_BaseController
 
         //find locations
         $location_args = array(
-            'post_type' => 'locations',
-            'posts_per_page' => $default_args['number_of_locations'],
-            'post_name' => '',
+            'post_type' => 'locations' ,
+            'posts_per_page' => $default_args['number_of_locations'] ,
+            'post_name' => '' ,
             'post_status' => 'publish'
         );
         //if we passed in a single location to display
@@ -317,22 +347,22 @@ class Church_LocationController extends Church_BaseController
                 //collect location data
                 $location_id = $location->ID;
                 $location_title = get_the_title($location_id);
-                $location_thumbnail = get_the_post_thumbnail($location_id, 'thumbnail');
-                $location_content = apply_filters('the_content', $location->post_content);
+                $location_thumbnail = get_the_post_thumbnail($location_id , 'thumbnail');
+                $location_content = apply_filters('the_content' , $location->post_content);
                 if (!empty($location_content)) {
-                    $location_content = strip_shortcodes(wp_trim_words($location_content, 40, '...'));
+                    $location_content = strip_shortcodes(wp_trim_words($location_content , 40 , '...'));
                 }
                 $location_permalink = get_permalink($location_id);
-                $location_phone = get_post_meta($location_id, 'location_phone', true);
-                $location_email = get_post_meta($location_id, 'location_email', true);
+                $location_phone = get_post_meta($location_id , '_ch_location_phone' , true);
+                $location_email = get_post_meta($location_id , '_ch_location_email' , true);
 
                 //apply the filter before our main content starts
                 //(lets third parties hook into the HTML output to output data)
-                $html = apply_filters('location_before_main_content', $html);
+                $html = apply_filters('location_before_main_content' , $html);
 
                 //title
                 $html .= '<h2 class="ch-title">';
-                $html .= '<a href="' . esc_url($location_permalink) . '" title="' . esc_attr__( 'view location', 'k7') . '">';
+                $html .= '<a href="' . esc_url($location_permalink) . '" title="' . esc_attr__('view location' , 'k7') . '">';
                 $html .= $location_title;
                 $html .= '</a>';
                 $html .= '</h2>';
@@ -358,20 +388,20 @@ class Church_LocationController extends Church_BaseController
                 if (!empty($location_phone) || !empty($location_email)) {
                     $html .= '<p class="phone_email">';
                     if (!empty($location_phone)) {
-                        $html .= '<b>' . __('Phone', 'k7') .': </b>' . $location_phone . '</br>';
+                        $html .= '<img src="' . $this->plugin_url . '/assets/icon/phone2.svg" style="width:20px; height:20px;">'."\t\n".'<b>' . __('Phone' , 'k7') . ': </b>' . $location_phone . '</br>';
                     }
                     if (!empty($location_email)) {
-                        $html .= '<b>' . __('Email', 'k7') .': </b>' . $location_email;
+                        $html .= '<img src="' . $this->plugin_url . '/assets/icon/mail.svg" style="width:20px; height:20px;">'."\t\n".'<b>' . __('Email' , 'k7') . ': </b>' . $location_email;
                     }
                     $html .= '</p>';
                 }
 
                 //apply the filter after the main content, before it ends
                 //(lets third parties hook into the HTML output to output data)
-                $html = apply_filters('location_after_main_content', $html);
+                $html = apply_filters('location_after_main_content' , $html);
 
                 //readmore
-                $html .= '<a class="link" href="' . esc_url($location_permalink) . '" title="' . esc_attr__( 'view location', 'k7') . '">' . __('View Location', 'k7') .'</a>';
+                $html .= '<a class="link" href="' . esc_url($location_permalink) . '" title="' . esc_attr__('view location' , 'k7') . '">' . __('View Location' , 'k7') . '</a>';
                 $html .= '</section>';
             }
             $html .= '</article>';
@@ -390,7 +420,7 @@ class Church_LocationController extends Church_BaseController
             return $post_id;
         }
         //verify nonce
-        if (!wp_verify_nonce($_POST['location_nonce_field'], 'location_nonce')) {
+        if (!wp_verify_nonce($_POST['location_nonce_field'] , 'location_nonce')) {
             return $post_id;
         }
         //check for autosave
@@ -399,26 +429,31 @@ class Church_LocationController extends Church_BaseController
         }
 
         //get our phone, email and address fields
-        $location_phone = isset($_POST['location_phone']) ? sanitize_text_field($_POST['location_phone']) : '';
-        $location_email = isset($_POST['location_email']) ? sanitize_text_field($_POST['location_email']) : '';
-        $location_address = isset($_POST['location_address']) ? sanitize_text_field($_POST['location_address']) : '';
-
+        $location_phone = isset($_POST['_ch_location_phone']) ? sanitize_text_field($_POST['_ch_location_phone']) : '';
+        $location_email = isset($_POST['_ch_location_email']) ? sanitize_text_field($_POST['_ch_location_email']) : '';
+        $location_address = isset($_POST['_ch_location_address']) ? sanitize_text_field($_POST['_ch_location_address']) : '';
+        $location_street = isset($_POST['_ch_location_street']) ? sanitize_text_field($_POST['_ch_location_street']) : '';
+        $location_country = isset($_POST['_ch_location_country']) ? sanitize_text_field($_POST['_ch_location_country']) : '';
+        $location_city = isset($_POST['_ch_location_city']) ? sanitize_text_field($_POST['_ch_location_city']) : '';
         //update phone, memil and address fields
-        update_post_meta($post_id, 'location_phone', $location_phone);
-        update_post_meta($post_id, 'location_email', $location_email);
-        update_post_meta($post_id, 'location_address', $location_address);
+        update_post_meta($post_id , '_ch_location_phone' , $location_phone);
+        update_post_meta($post_id , '_ch_location_email' , $location_email);
+        update_post_meta($post_id , '_ch_location_address' , $location_address);
+        update_post_meta($post_id , '_ch_location_street' , $location_street);
+        update_post_meta($post_id , '_ch_location_country' , $location_country);
+        update_post_meta($post_id , '_ch_location_city' , $location_city);
 
         //search for our trading hour data and update
         foreach ($_POST as $key => $value) {
             //if we found our trading hour data, update it
-            if (preg_match('/^location_trading_hours_/', $key)) {
-                update_post_meta($post_id, $key, $value);
+            if (preg_match('/^_ch_location_trading_hours_/' , $key)) {
+                update_post_meta($post_id , $key , $value);
             }
         }
 
         //location save hook
         //used so you can hook here and save additional post fields added via 'location_meta_data_output_end' or 'location_meta_data_output_end'
-        do_action('location_admin_save', $post_id, $_POST);
+        do_action('location_admin_save' , $post_id , $_POST);
 
 
     }

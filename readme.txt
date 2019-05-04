@@ -2,9 +2,9 @@
 Contributors: Márcio Zebedeu
 Tags: Form, Register, Locations, Location Widget, Media Widget, Custom Post Type Manager, Custom Taxonomy Manager, Testimonial, Sermon post, Advanced Notification System,  
 Requires at least: 4.6
-Tested up to: 5.2
+Tested up to: 5.1.1
 Requires PHP: 5.6.20
-Stable tag: 1.0.15
+Stable tag: 1.0.16
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,9 +53,15 @@ can be found form for comentarios and a complete form to register users.
 9. full location view
 10. Notify subscribers
 11. Location  Layout and front-page
-
+12. Event Post
+13. Event List
+14. Event Information
 
 == Changelog ==
+=1.0.16 =
+add icon for location
+fix bug
+
 =1.0.15 =
 add Event
 

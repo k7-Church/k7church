@@ -1,6 +1,6 @@
 <?php
 /**
- * @version 1.0.14
+ * @version 1.0.15
  *
  * @package K7Church/inc/controller
  */
@@ -26,7 +26,7 @@ class Church_EventController extends Church_BaseController
         add_action('admin_init' , array($this , 'ch_eventposts_metaboxes'));
         add_action('save_post' , array($this , 'ch_eventposts_save_meta') , 1 , 2);
         add_filter('the_content' , array($this , 'ch_prepend_event_meta_to_content')); //gets our meta data and dispayed it before the content
-        add_shortcode('events' , array($this , 'ch_event_shortcode_output'));
+        add_shortcode('events' , array($this , 'ch_ch_event_shortcode_output'));
 
 
         $this->ch_setSettings();
@@ -112,54 +112,8 @@ class Church_EventController extends Church_BaseController
                     'class' => 'example-class'
                 ) ,
 
-            ) ,
-            array(
-                'id' => 'event_status_started' ,
-                'title' => 'Event Started' ,
-                'callback' => array($this->callbacks , 'ch_event_textFields_status_started') ,
-                'page' => 'church_event_settings' ,
-                'section' => 'church_event_id' ,
-                'args' => array(
-                    'laber_for' => 'event_status_started' ,
-                    'class' => 'example-class'
-                ) ,
-
-            ) ,
-            array(
-                'id' => 'event_status_finished' ,
-                'title' => 'Event finished' ,
-                'callback' => array($this->callbacks , 'ch_event_textFields_status_soon_finished') ,
-                'page' => 'church_event_settings' ,
-                'section' => 'church_event_id' ,
-                'args' => array(
-                    'laber_for' => 'event_status_finished' ,
-                    'class' => 'example-class'
-                ) ,
-
-            ) ,
-            array(
-                'id' => 'event_status_soon' ,
-                'title' => 'Status color' ,
-                'callback' => array($this->callbacks , 'ch_event_textFields_status_soon') ,
-                'page' => 'church_event_settings' ,
-                'section' => 'church_event_id' ,
-                'args' => array(
-                    'laber_for' => 'event_status_soon' ,
-                    'class' => 'example-class'
-                ) ,
-            ) ,
-            array(
-                'id' => 'event_status_button' ,
-                'title' => 'button class' ,
-                'callback' => array($this->callbacks , 'ch_event_button_class') ,
-                'page' => 'church_event_settings' ,
-                'section' => 'church_event_id' ,
-                'args' => array(
-                    'laber_for' => 'event_status_button' ,
-                    'class' => 'example-class'
-                ) ,
-
             )
+
         );
 
         $this->settings->ch_setFields($args);
@@ -171,36 +125,40 @@ class Church_EventController extends Church_BaseController
          * Enable the event custom post type
          * http://codex.wordpress.org/Function_Reference/register_post_type
          */
+        //Labels for post type
         $labels = array(
-            'name' => __('Events' , 'k7') ,
+            'name' => __('Event' , 'k7') ,
             'singular_name' => __('Event' , 'k7') ,
-            'add_new' => __('Add New Event' , 'k7') ,
+            'menu_name' => __('Events' , 'k7') ,
+            'name_admin_bar' => __('Event' , 'k7') ,
+            'add_new' => __('Add New' , 'k7') ,
             'add_new_item' => __('Add New Event' , 'k7') ,
+            'new_item' => __('New Event' , 'k7') ,
             'edit_item' => __('Edit Event' , 'k7') ,
-            'new_item' => __('Add New Event' , 'k7') ,
             'view_item' => __('View Event' , 'k7') ,
+            'all_items' => __('All Events' , 'k7') ,
             'search_items' => __('Search Events' , 'k7') ,
-            'not_found' => __('No events found' , 'k7') ,
-            'not_found_in_trash' => __('No events found in trash' , 'k7')
+            'parent_item_colon' => __('Parent Event:' , 'k7') ,
+            'not_found' => 'No Sermons found.' ,
+            'not_found_in_trash' => __('No Events found in Trash.' , 'k7') ,
         );
+        //arguments for post type
         $args = array(
             'labels' => $labels ,
             'public' => true ,
-            'supports' => array('title' , 'editor' , 'thumbnail' , 'comments') ,
-            'capability_type' => 'post' ,
-            'rewrite' => array("slug" => "event") , // Permalinks format
-            'hierarchical' => true ,
-            'menu_position' => 5 ,
-            'has_archive' => true ,
             'publicly_queryable' => true ,
             'show_ui' => true ,
             'show_in_nav' => true ,
             'query_var' => true ,
             'hierarchical' => true ,
+            'supports' => array('title' , 'thumbnail' , 'editor' , 'comments') ,
+            'has_archive' => true ,
+            'menu_position' => 20 ,
             'show_in_admin_bar' => true ,
-            'menu_icon' => 'dashicons-calendar-alt' ,  // Icon Path
-
+            'menu_icon' => 'dashicons-calendar-alt' ,
+            'rewrite' => array('slug' => 'event' , 'with_front' => 'true')
         );
+        //register post type
         register_post_type('event' , $args);
     }
 
@@ -228,7 +186,8 @@ class Church_EventController extends Church_BaseController
     // Metabox HTML
     public function church_event_date($post , $args)
     {
-        $metabox_id = $args['args']['id'];
+        $metabox_id = '_ch'. $args['args']['id'];
+
         global $post , $wp_locale , $postEvent;
 
         $postEvent = $post;
@@ -282,52 +241,71 @@ class Church_EventController extends Church_BaseController
         // Use nonce for verification
         wp_nonce_field(plugin_basename(__FILE__) , 'ch_eventposts_nonce');
         // The metabox HTML
-        $event_location = get_post_meta($post->ID , '_event_location' , true);
-        $event_city = get_post_meta($post->ID , '_event_city' , true);
-        $event_address = get_post_meta($post->ID , '_event_address' , true);
-        $event_email = get_post_meta($post->ID , '_event_email' , true);
-        $event_phone = get_post_meta($post->ID , '_event_phone' , true); ?>
+        $event_country = get_post_meta($post->ID , '_ch_event_country' , true);
+        $event_city = get_post_meta($post->ID , '_ch_event_city' , true);
+        $event_address = get_post_meta($post->ID , '_ch_event_address' , true);
+        $event_email = get_post_meta($post->ID , '_ch_event_email' , true);
+        $event_organizer = get_post_meta($post->ID , '_ch_event_organizer' , true);
+        $event_phone = get_post_meta($post->ID , '_ch_event_phone' , true);
+        $event_phone_2 = get_post_meta($post->ID , '_ch_event_phone_2' , true);
+        $event_street = get_post_meta($post->ID , '_ch_event_street' , true); ?>
 
 
         <div class="field-container">
 
             <div class="field">
-                <label for="_event_location"><?php _e('Location:'); ?></label><br>
+                <label for="_ch_event_country"><?php _e('Event Country:'); ?></label><br>
                 <small><?php _e('location where the event will take place' , 'k7'); ?></small>
-                <input type="text" name="_event_location" value="<?php echo $event_location; ?>"/>
+                <input type="text" name="_ch_event_country" value="<?php echo $event_country; ?>"/>
             </div>
 
             <hr>
             <div class="field">
-                <label for="_event_city"><?php _e('City:'); ?></label><br>
+                <label for="_ch_event_city"><?php _e('City:'); ?></label><br>
                 <small><?php _e('City/Province where the event will take place' , 'k7'); ?></small>
-                <input type="text" name="_event_city" value="<?php echo $event_city; ?>"/>
+                <input type="text" name="_ch_event_city" value="<?php echo $event_city; ?>"/>
             </div>
 
             <hr>
             <div class="field">
-                <label for="_event_address"><?php _e('Adress:'); ?></label><br>
+                <label for="_ch_event_address"><?php _e('Address:'); ?></label><br>
                 <small><?php _e('Event Address' , 'k7'); ?></small>
-                <input type="text" name="_event_address" value="<?php echo $event_address; ?>"/>
+                <input type="text" name="_ch_event_address" value="<?php echo $event_address; ?>"/>
+            </div>
+            <div class="field">
+                <label for="_ch_event_street"><?php _e('Event Street:'); ?></label><br>
+                <small><?php _e('Event Streer' , 'k7'); ?></small>
+                <input type="text" name="_ch_event_street" value="<?php echo $event_street; ?>"/>
             </div>
 
             <hr>
             <div class="field">
-                <label for="_event_email"><?php _e('Email:'); ?></label><br>
-                <small><?php _e('Event or organizer email' , 'k7'); ?></small>
-                <input type="email" name="_event_email" value="<?php echo $event_email; ?>"/>
+                <label for="_ch_event_email"><?php _e('Email:'); ?></label><br>
+                <small><?php _e('Event email' , 'k7'); ?></small>
+                <input type="email" name="_ch_event_email" value="<?php echo $event_email; ?>"/>
             </div>
             <hr>
             <div class="field">
-                <label for="_event_phone"><?php _e('Phone:'); ?></label><br>
+                <label for="_ch_event_organizer"><?php _e('Organizers email:'); ?></label><br>
+                <small><?php _e('Event or organizer email' , 'k7'); ?></small>
+                <input type="email" name="_ch_event_organizer" value="<?php echo $event_organizer; ?>"/>
+            </div>
+            <hr>
+            <div class="field">
+                <label for="_ch_event_phone"><?php _e('Phone:'); ?></label><br>
                 <small><?php _e('Event Phone' , 'k7'); ?></small>
-                <input type="tel" name="_event_phone" value="<?php echo $event_phone; ?>"/>
+                <input type="tel" name="_ch_event_phone" value="<?php echo $event_phone; ?>"/>
+            </div>
+            <div class="field">
+                <label for="_ch_event_phone_2"><?php _e('Phone 2:'); ?></label><br>
+                <small><?php _e('Event Phone' , 'k7'); ?></small>
+                <input type="tel" name="_ch_event_phone_2" value="<?php echo $event_phone_2; ?>"/>
             </div>
         </div>
         <?php
     }
 
-    // Save the Metabox Data
+   // Save the Metabox Data
     public function ch_eventposts_save_meta($post_id , $post)
     {
         if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)
@@ -342,7 +320,7 @@ class Church_EventController extends Church_BaseController
         // OK, we're authenticated: we need to find and save the data
         // We'll put it into an array to make it easier to loop though
 
-        $metabox_ids = array('_start' , '_end');
+        $metabox_ids = array('_ch_start' , '_ch_end');
         foreach ($metabox_ids as $key) {
 
             $aa = $_POST[$key . '_year'];
@@ -373,11 +351,14 @@ class Church_EventController extends Church_BaseController
         // Save Locations Meta
 
 
-        $events_meta['_event_location'] = $_POST['_event_location'];
-        $events_meta['_event_city'] = $_POST['_event_city'];
-        $events_meta['_event_address'] = $_POST['_event_address'];
-        $events_meta['_event_email'] = $_POST['_event_email'];
-        $events_meta['_event_phone'] = $_POST['_event_phone'];
+        $events_meta['_ch_event_country'] = $_POST['_ch_event_country'];
+        $events_meta['_ch_event_city'] = $_POST['_ch_event_city'];
+        $events_meta['_ch_event_address'] = $_POST['_ch_event_address'];
+        $events_meta['_ch_event_email'] = $_POST['_ch_event_email'];
+        $events_meta['_ch_event_organizer'] = $_POST['_ch_event_organizer'];
+        $events_meta['_ch_event_phone'] = $_POST['_ch_event_phone'];
+        $events_meta['_ch_event_phone_2'] = $_POST['_ch_event_phone_2'];
+        $events_meta['_ch_event_street'] = $_POST['_ch_event_street'];
 
 
         // Add values of $events_meta as custom fields
@@ -425,6 +406,7 @@ class Church_EventController extends Church_BaseController
     }
 
 
+
     /**
      * Customize Event Query using Post Meta
      *
@@ -445,14 +427,14 @@ class Church_EventController extends Church_BaseController
         if ($wp_the_query === $query && !is_admin() && is_post_type_archive('events')) {
             $meta_query = array(
                 array(
-                    'key' => '_start_eventtimestamp' ,
+                    'key' => '_ch_start_eventtimestamp' ,
                     'value' => $current_timestamp ,
                     'compare' => '>'
                 )
             );
             $query->set('meta_query' , $meta_query);
             $query->set('orderby' , 'meta_value_num');
-            $query->set('meta_key' , '_start_eventtimestamp');
+            $query->set('meta_key' , '_ch_start_eventtimestamp');
             $query->set('order' , 'ASC');
             $query->set('posts_per_page' , '2');
         }
@@ -461,7 +443,7 @@ class Church_EventController extends Church_BaseController
     }
 
     //shortcode display
-    public function ch_event_shortcode_output($atts , $content = '' , $tag)
+    public function ch_ch_event_shortcode_output($atts , $content = '' , $tag)
     {
 
         //build default arguments
@@ -498,38 +480,26 @@ class Church_EventController extends Church_BaseController
             <strong><?php echo "\t\n" . __('Publish date:' , 'k7'); ?></strong><?php echo the_date('M d Y'); ?><br>
             <?php
             // Gets the event start month from the meta field
-            $month = get_post_meta($event->ID , '_start_month' , true);
+            $month = get_post_meta($event->ID , '_ch_start_month' , true);
             // Converts the month number to the month name
             $month = $wp_locale->get_month_abbrev($wp_locale->get_month($month));
             // Gets the event start day
-            $day = get_post_meta($event->ID , '_start_day' , true);
+            $day = get_post_meta($event->ID , '_ch_start_day' , true);
             // Gets the event start year
-            $year = get_post_meta($event->ID , '_start_year' , true);
+            $year = get_post_meta($event->ID , '_ch_start_year' , true);
             ?>
 
             <?php
-            $started = "";
-            $end = get_post_meta($event->ID , '_end_eventtimestamp' , true);
-            $current_timestamp = $current_timestamp;
 
-            if (get_post_meta($event->ID , '_start_eventtimestamp' , true) <= $end && $end > $current_timestamp && $end) {
+            $end = get_post_meta($event->ID , '_ch_end_eventtimestamp' , true);
 
-                $started = "\t\n<b style='border: 6px solid " . get_option('event_status_started') . ";'>\t\n" . esc_html__('Has started' , 'k7') . '</b>';
-            }
-            if ($end < $current_timestamp) {
-                $started = "\t\n<b style='border: 6px solid " . get_option('event_status_finished') . ";'>\t\n" . esc_html__('Has finished' , 'k7') . '</b>';
-
-            }
-            if ($end > $current_timestamp && $current_timestamp < get_post_meta($event->ID , '_start_eventtimestamp' , true)) {
-                $started = "\t\n<b style='border: 6px solid " . get_option('event_status_soon') ?? 'black' . ";'>\t\n" . esc_html__('It will start soon' , 'k7') . '</b>';
-
-            } ?>
+            ?>
             <img src="<?php echo $this->plugin_url . "/assets/icon/clock.svg"; ?>" style="width:20px; height:20px;">
             <strong><?php echo "\t\n" . __('Event start date:' , 'k7'); ?></strong><?php echo "\t\n" . $month . ' ' . $day . ' ' . $year; ?>
             <br>
             <img src="<?php echo $this->plugin_url . "/assets/icon/timestampdate.svg"; ?>"
                  style="width:20px; height:20px;">
-            <strong><?php echo "\t\n" . __('Start event timestamp:' , 'k7'); ?></strong><?php echo "\t\n" . get_post_meta($event->ID , '_start_eventtimestamp' , true) . $started; ?>
+            <strong><?php echo "\t\n" . __('Start event timestamp:' , 'k7'); ?></strong><?php echo "\t\n" . get_post_meta($event->ID , '_ch_start_eventtimestamp' , true);?>
             <br>
             <img src="<?php echo $this->plugin_url . "/assets/icon/finish.svg"; ?>" style="width:20px; height:20px;">
             <strong><?php echo "\t\n" . __('End event timestamp:' , 'k7'); ?></strong><?php echo "\t\n" . $end; ?><br>
@@ -544,19 +514,19 @@ class Church_EventController extends Church_BaseController
                             <h2><?php _e(' Location' , 'k7'); ?></h2></label>
 
                         <hr>
-                        <strong><?php _e('Event Location:' , 'k7'); ?></strong>
-                        <small><?php echo "\t\n" . get_post_meta($event->ID , '_event_location' , true); ?></small>
+                        <strong><?php _e('Event County:' , 'k7'); ?></strong>
+                        <small><?php echo "\t\n" . get_post_meta($event->ID , '_ch_event_country' , true); ?></small>
                         <br>
                         <strong><?php _e('Event City/Province:' , 'k7'); ?></strong>
-                        <small><?php echo "\t\n" . get_post_meta($event->ID , '_event_city' , true); ?></small>
+                        <small><?php echo "\t\n" . get_post_meta($event->ID , '_ch_event_city' , true); ?></small>
                         <br>
 
                         <hr>
                         <strong><?php _e('Event Address:' , 'k7'); ?></strong>
-                        <small><?php echo "\t\n" . get_post_meta($event->ID , '_event_address' , true); ?></small>
+                        <small><?php echo "\t\n" . get_post_meta($event->ID , '_ch_event_address' , true); ?></small>
                         <br>
-                        <strong><?php _e('Event Location:' , 'k7'); ?></strong>
-                        <small><?php echo "\t\n" . get_post_meta($event->ID , '_event_address' , true); ?></small>
+                        <strong><?php _e('Event Street:' , 'k7'); ?></strong>
+                        <small><?php echo "\t\n" . get_post_meta($event->ID , '_ch_event_street' , true); ?></small>
                         <br>
 
                     </div>
@@ -568,18 +538,18 @@ class Church_EventController extends Church_BaseController
                             <h2><?php _e(' Contact' , 'k7'); ?></h2></label>
                         <hr>
                         <strong><?php _e('Event Phone:' , 'k7'); ?></strong>
-                        <small><?php echo "\t\n" . get_post_meta($event->ID , '_event_phone' , true); ?></small>
+                        <small><?php echo "\t\n" . get_post_meta($event->ID , '_ch_event_phone' , true); ?></small>
                         <br>
-                        <strong><?php _e('Event Phone:' , 'k7'); ?></strong>
-                        <small><?php echo "\t\n" . get_post_meta($event->ID , '_event_phone' , true); ?></small>
+                        <strong><?php _e('Event Phone 2:' , 'k7'); ?></strong>
+                        <small><?php echo "\t\n" . get_post_meta($event->ID , '_ch_event_phone_2' , true); ?></small>
                         <br>
 
                         <hr>
                         <strong><?php _e('Event Email:' , 'k7'); ?></strong>
-                        <small><?php echo "\t\n" . get_post_meta($event->ID , '_event_email' , true); ?></small>
+                        <small><?php echo "\t\n" . get_post_meta($event->ID , '_ch_event_email' , true); ?></small>
                         <br>
                         <strong><?php _e('Event or organizer email:' , 'k7'); ?></strong>
-                        <small><?php echo "\t\n" . get_post_meta($event->ID , '_event_email' , true); ?></small>
+                        <small><?php echo "\t\n" . get_post_meta($event->ID , '_ch_event_organizer' , true); ?></small>
                         <br>
                     </div>
                 </div>
@@ -607,12 +577,14 @@ class Church_EventController extends Church_BaseController
     public function ch_get_event_output($arguments = "")
     {
 
-        global $wp_locale;
+        global $post;
+
+        $wp_locale = new WP_Locale();
 
         //default args
         $default_args = array(
             'event_id' => '' ,
-            'number_of_sermon' => -1
+            'number_of_event' => -1
         );
 
         //update default args if we passed in new args
@@ -626,11 +598,15 @@ class Church_EventController extends Church_BaseController
             }
         }
 
+
         //find sermon
         $event_args = array(
             'post_type' => 'event' ,
-            'posts_per_page' => $default_args['number_of_sermon'] ,
-            'post_status' => 'publish'
+            'posts_per_page' => $default_args['number_of_event'] ,
+            'post_status' => 'publish' ,
+            'meta_key' => '_ch_start_eventtimestamp' ,
+            'orderby' => 'meta_value_num' ,
+
         );
         //if we passed in a single sermon to display
         if (!empty($default_args['event_id'])) {
@@ -639,7 +615,8 @@ class Church_EventController extends Church_BaseController
 
         //output
         $html = '';
-        $event = get_posts($event_args);
+        $events = get_posts($event_args);
+
 
         // http://codex.wordpress.org/Function_Reference/current_time
         $current_time = current_time('mysql');
@@ -647,11 +624,12 @@ class Church_EventController extends Church_BaseController
         $current_timestamp = $today_year . '-' . $today_month . '-' . $today_day . ' ' . $hour . ':' . $minute;
 
         //if we have sermon
-        if ($event) {
-            $html .= '<article class="ch-col-12 location_list cf" style="background-color: #fff;">';
+        if ($events) {
+            $html .= '<article class="ch-col-12 location_list cf" style="border: 12px solid '.get_option( 'event_border_color').'">';
             //foreach sermon
-            foreach ($event as $event) {
-                $html .= '<section class="ch-col-12 sermon">';
+            foreach ($events as $event) {
+
+                $html .= '<section class="ch-col-12 sermon" >';
                 //collect sermon data
                 $event_id = $event->ID;
                 $event_title = get_the_title($event_id);
@@ -667,6 +645,7 @@ class Church_EventController extends Church_BaseController
 
                 $event_permalink = get_permalink($event_id);
 
+
                 // http://codex.wordpress.org/Function_Reference/current_time
                 $current_time = current_time('mysql');
                 list($today_year , $today_month , $today_day , $hour , $minute , $second) = preg_split('([^0-9])' , $current_time);
@@ -676,7 +655,7 @@ class Church_EventController extends Church_BaseController
 
                 //title
                 $html .= '<h2 class="ch-title">';
-                $html .= '<a href="' . esc_url($event_permalink) . '" title="' . esc_attr__('view sermon' , 'k7') . '">';
+                $html .= '<a href="' . esc_url($event_permalink) . '" title="' . esc_attr__('view Event' , 'k7') . '">';
                 $html .= $event_title;
                 $html .= '</a>';
                 $html .= '</h2>';
@@ -695,40 +674,30 @@ class Church_EventController extends Church_BaseController
                         $html .= '<p>';
                         $html .= '<img src="' . $this->plugin_url . '/assets/icon/compose.svg" style="width:20px; height:20px;"><strong>' . "\t\n" . __('Publish date:' , 'k7') . '</strong>' . get_the_date('M d Y') . '<br>';
 
+                        ?>
+                        <body onload='verHora()'><h3 id='relogio'></h3></body><?php
 
                         // Gets the event start month from the meta field
-                        $month = get_post_meta($event->ID , '_start_month' , true);
+                        $month = get_post_meta($event_id , '_ch_start_month' , true);
                         // Converts the month number to the month name
                         $month = $wp_locale->get_month_abbrev($wp_locale->get_month($month));
                         // Gets the event start day
-                        $day = get_post_meta($event->ID , '_start_day' , true);
+                        $day = get_post_meta($event_id , '_ch_start_day' , true);
                         // Gets the event start year
-                        $year = get_post_meta($event->ID , '_start_year' , true);
+                        $year = get_post_meta($event_id , '_ch_start_year' , true);
 
-                        $end = get_post_meta($event->ID , '_end_eventtimestamp' , true);
+                        $end = get_post_meta($event_id , '_ch_end_eventtimestamp' , true);
                         $current_timestamp = $current_timestamp;
-
-                        if (get_post_meta($event->ID , '_start_eventtimestamp' , true) <= $end && $end > $current_timestamp && $end) {
-
-                            $started = "\t\n<b style='border: 6px solid " . get_option('event_status_started') . ";'>\t\n" . esc_html__('Has started' , 'k7') . '</b>';
-                        }
-                        if ($end < $current_timestamp) {
-                            $started = "\t\n<b style='border: 6px solid " . get_option('event_status_finished') . ";'>\t\n" . esc_html__('Has finished' , 'k7') . '</b>';
-
-                        }
-                        if ($end > $current_timestamp && $current_timestamp < get_post_meta($event->ID , '_start_eventtimestamp' , true)) {
-                            $started = "\t\n<b style='border: 6px solid " . get_option('event_status_soon') ?? 'black' . ";'>\t\n" . esc_html__('It will start soon' , 'k7') . '</b>';
-
-                        }
 
 
                         $html .= '<img src="' . $this->plugin_url . '/assets/icon/clock.svg" style="width:20px; height:20px;"><strong>' . "\t\n" . __('Event start date:' , 'k7') . '</strong>' . "\t\n" . $month . ' ' . $day . ' ' . $year . '<br>';
 
-                        $html .= '<img src="' . $this->plugin_url . '/assets/icon/timestampdate.svg" style="width:20px; height:20px;"><strong>' . "\t\n" . __('Start event timestamp:' , 'k7') . '</strong>' . "\t\n" . get_post_meta($event->ID , '_start_eventtimestamp' , true) . $started . '<br>';
+                        $html .= '<img src="' . $this->plugin_url . '/assets/icon/timestampdate.svg" style="width:20px; height:20px;"><strong>' . "\t\n" . __('Start event timestamp:' , 'k7') . '</strong>' . "\t\n" . get_post_meta($event_id , '_ch_start_eventtimestamp' , true) . '<br>';
 
                         $html .= '<img src="' . $this->plugin_url . '/assets/icon/finish.svg" style="width:20px; height:20px;"><strong>' . "\t\n" . __('End event timestamp:' , 'k7') . '</strong>' . "\t\n" . $end . '<br>';
 
                         $html .= $event_content;
+
                         $html .= '</p>';
                     }
 
@@ -741,8 +710,8 @@ class Church_EventController extends Church_BaseController
                 //readmore
                 $html .= '<a class="link" href="' . esc_url($event_permalink) . '" title="' . esc_attr__('view Event' , 'k7') . '">' . __('View Event' , 'k7') . '</a>';
                 $html .= '</section>';
+
             }
-            do_action('pre_get_posts' , $arg = '');
 
             $html .= '</article>';
             $html .= '<div class="cf"></div>';

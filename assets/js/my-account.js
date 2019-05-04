@@ -125,6 +125,34 @@ document.getElementById('ct').innerHTML = x3;
 display_c();
  }
 
+var x = new Date()
+ var month=x.getMonth()+1;
+var day=x.getDate();
+var year=x.getFullYear();
+if (month <10 ){month='0' + month;}
+if (day <10 ){day='0' + day;}
+var x3= year+'-'+month+'-'+day;
+
+
+
+// time part //
+var hour=x.getHours();
+var minute=x.getMinutes();
+var second=x.getSeconds();
+if(hour <10 ){hour='0'+hour;}
+if(minute <10 ) {minute='0' + minute; }
+if(second<10){second='0' + second;}
+var x4 = x3 + ' ' +  hour+':'+minute;
+var end = document.getElementById("horas");
+
+
+
+function myFunction() {
+  var x = document.getElementById("horas").value;
+  document.getElementById("status").innerHTML = "eita porraaa";
+}
+
+
 
 
 
