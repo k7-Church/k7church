@@ -116,7 +116,7 @@ class Church_LocationController extends Church_BaseController
             'show_in_nav' => true ,
             'query_var' => true ,
             'hierarchical' => false ,
-            'supports' => array('title' , 'thumbnail' , 'editor') ,
+            'supports' => array('title' , 'thumbnail' , 'editor', 'excerpt') ,
             'has_archive' => true ,
             'menu_position' => 20 ,
             'show_in_admin_bar' => true ,
@@ -350,11 +350,13 @@ class Church_LocationController extends Church_BaseController
                 $location_thumbnail = get_the_post_thumbnail($location_id , 'thumbnail');
                 $location_content = apply_filters('the_content' , $location->post_content);
                 if (!empty($location_content)) {
-                    $location_content = strip_shortcodes(wp_trim_words($location_content , 40 , '...'));
+                    $location_content = strip_shortcodes(wp_trim_words($location->post_excerpt , 40 , '...'));
                 }
                 $location_permalink = get_permalink($location_id);
                 $location_phone = get_post_meta($location_id , '_ch_location_phone' , true);
                 $location_email = get_post_meta($location_id , '_ch_location_email' , true);
+                $location_email = get_post_meta($location_id , '_ch_location_email' , true);
+                $location_country = get_post_meta($location_id , '_ch_location_country' , true);
 
                 //apply the filter before our main content starts
                 //(lets third parties hook into the HTML output to output data)
@@ -372,7 +374,7 @@ class Church_LocationController extends Church_BaseController
                 if (!empty($location_thumbnail) || !empty($location_content)) {
 
                     if (!empty($location_thumbnail)) {
-                        $html .= '<p class="image_content">';
+                        $html .= '<p class="ch-col-4 image_content">';
                         $html .= $location_thumbnail;
                         $html .= '</p>';
                     }
@@ -385,15 +387,20 @@ class Church_LocationController extends Church_BaseController
                 }
 
                 //phone & email output
-                if (!empty($location_phone) || !empty($location_email)) {
-                    $html .= '<p class="phone_email">';
+                if (!empty($location_phone) || !empty($location_email) || !$location_country) {
+                    $html .= '<div class="phone_email">';
+                    $html .= '<p>';
+                    if (!empty($location_country)) {
+                        $html .= '<b>' . __('Phone' , 'k7') . ': </b>' . $location_country . '</br>';
+                    }
                     if (!empty($location_phone)) {
-                        $html .= '<img src="' . $this->plugin_url . '/assets/icon/phone2.svg" style="width:20px; height:20px;">'."\t\n".'<b>' . __('Phone' , 'k7') . ': </b>' . $location_phone . '</br>';
+                        $html .= '<b>' . __('Phone' , 'k7') . ': </b>' . $location_phone . '</br>';
                     }
                     if (!empty($location_email)) {
-                        $html .= '<img src="' . $this->plugin_url . '/assets/icon/mail.svg" style="width:20px; height:20px;">'."\t\n".'<b>' . __('Email' , 'k7') . ': </b>' . $location_email;
+                        $html .= '<b>' . __('Email' , 'k7') . ': </b>' . $location_email;
                     }
                     $html .= '</p>';
+                    $html .= '</dv>';
                 }
 
                 //apply the filter after the main content, before it ends

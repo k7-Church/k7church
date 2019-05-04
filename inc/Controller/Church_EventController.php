@@ -151,7 +151,7 @@ class Church_EventController extends Church_BaseController
             'show_in_nav' => true ,
             'query_var' => true ,
             'hierarchical' => true ,
-            'supports' => array('title' , 'thumbnail' , 'editor' , 'comments') ,
+            'supports' => array('title' , 'thumbnail' , 'editor') ,
             'has_archive' => true ,
             'menu_position' => 20 ,
             'show_in_admin_bar' => true ,
