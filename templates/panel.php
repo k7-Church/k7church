@@ -19,8 +19,8 @@ function ch_PanelPublic($user_id, $length, $current_user)
                 <li>
                     <p><?php echo get_avatar($user_id, 200, '', '', array()); ?><p>
                 </li>
-                <li><?php echo __('Posts', 'k7') . "\t" . count_user_posts($user_id); ?></li>
-                <li><?php echo __('Comments', 'k7') . "\t" . $count; ?></li>
+                <li><?php echo __('Posts', 'k7-church') . "\t" . count_user_posts($user_id); ?></li>
+                <li><?php echo __('Comments', 'k7-church') . "\t" . $count; ?></li>
                 <li>*</li>
             </ul>
         </div>
@@ -29,11 +29,11 @@ function ch_PanelPublic($user_id, $length, $current_user)
 
             <div class="ch-tab">
                 <button class="ch-tablinks"
-                        onclick="openTabs(event, 'tab1')"><?php echo __('Recent Activity', 'k7'); ?></button>
+                        onclick="openTabs(event, 'tab1')"><?php echo __('Recent Activity', 'k7-church'); ?></button>
                 <button class="ch-tablinks"
-                        onclick="openTabs(event, 'tab2')"><?php echo __('Information', 'k7'); ?></button>
+                        onclick="openTabs(event, 'tab2')"><?php echo __('Information', 'k7-church'); ?></button>
                 <button class="ch-tablinks"
-                        onclick="openTabs(event, 'tab3')"><?php echo __('ANOTHER', 'k7'); ?></button>
+                        onclick="openTabs(event, 'tab3')"><?php echo __('ANOTHER', 'k7-church'); ?></button>
             </div>
 
             <div id="tab1" class="ch-tabcontent">
@@ -75,7 +75,7 @@ function ch_PanelPublic($user_id, $length, $current_user)
 
             <div id="tab3" class="ch-tabcontent">
                 <h3>ANOTHER</h3>
-                <h2><?php echo __('Description', 'k7'); ?></h2>
+                <h2><?php echo __('Description', 'k7-church'); ?></h2>
                 <p><?php $authorDesc = the_author_meta('description');
                     echo $authorDesc; ?>
                 </p>

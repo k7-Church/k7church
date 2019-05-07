@@ -13,7 +13,7 @@
         <a href="?post_type=locations&page=church_location_settings&tab=tab_one"
            class="nav-tab <?php echo $active_tab == 'tab_one' ? 'nav-tab-active' : ''; ?>">GENERAL SETTINGS</a>
         <a href="?post_type=locations&page=church_location_settings&tab=tab_two"
-           class="nav-tab <?php echo $active_tab == 'tab_two' ? 'nav-tab-active' : ''; ?>">Shotcode</a>
+           class="nav-tab <?php echo $active_tab == 'tab_two' ? 'nav-tab-active' : ''; ?>">Shortcode</a>
     </h2>
             <form method="post" action="options.php">
                 <?php

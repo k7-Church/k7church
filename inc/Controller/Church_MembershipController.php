@@ -31,9 +31,9 @@ class Church_MembershipController extends Church_BaseController
     {
         $this->subpages = array(
             array(
-                'parent_slug' => __('church_plugin', 'k7'),
-                'page_title' => __('Membership Manager', 'k7'),
-                'menu_title' => __('Membership Manager', 'k7'),
+                'parent_slug' => __('church_plugin', 'k7-church'),
+                'page_title' => __('Membership Manager', 'k7-church'),
+                'menu_title' => __('Membership Manager', 'k7-church'),
                 'capability' => 'manage_options',
                 'menu_slug' => 'church_membership',
                 'callback' => array($this->callbacks, 'ch_adminMembership')

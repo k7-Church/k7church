@@ -41,7 +41,7 @@ class Church_EventController extends Church_BaseController
         $subpage = array(
             array(
                 'parent_slug' => 'edit.php?post_type=event' ,
-                'page_title' => 'Settings' ,
+                'page_title' => '*Settings' ,
                 'menu_title' => 'Settings' ,
                 'capability' => 'manage_options' ,
                 'menu_slug' => 'church_event_settings' ,
@@ -88,7 +88,7 @@ class Church_EventController extends Church_BaseController
         $args = array(
             array(
                 'id' => 'church_event_id' ,
-                'title' => 'Settings' ,
+                'title' => __( 'Settings', 'k7-church') ,
                 'callback' => array($this->callbacks , 'ch_event_section') ,
                 'page' => 'church_event_settings'
 
@@ -103,7 +103,7 @@ class Church_EventController extends Church_BaseController
         $args = array(
             array(
                 'id' => 'event_border_color' ,
-                'title' => 'Border color' ,
+                'title' => __('Border color', 'k7-church') ,
                 'callback' => array($this->callbacks , 'ch_event_textFields_border') ,
                 'page' => 'church_event_settings' ,
                 'section' => 'church_event_id' ,
@@ -127,20 +127,20 @@ class Church_EventController extends Church_BaseController
          */
         //Labels for post type
         $labels = array(
-            'name' => __('Event' , 'k7') ,
-            'singular_name' => __('Event' , 'k7') ,
-            'menu_name' => __('Events' , 'k7') ,
-            'name_admin_bar' => __('Event' , 'k7') ,
-            'add_new' => __('Add New' , 'k7') ,
-            'add_new_item' => __('Add New Event' , 'k7') ,
-            'new_item' => __('New Event' , 'k7') ,
-            'edit_item' => __('Edit Event' , 'k7') ,
-            'view_item' => __('View Event' , 'k7') ,
-            'all_items' => __('All Events' , 'k7') ,
-            'search_items' => __('Search Events' , 'k7') ,
-            'parent_item_colon' => __('Parent Event:' , 'k7') ,
+            'name' => __('Event' , 'k7-church') ,
+            'singular_name' => __('Event' , 'k7-church') ,
+            'menu_name' => __('Events' , 'k7-church') ,
+            'name_admin_bar' => __('Event' , 'k7-church') ,
+            'add_new' => __('Add New' , 'k7-church') ,
+            'add_new_item' => __('Add New Event' , 'k7-church') ,
+            'new_item' => __('New Event' , 'k7-church') ,
+            'edit_item' => __('Edit Event' , 'k7-church') ,
+            'view_item' => __('View Event' , 'k7-church') ,
+            'all_items' => __('All Events' , 'k7-church') ,
+            'search_items' => __('Search Events' , 'k7-church') ,
+            'parent_item_colon' => __('Parent Event:' , 'k7-church') ,
             'not_found' => 'No Sermons found.' ,
-            'not_found_in_trash' => __('No Events found in Trash.' , 'k7') ,
+            'not_found_in_trash' => __('No Events found in Trash.' , 'k7-church') ,
         );
         //arguments for post type
         $args = array(
@@ -172,12 +172,12 @@ class Church_EventController extends Church_BaseController
      */
     public function ch_eventposts_metaboxes()
     {
-        add_meta_box('church_event_date_start' , 'Start Date and Time' , array($this , 'church_event_date') , 'event' , 'side' , 'default' , array('id' => '_start'));
-        add_meta_box('church_event_date_end' , 'End Date and Time' , array($this , 'church_event_date') , 'event' , 'side' , 'default' , array('id' => '_end'));
+        add_meta_box('church_event_date_start' , __( 'Start Date and Time', 'k7-church') , array($this , 'church_event_date') , 'event' , 'side' , 'default' , array('id' => '_start'));
+        add_meta_box('church_event_date_end' , __('End Date and Time', 'k7-church') , array($this , 'church_event_date') , 'event' , 'side' , 'default' , array('id' => '_end'));
 
         add_meta_box(
             'church_event_location' ,
-            'Event Location' ,
+            __( 'Event Location', 'k7-church'),
             array($this , 'church_event_location') ,
             'event' , 'normal' ,
             'default' , array('id' => '_end'));
@@ -255,50 +255,50 @@ class Church_EventController extends Church_BaseController
 
             <div class="field">
                 <label for="_ch_event_country"><?php _e('Event Country:'); ?></label><br>
-                <small><?php _e('location where the event will take place' , 'k7'); ?></small>
+                <small><?php _e('location where the event will take place' , 'k7-church'); ?></small>
                 <input type="text" name="_ch_event_country" value="<?php echo $event_country; ?>"/>
             </div>
 
             <hr>
             <div class="field">
-                <label for="_ch_event_city"><?php _e('City:'); ?></label><br>
-                <small><?php _e('City/Province where the event will take place' , 'k7'); ?></small>
+                <label for="_ch_event_city"><?php _e('Event City:'); ?></label><br>
+                <small><?php _e('City/Province where the event will take place' , 'k7-church'); ?></small>
                 <input type="text" name="_ch_event_city" value="<?php echo $event_city; ?>"/>
             </div>
 
             <hr>
             <div class="field">
-                <label for="_ch_event_address"><?php _e('Address:'); ?></label><br>
-                <small><?php _e('Event Address' , 'k7'); ?></small>
+                <label for="_ch_event_address"><?php _e('Event Address:'); ?></label><br>
+                <small><?php _e('Event Address' , 'k7-church'); ?></small>
                 <input type="text" name="_ch_event_address" value="<?php echo $event_address; ?>"/>
             </div>
             <div class="field">
                 <label for="_ch_event_street"><?php _e('Event Street:'); ?></label><br>
-                <small><?php _e('Event Streer' , 'k7'); ?></small>
+                <small><?php _e('Event Streer' , 'k7-church'); ?></small>
                 <input type="text" name="_ch_event_street" value="<?php echo $event_street; ?>"/>
             </div>
 
             <hr>
             <div class="field">
-                <label for="_ch_event_email"><?php _e('Email:'); ?></label><br>
-                <small><?php _e('Event email' , 'k7'); ?></small>
+                <label for="_ch_event_email"><?php _e('Event Email:'); ?></label><br>
+                <small><?php _e('Event email' , 'k7-church'); ?></small>
                 <input type="email" name="_ch_event_email" value="<?php echo $event_email; ?>"/>
             </div>
             <hr>
             <div class="field">
-                <label for="_ch_event_organizer"><?php _e('Organizers email:'); ?></label><br>
-                <small><?php _e('Event or organizer email' , 'k7'); ?></small>
+                <label for="_ch_event_organizer"><?php _e('Event Organizers email:'); ?></label><br>
+                <small><?php _e('Event or organizer email' , 'k7-church'); ?></small>
                 <input type="email" name="_ch_event_organizer" value="<?php echo $event_organizer; ?>"/>
             </div>
             <hr>
             <div class="field">
-                <label for="_ch_event_phone"><?php _e('Phone:'); ?></label><br>
-                <small><?php _e('Event Phone' , 'k7'); ?></small>
+                <label for="_ch_event_phone"><?php _e('Event Phone:'); ?></label><br>
+                <small><?php _e('Event Phone' , 'k7-church'); ?></small>
                 <input type="tel" name="_ch_event_phone" value="<?php echo $event_phone; ?>"/>
             </div>
             <div class="field">
-                <label for="_ch_event_phone_2"><?php _e('Phone 2:'); ?></label><br>
-                <small><?php _e('Event Phone' , 'k7'); ?></small>
+                <label for="_ch_event_phone_2"><?php _e('Event Phone 2:'); ?></label><br>
+                <small><?php _e('Event Phone' , 'k7-church'); ?></small>
                 <input type="tel" name="_ch_event_phone_2" value="<?php echo $event_phone_2; ?>"/>
             </div>
         </div>
@@ -477,7 +477,7 @@ class Church_EventController extends Church_BaseController
 
             ?>
             <img src="<?php echo $this->plugin_url . "/assets/icon/compose.svg"; ?>" style="width:20px; height:20px;">
-            <strong><?php echo "\t\n" . __('Publish date:' , 'k7'); ?></strong><?php echo the_date('M d Y'); ?><br>
+            <strong><?php echo "\t\n" . __('Publish date:' , 'k7-church'); ?></strong><?php echo the_date('M d Y'); ?><br>
             <?php
             // Gets the event start month from the meta field
             $month = get_post_meta($event->ID , '_ch_start_month' , true);
@@ -495,14 +495,14 @@ class Church_EventController extends Church_BaseController
 
             ?>
             <img src="<?php echo $this->plugin_url . "/assets/icon/clock.svg"; ?>" style="width:20px; height:20px;">
-            <strong><?php echo "\t\n" . __('Event start date:' , 'k7'); ?></strong><?php echo "\t\n" . $month . ' ' . $day . ' ' . $year; ?>
+            <strong><?php echo "\t\n" . __('Event start date:' , 'k7-church'); ?></strong><?php echo "\t\n" . $month . ' ' . $day . ' ' . $year; ?>
             <br>
             <img src="<?php echo $this->plugin_url . "/assets/icon/timestampdate.svg"; ?>"
                  style="width:20px; height:20px;">
-            <strong><?php echo "\t\n" . __('Start event timestamp:' , 'k7'); ?></strong><?php echo "\t\n" . get_post_meta($event->ID , '_ch_start_eventtimestamp' , true);?>
+            <strong><?php echo "\t\n" . __('Start event timestamp:' , 'k7-church'); ?></strong><?php echo "\t\n" . get_post_meta($event->ID , '_ch_start_eventtimestamp' , true);?>
             <br>
             <img src="<?php echo $this->plugin_url . "/assets/icon/finish.svg"; ?>" style="width:20px; height:20px;">
-            <strong><?php echo "\t\n" . __('End event timestamp:' , 'k7'); ?></strong><?php echo "\t\n" . $end; ?><br>
+            <strong><?php echo "\t\n" . __('End event timestamp:' , 'k7-church'); ?></strong><?php echo "\t\n" . $end; ?><br>
 
             <div class="ch-col-12">
                 <div class="ch-row">
@@ -511,21 +511,21 @@ class Church_EventController extends Church_BaseController
                         <label class="ch-center"><img
                                     src="<?php echo $this->plugin_url . "/assets/icon/location.svg"; ?>"
                                     style="width:40px; height:40px;">
-                            <h2><?php _e(' Location' , 'k7'); ?></h2></label>
+                            <h2><?php _e(' Location' , 'k7-church'); ?></h2></label>
 
                         <hr>
-                        <strong><?php _e('Event County:' , 'k7'); ?></strong>
+                        <strong><?php _e('Event County:' , 'k7-church'); ?></strong>
                         <small><?php echo "\t\n" . get_post_meta($event->ID , '_ch_event_country' , true); ?></small>
                         <br>
-                        <strong><?php _e('Event City/Province:' , 'k7'); ?></strong>
+                        <strong><?php _e('Event City/Province:' , 'k7-church'); ?></strong>
                         <small><?php echo "\t\n" . get_post_meta($event->ID , '_ch_event_city' , true); ?></small>
                         <br>
 
                         <hr>
-                        <strong><?php _e('Event Address:' , 'k7'); ?></strong>
+                        <strong><?php _e('Event Address:' , 'k7-church'); ?></strong>
                         <small><?php echo "\t\n" . get_post_meta($event->ID , '_ch_event_address' , true); ?></small>
                         <br>
-                        <strong><?php _e('Event Street:' , 'k7'); ?></strong>
+                        <strong><?php _e('Event Street:' , 'k7-church'); ?></strong>
                         <small><?php echo "\t\n" . get_post_meta($event->ID , '_ch_event_street' , true); ?></small>
                         <br>
 
@@ -535,20 +535,20 @@ class Church_EventController extends Church_BaseController
                         <label class="ch-center"><img
                                     src="<?php echo $this->plugin_url . "/assets/icon/contacteditor.svg"; ?>"
                                     style="width:40px; height:40px;">
-                            <h2><?php _e(' Contact' , 'k7'); ?></h2></label>
+                            <h2><?php _e(' Contact' , 'k7-church'); ?></h2></label>
                         <hr>
-                        <strong><?php _e('Event Phone:' , 'k7'); ?></strong>
+                        <strong><?php _e('Event Phone:' , 'k7-church'); ?></strong>
                         <small><?php echo "\t\n" . get_post_meta($event->ID , '_ch_event_phone' , true); ?></small>
                         <br>
-                        <strong><?php _e('Event Phone 2:' , 'k7'); ?></strong>
+                        <strong><?php _e('Event Phone 2:' , 'k7-church'); ?></strong>
                         <small><?php echo "\t\n" . get_post_meta($event->ID , '_ch_event_phone_2' , true); ?></small>
                         <br>
 
                         <hr>
-                        <strong><?php _e('Event Email:' , 'k7'); ?></strong>
+                        <strong><?php _e('Event Email:' , 'k7-church'); ?></strong>
                         <small><?php echo "\t\n" . get_post_meta($event->ID , '_ch_event_email' , true); ?></small>
                         <br>
-                        <strong><?php _e('Event or organizer email:' , 'k7'); ?></strong>
+                        <strong><?php _e('Event or organizer email:' , 'k7-church'); ?></strong>
                         <small><?php echo "\t\n" . get_post_meta($event->ID , '_ch_event_organizer' , true); ?></small>
                         <br>
                     </div>
@@ -558,7 +558,7 @@ class Church_EventController extends Church_BaseController
             <?php $event_permalink = get_permalink($event);
             $html = '';
             $html .= '<h2 class="ch-title">';
-            $html .= '<a href="' . esc_url($event_permalink) . '" title="' . esc_attr__('view location' , 'k7') . '">';
+            $html .= '<a href="' . esc_url($event_permalink) . '" title="' . esc_attr__('view Event' , 'k7-church') . '">';
             $html .= '</a>';
             $html .= '</h2>'; ?>
 
@@ -651,11 +651,11 @@ class Church_EventController extends Church_BaseController
                 list($today_year , $today_month , $today_day , $hour , $minute , $second) = preg_split('([^0-9])' , $current_time);
                 $current_timestamp = $today_year . '-' . $today_month . '-' . $today_day . ' ' . $hour . ':' . $minute;
                 //(lets third parties hook into the HTML output to output data)
-                $html = apply_filters('sermon_before_main_content' , $html);
+                $html = apply_filters('event_before_main_content' , $html);
 
                 //title
                 $html .= '<h2 class="ch-title">';
-                $html .= '<a href="' . esc_url($event_permalink) . '" title="' . esc_attr__('view Event' , 'k7') . '">';
+                $html .= '<a href="' . esc_url($event_permalink) . '" title="' . esc_attr__('view Event' , 'k7-church') . '">';
                 $html .= $event_title;
                 $html .= '</a>';
                 $html .= '</h2>';
@@ -672,7 +672,7 @@ class Church_EventController extends Church_BaseController
                     }
                     if (!empty($event_content)) {
                         $html .= '<p>';
-                        $html .= '<img src="' . $this->plugin_url . '/assets/icon/compose.svg" style="width:20px; height:20px;"><strong>' . "\t\n" . __('Publish date:' , 'k7') . '</strong>' . get_the_date('M d Y') . '<br>';
+                        $html .= '<img src="' . $this->plugin_url . '/assets/icon/compose.svg" style="width:20px; height:20px;"><strong>' . "\t\n" . __('Publish date:' , 'k7-church') . '</strong>' . get_the_date('M d Y') . '<br>';
 
                         ?>
                         <body onload='verHora()'><h3 id='relogio'></h3></body><?php
@@ -690,11 +690,11 @@ class Church_EventController extends Church_BaseController
                         $current_timestamp = $current_timestamp;
 
 
-                        $html .= '<img src="' . $this->plugin_url . '/assets/icon/clock.svg" style="width:20px; height:20px;"><strong>' . "\t\n" . __('Event start date:' , 'k7') . '</strong>' . "\t\n" . $month . ' ' . $day . ' ' . $year . '<br>';
+                        $html .= '<img src="' . $this->plugin_url . '/assets/icon/clock.svg" style="width:20px; height:20px;"><strong>' . "\t\n" . __('Event start date:' , 'k7-church') . '</strong>' . "\t\n" . $month . ' ' . $day . ' ' . $year . '<br>';
 
-                        $html .= '<img src="' . $this->plugin_url . '/assets/icon/timestampdate.svg" style="width:20px; height:20px;"><strong>' . "\t\n" . __('Start event timestamp:' , 'k7') . '</strong>' . "\t\n" . get_post_meta($event_id , '_ch_start_eventtimestamp' , true) . '<br>';
+                        $html .= '<img src="' . $this->plugin_url . '/assets/icon/timestampdate.svg" style="width:20px; height:20px;"><strong>' . "\t\n" . __('Start event timestamp:' , 'k7-church') . '</strong>' . "\t\n" . get_post_meta($event_id , '_ch_start_eventtimestamp' , true) . '<br>';
 
-                        $html .= '<img src="' . $this->plugin_url . '/assets/icon/finish.svg" style="width:20px; height:20px;"><strong>' . "\t\n" . __('End event timestamp:' , 'k7') . '</strong>' . "\t\n" . $end . '<br>';
+                        $html .= '<img src="' . $this->plugin_url . '/assets/icon/finish.svg" style="width:20px; height:20px;"><strong>' . "\t\n" . __('End event timestamp:' , 'k7-church') . '</strong>' . "\t\n" . $end . '<br>';
 
                         $html .= $event_content;
 
@@ -708,7 +708,7 @@ class Church_EventController extends Church_BaseController
                 $html = apply_filters('event_after_main_content' , $html);
 
                 //readmore
-                $html .= '<a class="link" href="' . esc_url($event_permalink) . '" title="' . esc_attr__('view Event' , 'k7') . '">' . __('View Event' , 'k7') . '</a>';
+                $html .= '<a class="link" href="' . esc_url($event_permalink) . '" title="' . esc_attr__('view Event' , 'k7-church') . '">' . __('View Event' , 'k7-church') . '</a>';
                 $html .= '</section>';
 
             }

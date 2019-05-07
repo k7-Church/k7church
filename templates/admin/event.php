@@ -11,9 +11,9 @@
 
     <h2 class="nav-tab-wrapper">
         <a href="?post_type=event&page=church_event_settings&tab=tab_one"
-           class="nav-tab <?php echo $active_tab == 'tab_one' ? 'nav-tab-active' : ''; ?>"><?php _e( 'GENERAL SETTINGS', 'k7');?></a>
+           class="nav-tab <?php echo $active_tab == 'tab_one' ? 'nav-tab-active' : ''; ?>"><?php _e( 'GENERAL SETTINGS', 'k7-church');?></a>
         <a href="?post_type=event&page=church_event_settings&tab=tab_two"
-           class="nav-tab <?php echo $active_tab == 'tab_two' ? 'nav-tab-active' : ''; ?>"><?php _e( 'Shotcode', 'k7');?></a>
+           class="nav-tab <?php echo $active_tab == 'tab_two' ? 'nav-tab-active' : ''; ?>"><?php _e( 'Shortcode', 'k7-church');?></a>
     </h2>
             <form method="post" action="options.php">
                 <?php
@@ -30,14 +30,14 @@
             if( $active_tab == 'tab_two') {?>
 
 
-                <h1><?php _e( 'Event Shortcode', 'k7');?></h1>
+                <h1><?php _e( 'Event Shortcode', 'k7-church');?></h1>
 
             <div class="row">
-                <label><h3><?php _e( 'event for default', 'k7');?></h3>
+                <label><h3><?php _e( 'event for default', 'k7-church');?></h3>
                     <input style="width: 20%; height: 20px;"  type="text" disabled value="[events event_id=1]">
                 </label>
 
-                <label><h3><?php _e( 'Event for namber the post', 'k7');?></h3>
+                <label><h3><?php _e( 'Event for namber the post', 'k7-church');?></h3>
                     <input style="width: 35%; height: 20px;"  type="text" disabled  value="[events event_id=1 number_of_events=1]">
                 </label>
 

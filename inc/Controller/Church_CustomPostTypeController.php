@@ -52,8 +52,8 @@ class Church_CustomPostTypeController extends Church_BaseController
         $this->subpages = array(
             array(
                 'parent_slug' => 'church_plugin',
-                'page_title' => __('Custom Post Types', 'k7'),
-                'menu_title' => __('CPT Manager', 'k7'),
+                'page_title' => __('Custom Post Types', 'k7-church'),
+                'menu_title' => __('CPT Manager', 'k7-church'),
                 'capability' => 'manage_options',
                 'menu_slug' => 'church_cpt',
                 'callback' => array($this->callbacks, 'ch_adminCpt')
@@ -79,7 +79,7 @@ class Church_CustomPostTypeController extends Church_BaseController
         $args = array(
             array(
                 'id' => 'church_cpt_index',
-                'title' => __('Custom Post Type Manager', 'k7'),
+                'title' => __('Custom Post Type Manager', 'k7-church'),
                 'callback' => array($this->cpt_callbacks, 'ch_cptSectionManager'),
                 'page' => 'church_cpt'
             )
@@ -93,27 +93,27 @@ class Church_CustomPostTypeController extends Church_BaseController
         $args = array(
             array(
                 'id' => 'post_type',
-                'title' => __('Custom Post Type ID', 'k7'),
+                'title' => __('Custom Post Type ID', 'k7-church'),
                 'callback' => array($this->cpt_callbacks, 'ch_textField'),
                 'page' => 'church_cpt',
                 'section' => 'church_cpt_index',
                 'args' => array(
                     'option_name' => 'church_plugin_cpt',
                     'label_for' => 'post_type',
-                    'placeholder' => __('eg. product', 'k7'),
+                    'placeholder' => __('eg. product', 'k7-church'),
                     'array' => 'post_type'
                 )
             ),
             array(
                 'id' => 'singular_name',
-                'title' => __('Singular Name', 'k7'),
+                'title' => __('Singular Name', 'k7-church'),
                 'callback' => array($this->cpt_callbacks, 'ch_textField'),
                 'page' => 'church_cpt',
                 'section' => 'church_cpt_index',
                 'args' => array(
                     'option_name' => 'church_plugin_cpt',
                     'label_for' => 'singular_name',
-                    'placeholder' => __('eg. Product', 'k7'),
+                    'placeholder' => __('eg. Product', 'k7-church'),
                     'array' => 'post_type'
                 )
             ),
@@ -126,13 +126,13 @@ class Church_CustomPostTypeController extends Church_BaseController
                 'args' => array(
                     'option_name' => 'church_plugin_cpt',
                     'label_for' => 'plural_name',
-                    'placeholder' => __('eg. Products', 'k7'),
+                    'placeholder' => __('eg. Products', 'k7-church'),
                     'array' => 'post_type'
                 )
             ),
             array(
                 'id' => 'public',
-                'title' => __('Public', 'k7'),
+                'title' => __('Public', 'k7-church'),
                 'callback' => array($this->cpt_callbacks, 'ch_checkboxField'),
                 'page' => 'church_cpt',
                 'section' => 'church_cpt_index',
@@ -145,7 +145,7 @@ class Church_CustomPostTypeController extends Church_BaseController
             ),
             array(
                 'id' => 'has_archive',
-                'title' => __('Archive', 'k7'),
+                'title' => __('Archive', 'k7-church'),
                 'callback' => array($this->cpt_callbacks, 'ch_checkboxField'),
                 'page' => 'church_cpt',
                 'section' => 'church_cpt_index',

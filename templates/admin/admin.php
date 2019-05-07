@@ -25,9 +25,9 @@
 
 
                 <ul class="nav nav-tabs">
-                    <li class="active"><a href="#tab-1"><?php _e('Manage Settings', 'k7'); ?></a></li>
-                    <li><a href="#tab-2"><?php _e('Updates', 'k7'); ?></a></li>
-                    <li><a href="#tab-3"><?php _e('About', 'k7'); ?></a></li>
+                    <li class="active"><a href="#tab-1"><?php _e('Manage Settings', 'k7-church'); ?></a></li>
+                    <li><a href="#tab-2"><?php _e('Updates', 'k7-church'); ?></a></li>
+                    <li><a href="#tab-3"><?php _e('About', 'k7-church'); ?></a></li>
                 </ul>
 
                 <div class="tab-content">
@@ -44,7 +44,7 @@
                     </div>
 
                     <div id="tab-2" class="tab-pane">
-                        <h3><?php _e('Updates', 'k7'); ?></h3>
+                        <h3><?php _e('Updates', 'k7-church'); ?></h3>
                         <p>
                             <code>
                                 == Changelog ==
@@ -113,10 +113,10 @@
                             <br>
                             <p>
                             <h2>3. Go to Settings » Permalinks, and simply click on Save Changes button.</h2></p>
-                            <em>If you like this plugin, please <a href="http://wordpress.org/extend/plugins/k7church">vote</a>
+                            <em>If you like this plugin, please <a href="http://wordpress.org/extend/plugins/k7-churchchurch">vote</a>
                                 .
                                 Author : <a href="https://github.com/zebedeu">Máecio Zebedeu</a>
-                                You can <a href="https://github.com/knut7/k7church">for bugs,</a> thanks.</em>
+                                You can <a href="https://github.com/knut7/k7-churchchurch">for bugs,</a> thanks.</em>
 
                         </div>
                     </div>

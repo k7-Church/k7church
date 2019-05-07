@@ -8,11 +8,11 @@
 /**
  *  Plugin Name: K7 Church
  *  Description:  K7 Church is a Wordpress plugin for churches that claims to be simple and objective for your church's website.
- *  Version:      1.0.16
+ *  Version:      1.0.19
  *  Author:       Márcio Zebedeu
  *  License:      GPL2
  *  License URI:  https://www.gnu.org/licenses/gpl-2.0.html
- *  Text Domain:  k7
+ *  Text Domain:  k7-church
  *  Domain Path: /languages
  */
 
@@ -104,14 +104,3 @@ if (class_exists('Church_Init')) {
     Church_Init::ch_registerServices();
 
 }
-
-
-// Load plugin textdomain.
-
-add_action('init', 'ch_load_textdomain');
-function ch_load_textdomain()
-{
-    unload_textdomain('k7');
-    load_plugin_textdomain('k7', false, basename(plugin_basename(__FILE__)) . '/languages');
-}
-

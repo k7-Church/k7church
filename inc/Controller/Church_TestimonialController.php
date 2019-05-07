@@ -122,7 +122,7 @@ class Church_TestimonialController extends Church_BaseController
     {
         $labels = array(
             'name' => 'Testimonials',
-            'singular_name' => __('Testimonial', 'k7')
+            'singular_name' => __('Testimonial', 'k7-church')
         );
 
         $args = array(
@@ -162,18 +162,18 @@ class Church_TestimonialController extends Church_BaseController
         $featured = isset($data['featured']) ? $data['featured'] : false;
         ?>
         <p>
-            <label class="meta-label" for="church_testimonial_author"><?php _e('Author Name', 'k7'); ?></label>
+            <label class="meta-label" for="church_testimonial_author"><?php _e('Author Name', 'k7-church'); ?></label>
             <input type="text" id="church_testimonial_author" name="church_testimonial_author" class="widefat"
                    value="<?php echo esc_attr($name); ?>">
         </p>
         <p>
-            <label class="meta-label" for="church_testimonial_email"><?php _e('Author Email', 'k7'); ?></label>
+            <label class="meta-label" for="church_testimonial_email"><?php _e('Author Email', 'k7-church'); ?></label>
             <input type="email" id="church_testimonial_email" name="church_testimonial_email" class="widefat"
                    value="<?php echo esc_attr($email); ?>">
         </p>
         <div class="meta-container">
             <label class="meta-label w-50 text-left"
-                   for="church_testimonial_approved"><?php _e('Approved', 'k7'); ?></label>
+                   for="church_testimonial_approved"><?php _e('Approved', 'k7-church'); ?></label>
             <div class="text-right w-50 inline">
                 <div class="ui-toggle inline"><input type="checkbox" id="church_testimonial_approved"
                                                      name="church_testimonial_approved"
@@ -186,7 +186,7 @@ class Church_TestimonialController extends Church_BaseController
         </div>
         <div class="meta-container">
             <label class="meta-label w-50 text-left"
-                   for="church_testimonial_featured"><?php _e('Featured', 'k7'); ?></label>
+                   for="church_testimonial_featured"><?php _e('Featured', 'k7-church'); ?></label>
             <div class="text-right w-50 inline">
                 <div class="ui-toggle inline"><input type="checkbox" id="church_testimonial_featured"
                                                      name="church_testimonial_featured"
@@ -248,8 +248,8 @@ class Church_TestimonialController extends Church_BaseController
         $data = get_post_meta($post_id, '_church_testimonial_key', true);
         $name = isset($data['name']) ? $data['name'] : '';
         $email = isset($data['email']) ? $data['email'] : '';
-        $approved = isset($data['approved']) && $data['approved'] === 1 ? '<strong>YES</strong>' : 'NO';
-        $featured = isset($data['featured']) && $data['featured'] === 1 ? '<strong>YES</strong>' : 'NO';
+        $approved = isset($data['approved']) && $data['approved'] === 1 ? '<strong>'. _e( 'YES', 'k7-church'). ' </strong>' :  _e( 'NO', 'k7-church');
+        $featured = isset($data['featured']) && $data['featured'] === 1 ? '<strong>'. _e( 'YES', 'k7-church'). '</strong>' :  _e( 'NO', 'k7-church');
 
         switch ($column) {
             case 'name':

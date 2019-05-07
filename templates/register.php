@@ -1,6 +1,6 @@
 <div id="register-form" class="widecolumn">
     <?php if ($attributes['show_title']) : ?>
-        <h3><?php _e('Register', 'k7'); ?></h3>
+        <h3><?php _e('Register', 'k7-church'); ?></h3>
     <?php endif; ?>
 
     <?php if (count($attributes['errors']) > 0) : ?>
@@ -13,26 +13,26 @@
 
     <form id="signupform" action="<?php echo wp_registration_url(); ?>" method="post">
         <p class="form-row">
-            <label for="email"><?php _e('Email', 'k7'); ?> <strong>*</strong></label>
+            <label for="email"><?php _e('Email', 'k7-church'); ?> <strong>*</strong></label>
             <input type="text" name="email" id="email">
         </p>
 
         <p class="form-row">
-            <label for="first_name"><?php _e('First name', 'k7'); ?></label>
+            <label for="first_name"><?php _e('First name', 'k7-church'); ?></label>
             <input type="text" name="first_name" id="first-name">
         </p>
 
         <p class="form-row">
-            <label for="last_name"><?php _e('Last name', 'k7'); ?></label>
+            <label for="last_name"><?php _e('Last name', 'k7-church'); ?></label>
             <input type="text" name="last_name" id="last-name">
         </p>
         <p class="form-row">
-            <label for="city_name"><?php _e('City name', 'k7'); ?></label>
+            <label for="city_name"><?php _e('City name', 'k7-church'); ?></label>
             <input type="text" name="city_name" id="city_name">
         </p>
 
         <p class="form-row">
-            <?php _e('Note: Your password will be generated automatically and emailed to the address you specify above.', 'k7'); ?>
+            <?php _e('Note: Your password will be generated automatically and emailed to the address you specify above.', 'k7-church'); ?>
         </p>
 
         <?php if ($attributes['recaptcha_site_key']) : ?>
@@ -45,7 +45,7 @@
 
         <p class="signup-submit">
             <input type="submit" name="submit" class="register-button"
-                   value="<?php _e('Register', 'k7'); ?>"/>
+                   value="<?php _e('Register', 'k7-church'); ?>"/>
         </p>
     </form>
 </div>

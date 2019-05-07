@@ -56,16 +56,16 @@ class Church_LocationWidget extends \WP_Widget
         $number_of_locations = (isset($instance['number_of_locations']) ? $instance['number_of_locations'] : 5);
 
         ?>
-        <p><?php _e( 'Select your options below', 'k7');?></p>
+        <p><?php _e( 'Select your options below', 'k7-church');?></p>
         <p>
-            <label for="<?php echo $this->get_field_name('location_id'); ?>"><?php _e('Location to display', 'k7'); ?></label>
+            <label for="<?php echo $this->get_field_name('location_id'); ?>"><?php _e('Location to display', 'k7-church'); ?></label>
             <select class="widefat" name="<?php echo $this->get_field_name('location_id'); ?>"
                     id="<?php echo $this->get_field_id('location_id'); ?>" value="<?php echo $location_id; ?>">
-                <option value="default"><?php _e('All Locations', ' k7'); ?></option>
+                <option value="default"><?php _e('All Locations', ' k7-church'); ?></option>
                 <?php
                 $args = array(
                     'posts_per_page' => -1,
-                    'post_type' => 'k7_locations'
+                    'post_type' => 'k7-church_locations'
                 );
                 $locations = get_posts($args);
                 if ($locations) {
@@ -81,15 +81,15 @@ class Church_LocationWidget extends \WP_Widget
             </select>
         </p>
         <p>
-            <small><?php _e('If you want to display multiple locations select how many below', 'k7'); ?></small>
+            <small><?php _e('If you want to display multiple locations select how many below', 'k7-church'); ?></small>
             <br/>
-            <label for="<?php echo $this->get_field_id('number_of_locations'); ?>"><?php _e('Number of Locations', 'k7'); ?></label>
+            <label for="<?php echo $this->get_field_id('number_of_locations'); ?>"><?php _e('Number of Locations', 'k7-church'); ?></label>
             <select class="widefat" name="<?php echo $this->get_field_name('number_of_locations'); ?>"
                     id="<?php echo $this->get_field_id('number_of_locations'); ?>"
                     value="<?php echo $number_of_locations; ?>">
                 <option value="default" <?php if ($number_of_locations == 'default') {
                     echo 'selected';
-                } ?>><?php _e('All Locations', 'k7'); ?>
+                } ?>><?php _e('All Locations', 'k7-church'); ?>
                 </option>
                 <option value="1" <?php if ($number_of_locations == '1') {
                     echo 'selected';

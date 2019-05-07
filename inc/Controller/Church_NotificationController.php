@@ -319,12 +319,12 @@ class Church_NotificationController extends Church_BaseController
     public function ch_show_user_meta_fields($user)
     {
         ?>
-<h3><?php _e('Notification for receiving messages by country', 'k7'); ?></h3>
+<h3><?php _e('Notification for receiving messages by country', 'k7-church'); ?></h3>
 
 <table class="form-table">
 
     <tr>
-        <th scope="row"><?php _e('Country', 'k7'); ?></th>
+        <th scope="row"><?php _e('Country', 'k7-church'); ?></th>
 
         <td>
             <label for="country">
@@ -339,29 +339,29 @@ class Church_NotificationController extends Church_BaseController
                     <?php
         } ?>
                 </select>
-                <?php _e('Select country', 'k7'); ?>
+                <?php _e('Select country', 'k7-church'); ?>
             </label>
         </td>
     </tr>
 
     <tr>
-        <th scope="row"><?php _e('Notifications', 'k7'); ?></th>
+        <th scope="row"><?php _e('Notifications', 'k7-church'); ?></th>
         <td>
             <label for="notification">
                 <input id="notification" type="checkbox" name="notification" value="true"
                     <?php checked(esc_attr(get_user_meta($user->ID, 'notification', true)), 'true'); ?> />
-                <?php _e('Subscribe to email notifications', 'k7'); ?>
+                <?php _e('Subscribe to email notifications', 'k7-church'); ?>
             </label>
         </td>
     </tr>
 
     <tr>
-        <th scoper="row"><label for="telefono"><?php _e('Phone', 'k7'); ?></label></th>
+        <th scoper="row"><label for="telefono"><?php _e('Phone', 'k7-church'); ?></label></th>
         <td>
             <input type="text" name="phone" id="phone"
                 value="<?php echo esc_attr(get_user_meta($user->ID, 'phone', true)); ?>"
                 class="regular-text" /><br />
-            <span class="description"><?php _e('Phone number', 'k7'); ?></span>
+            <span class="description"><?php _e('Phone number', 'k7-church'); ?></span>
         </td>
     </tr>
 
@@ -407,7 +407,7 @@ class Church_NotificationController extends Church_BaseController
         foreach ($screens as $screen) {
             add_meta_box(
                 'ch_metabox',             // $id - meta_box ID
-                __('Venue information', 'k7'),      // $title - a title for the meta_box container
+                __('Venue information', 'k7-church'),      // $title - a title for the meta_box container
                 array($this->callbacks, 'ch_meta_box_callback'),   // $callback - the callback which outputs the html for the meta_box
                 $screen,                        // $post_type - where to show the meta_box. Possible values: 'post', 'page', 'dashboard', 'link', 'attachment', 'custom_post_type'
                 'advanced',                       // $context - possible values: 'normal', 'advanced', 'side'
@@ -484,11 +484,11 @@ class Church_NotificationController extends Church_BaseController
         foreach ($users as $user) {
             $to = $user->display_name.' <'.$user->user_email.'>';
 
-            $subject = sprintf(__('Hei! We have news for you from %s', 'k7'), $this->notification_countrys[$country]);
+            $subject = sprintf(__('Hei! We have news for you from %s', 'k7-church'), $this->notification_countrys[$country]);
 
-            $message = sprintf(__('Hi %s!', 'k7'), $user->display_name)."\r\n".
-        sprintf(__('We have a new post from %s', 'k7'), $this->notification_countrys[$country])."\r\n".
-        sprintf(__('Read more on %s', 'k7'), $url).'.'."\r\n";
+            $message = sprintf(__('Hi %s!', 'k7-church'), $user->display_name)."\r\n".
+        sprintf(__('We have a new post from %s', 'k7-church'), $this->notification_countrys[$country])."\r\n".
+        sprintf(__('Read more on %s', 'k7-church'), $url).'.'."\r\n";
 
             $headers = array('Content-Type: text/html; charset=UTF-8');
 
@@ -521,7 +521,7 @@ class Church_NotificationController extends Church_BaseController
         $num = get_post_meta($post->ID, '_notified_users', true);
 
         if ($post_type_object->publicly_queryable) {
-            @$msgs[$post_type][6] .= ' - '.$num.__(' notifications sent.', 'k7');
+            @$msgs[$post_type][6] .= ' - '.$num.__(' notifications sent.', 'k7-church');
 
         }
 

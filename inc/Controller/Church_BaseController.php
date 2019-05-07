@@ -24,21 +24,23 @@ class Church_BaseController
         $this->plugin_url = plugin_dir_url(dirname(__FILE__, 2));
         $this->plugin = plugin_basename(dirname(__FILE__, 3)) . '/church-plugin.php';
         add_action('admin_init', array($this, 'add_sub_caps'));
+        add_action('init', array( $this, 'ch_load_textdomain'));
+
 
 
         $this->managers = array(
-            'cpt_manager' => __('Activate CPT Manager', 'k7'),
-            'taxonomy_manager' => __('Activate Taxonomy Manager', 'k7'),
-            'location_manager' => __('Activate Localion Manager', 'k7'),
-            'location_widget' => __('Activate Location Widget', 'k7'),
-            'media_widget' => __('Activate Media Widget', 'k7'),
-            'testimonial_manager' => __('Activate Testimonial Manager', 'k7'),
-            'notify_manager' => __('Activate Notification', 'k7'),
-            'templates_manager' => __('Activate Custom Templates', 'k7'),
-            // 'gallery_manager' => __('Activate Gallery Manager', 'k7'),
-            // 'login_manager' => __('Activate Ajax Login/Signup', 'k7'),
-            // 'membership_manager' => __('Activate Membership Manager', 'k7'),
-            // 'chat_manager' => __('Activate Chat Manager', 'k7')
+            'cpt_manager' => __('Activate CPT Manager', 'k7-church'),
+            'taxonomy_manager' => __('Activate Taxonomy Manager', 'k7-church'),
+            'location_manager' => __('Activate Localion Manager', 'k7-church'),
+            'location_widget' => __('Activate Location Widget', 'k7-church'),
+            'media_widget' => __('Activate Media Widget', 'k7-church'),
+            'testimonial_manager' => __('Activate Testimonial Manager', 'k7-church'),
+            'notify_manager' => __('Activate Notification', 'k7-church'),
+            'templates_manager' => __('Activate Custom Templates', 'k7-church'),
+            // 'gallery_manager' => __('Activate Gallery Manager', 'k7-church'),
+            // 'login_manager' => __('Activate Ajax Login/Signup', 'k7-church'),
+            // 'membership_manager' => __('Activate Membership Manager', 'k7-church'),
+            // 'chat_manager' => __('Activate Chat Manager', 'k7-church')
         );
     }
 
@@ -57,7 +59,7 @@ class Church_BaseController
     public function add_sub_caps(string $roles = 'church_memeber')
     {
 
-        $result = add_role('church_role', __('Member', 'k7'),
+        $result = add_role('church_role', __('Member', 'k7-church'),
             array(
 
                 'read' => true, // true allows this capability
@@ -75,4 +77,13 @@ class Church_BaseController
             )
         );
     }
+
+// Load plugin textdomain.
+
+    public function ch_load_textdomain()
+    {
+        unload_textdomain('k7-church');
+        load_plugin_textdomain('k7-church', false, plugin_basename(dirname(__FILE__, 3)) . '/languages');
+    }
+
 }

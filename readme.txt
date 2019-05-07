@@ -4,14 +4,44 @@ Tags: Form, Register, Locations, Location Widget, Media Widget, Custom Post Type
 Requires at least: 4.6
 Tested up to: 5.1.1
 Requires PHP: 5.6.20
-Stable tag: 1.0.16
+Stable tag: 1.0.19
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 K7 Church is a Wordpress plugin for churches that claims to be simple and objective for your church's website.
-
 == Description ==
 K7 Church is a Wordpress plugin for churches that claims to be simple and objective for your church's website.
+
+You can easily publish your sermons and add the following details to them:
+
+* Name of author
+* Title
+* description
+* url of a video (example youtube etc)
+* Notify users by email when a sermon is posted
+
+==Also the plugin you can: ==
+add events
+Add places where there is a church
+
+There is a Post Type manager where you can create several post type according to your will well with your texamonias.
+
+== FIlters ==
+
+* location_cult_hours_days : With this filter you can create a function that returns an array with new fields for your location meta box with days of the week and hours
+
+* location_cult_title: serves to change the title that appears above the hours of cults
+
+* {pot_type}_before_main_content & {post_type}_after_main_content:  This will add extra content before the title of  and  before the button.. 
+
+== Actions ==
+
+* {pot_type}_admin_form_start & {post_type}_admin_form_end : With these filters you can use to add html and css codes to stylize your own meta box
+
+* {pot_type}_meta_data_output_end & {post_type}_meta_data_output_end: allows you to get the data that comes from the post meta. The function receives an ID.
+
+Options like CPT, Taxonomies, Template manager,  Location Manager, Location Widget,  Media Widget,  Testimonial Manager,  Notification, Custom Templates, can be activated and deactivated whenever you want.
+
 == Installation ==
 
 1. Upload the `church_admin` directory to the `/wp-content/plugins/` directory.
@@ -26,20 +56,21 @@ Testimonial Form Shortcode
 Testimonial SlideShow Shortcode
 [testimonial-slideshow]
 
-location for default 
+add location on a page: location for default 
 [locations location_id=1]
 
 Location for member the post
 
 [locations location_id=1 number_of_locations=1]
 [locations location_id="1" number_of_locations=1 post_status="publish"]
-				
-== Frequently Asked Questions ==
-What is the K7 Church?
-K7 Church is a plugin for creating a post type with details of the church location.
 
-What can we find in it?
-can be found form for comentarios and a complete form to register users.
+add event on a page
+[event]
+
+add sermon on a page:
+[sermon]
+
+== Frequently Asked Questions ==
 
 == Screenshots ==
 1. Sermon Post
@@ -58,6 +89,16 @@ can be found form for comentarios and a complete form to register users.
 14. Event Information
 
 == Changelog ==
+= 1.0.9 =
+fix bug
+add filters: location_cult_hours_days, location_cult_title
+
+=1.0.18 =
+fix Text Domain
+
+= 1.0.17 =
+fix bug: correction of language loading
+
 =1.0.16 =
 add icon for location
 fix bug
@@ -118,6 +159,8 @@ fixe bug
 fixing various bugs
 
 == Upgrade Notice ==
+=1.017 =
 
-= 1.0.13
+fix bug: correction of language loading
+= 1.0.13 =
 This version corrects an error related to security and others . Update immediately.

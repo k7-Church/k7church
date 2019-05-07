@@ -20,20 +20,20 @@ class Church_SermonController extends Church_BaseController
 
         //Labels for post type
         $labels = array(
-            'name' => __('Sermon', 'k7'),
-            'singular_name' => __('Sermon', 'k7'),
-            'menu_name' => __('Sermons', 'k7'),
-            'name_admin_bar' => __('Sermon', 'k7'),
-            'add_new' => __('Add New', 'k7'),
-            'add_new_item' => __('Add New Sermon', 'k7'),
-            'new_item' => __('New Sermon', 'k7'),
-            'edit_item' => __('Edit Sermon', 'k7'),
-            'view_item' => __('View Sermon', 'k7'),
-            'all_items' => __('All Sermons', 'k7'),
-            'search_items' => __('Search Sermons', 'k7'),
-            'parent_item_colon' => __('Parent Sermon:', 'k7'),
+            'name' => __('Sermon', 'k7-church'),
+            'singular_name' => __('Sermon', 'k7-church'),
+            'menu_name' => __('Sermons', 'k7-church'),
+            'name_admin_bar' => __('Sermon', 'k7-church'),
+            'add_new' => __('Add New', 'k7-church'),
+            'add_new_item' => __('Add New Sermon', 'k7-church'),
+            'new_item' => __('New Sermon', 'k7-church'),
+            'edit_item' => __('Edit Sermon', 'k7-church'),
+            'view_item' => __('View Sermon', 'k7-church'),
+            'all_items' => __('All Sermons', 'k7-church'),
+            'search_items' => __('Search Sermons', 'k7-church'),
+            'parent_item_colon' => __('Parent Sermon:', 'k7-church'),
             'not_found' => 'No Sermons found.',
-            'not_found_in_trash' => __('No Sermons found in Trash.', 'k7'),
+            'not_found_in_trash' => __('No Sermons found in Trash.', 'k7-church'),
         );
         //arguments for post type
         $args = array(
@@ -80,8 +80,8 @@ class Church_SermonController extends Church_BaseController
         $subpage = array(
             array(
                 'parent_slug' => 'edit.php?post_type=sermon',
-                'page_title' => 'Settings',
-                'menu_title' => 'Settings',
+                'page_title' => __('Settings', 'k7-church'),
+                'menu_title' => __('Settings', 'k7-church'),
                 'capability' => 'manage_options',
                 'menu_slug' => 'church_sermon_settings',
                 'callback' => array($this->callbacks, 'ch_sermonSettings')
@@ -169,7 +169,7 @@ class Church_SermonController extends Church_BaseController
 
                 //title
                 $html .= '<h2 class="ch-title">';
-                $html .= '<a href="' . esc_url($sermon_permalink) . '" title="' . esc_attr__('view sermon', 'k7') . '">';
+                $html .= '<a href="' . esc_url($sermon_permalink) . '" title="' . esc_attr__('view sermon', 'k7-church') . '">';
                 $html .= $sermon_title;
                 $html .= '</a>';
                 $html .= '</h2>';
@@ -195,10 +195,10 @@ class Church_SermonController extends Church_BaseController
                 if (!empty($sermon_vers) || !empty($sermon_author)) {
                     $html .= '<p class="phone_email">';
                     if (!empty($sermon_vers)) {
-                        $html .= '<b>' . __('Passages', 'k7') . ': </b>' . $sermon_vers . '</br>';
+                        $html .= '<b>' . __('Passages', 'k7-church') . ': </b>' . $sermon_vers . '</br>';
                     }
                     if (!empty($sermon_author)) {
-                        $html .= '<b>' . __('Author', 'k7') . ': </b>' . $sermon_author;
+                        $html .= '<b>' . __('Author', 'k7-church') . ': </b>' . $sermon_author;
                     }
                     $html .= '</p>';
                 }
@@ -208,7 +208,7 @@ class Church_SermonController extends Church_BaseController
                 $html = apply_filters('sermon_after_main_content', $html);
 
                 //readmore
-                $html .= '<a class="link" href="' . esc_url($sermon_permalink) . '" title="' . esc_attr__('view sermon', 'k7') . '">' . __('View Sermon', 'k7') . '</a>';
+                $html .= '<a class="link" href="' . esc_url($sermon_permalink) . '" title="' . esc_attr__('view sermon', 'k7-church') . '">' . __('View Sermon', 'k7-church') . '</a>';
                 $html .= '</section>';
             }
             $html .= '</article>';
@@ -225,7 +225,7 @@ class Church_SermonController extends Church_BaseController
 
         add_meta_box(
             'sermon_meta_box', //id
-            __('Sermon Information', 'k7'), //name
+            __('Sermon Information', 'k7-church'), //name
             array($this, 'ch_sermon_meta_box_display'), //display function
             'sermon', //post type
             'normal', //sermon
@@ -249,27 +249,27 @@ class Church_SermonController extends Church_BaseController
 
 
         ?>
-        <p><?php _e('Enter additional information about your sermon', 'k7'); ?></p>
+        <p><?php _e('Enter additional information about your sermon', 'k7-church'); ?></p>
         <div class="field-container">
             <?php
             //before main form elementst hook
             do_action('sermon_admin_form_start');
             ?>
             <div class="field">
-                <label for="sermon_vers"><?php _e('Passages for the sermon', 'k7'); ?></label><br/>
-                <small><?php _e('Biblical Passages', 'k7'); ?></small>
+                <label for="sermon_vers"><?php _e('Passages for the sermon', 'k7-church'); ?></label><br/>
+                <small><?php _e('Biblical Passages', 'k7-church'); ?></small>
                 <input type="text" name="sermon_vers" spellcheck="true" id="sermon_vers"
                        value="<?php echo $sermon_vers; ?>" autocomplete="off"/>
             </div>
             <hr>
             <div class="field">
-                <label for="sermon_author"><?php _e('Author', 'k7'); ?></label><br/>
+                <label for="sermon_author"><?php _e('Author', 'k7-church'); ?></label><br/>
                 <input type="text" name="sermon_author" id="sermon_author"
                        value="<?php echo $sermon_author; ?>" autocomplete="off"/>
             </div>
             <?php /**
             <div class="field">
-                <label for="sermon_author"><?php _e('Author', 'k7'); ?></label><br/>
+                <label for="sermon_author"><?php _e('Author', 'k7-church'); ?></label><br/>
             <input class="widefat image-upload" id=" "
                    name="sermon_image" type="text"
                    value="<?php echo $sermon_image; ?>">
@@ -278,14 +278,14 @@ class Church_SermonController extends Church_BaseController
             </div>
             */?>
             <div class="field">
-                <label for="sermon_video"><?php _e('Embed video URL', 'k7'); ?></label><br/>
+                <label for="sermon_video"><?php _e('Embed video URL', 'k7-church'); ?></label><br/>
                 <input type="text" name="sermon_video" id="sermon_video"
                        value="<?php echo $sermon_video; ?>" autocomplete="off"/>
             </div>
 
             <hr>
             <div class="field">
-                <label for="sermon_description"><?php _e('Description', 'k7'); ?></label><br/>
+                <label for="sermon_description"><?php _e('Description', 'k7-church'); ?></label><br/>
                 <textarea name="sermon_description"
                           id="sermon_description"><?php echo $sermon_description; ?></textarea>
             </div>
@@ -328,15 +328,15 @@ class Church_SermonController extends Church_BaseController
             $html .= the_title( sprintf('<h2 class="ch-text-a"><a href="%s" rel="bookmark">', esc_url(get_permalink())), '</a></h2>' );
             //Passages of the sermon:
             if (!empty($sermon_vers)) {
-                $html .= '<b>' . __('Passages of the sermon:', 'k7') . '</b> ' . esc_html($sermon_vers) . '</br>';
+                $html .= '<b>' . __('Passages of the sermon:', 'k7-church') . '</b> ' . esc_html($sermon_vers) . '</br>';
             }
             //Author of the sermon
             if (!empty($sermon_author)) {
-                $html .= '<b>' . __('Author of the sermon:', 'k7') . '</b> ' . esc_html($sermon_author) . '</br>';
+                $html .= '<b>' . __('Author of the sermon:', 'k7-church') . '</b> ' . esc_html($sermon_author) . '</br>';
             }
             //description
             if (!empty($sermon_description)) {
-                $html .= '<b class="ch-right">' . __('Description of the Sermon:', 'k7') . '</b><br><br><i>' .  esc_html($sermon_description) . '</i></br>';
+                $html .= '<b class="ch-right">' . __('Description of the Sermon:', 'k7-church') . '</b><br><br><i>' .  esc_html($sermon_description) . '</i></br>';
             }
 
             // video
