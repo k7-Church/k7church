@@ -37,7 +37,7 @@ function ch_PanelPublic($user_id, $length, $current_user)
             </div>
 
             <div id="tab1" class="ch-tabcontent">
-                <h3>Activity</h3>
+                <h3><?php _e( 'Activity', 'k7-church'); ?></h3>
                 <table class="ch-table">
                     <tbody>
                     <?php
@@ -57,14 +57,14 @@ function ch_PanelPublic($user_id, $length, $current_user)
             <div id="tab2" class="ch-tabcontent">
                 <h3></h3>
                 <div class="panelt">
-                    <div class="ch-panel-heading">Email <i class=""></i>
+                    <div class="ch-panel-heading"><?php _e( 'Email', 'k7-church'); ?><i class=""></i>
                     </div>
                     <div class="ch-body"><a
                                 href="<?php echo $current_user->user_email; ?>"><?php echo $current_user->user_email; ?></a>
                     </div>
                 </div>
                 <div class="ch-default">
-                    <div class="ch-panel-heading">Website <i class=""></i>
+                    <div class="ch-panel-heading"><?php _e( 'Website ', 'k7-church'); ?><i class=""></i>
                     </div>
                     <div class="ch-body"><a
                                 href="<?php echo $current_user->user_url; ?>"><?php echo $current_user->user_url; ?></a>
@@ -74,7 +74,7 @@ function ch_PanelPublic($user_id, $length, $current_user)
             </div>
 
             <div id="tab3" class="ch-tabcontent">
-                <h3>ANOTHER</h3>
+                <h3><?php _e( 'ANOTHER', 'k7-church'); ?></h3>
                 <h2><?php echo __('Description', 'k7-church'); ?></h2>
                 <p><?php $authorDesc = the_author_meta('description');
                     echo $authorDesc; ?>

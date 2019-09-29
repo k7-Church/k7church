@@ -71,7 +71,7 @@ class Church_TestimonialController extends Church_BaseController
         );
 
         $args = array(
-            'post_title' => 'Testimonial from ' . $name,
+            'post_title' => __( 'Testimonial from ' . $name, 'k7-church'),
             'post_content' => $message,
             'post_author' => 1,
             'post_status' => 'publish',
@@ -143,7 +143,7 @@ class Church_TestimonialController extends Church_BaseController
     {
         add_meta_box(
             'testimonial_author',
-            'Testimonial Options',
+            __( 'Testimonial Options', 'k7-church'),
             array($this, 'ch_render_features_box'),
             'testimonial',
             'side',
@@ -234,10 +234,10 @@ class Church_TestimonialController extends Church_BaseController
         $date = $columns['date'];
         unset($columns['title'], $columns['date']);
 
-        $columns['name'] = 'Author Name';
+        $columns['name'] = __('Author Name', 'k7-church');
         $columns['title'] = $title;
-        $columns['approved'] = 'Approved';
-        $columns['featured'] = 'Featured';
+        $columns['approved'] = __('Approved', 'k7-church');
+        $columns['featured'] = __('Featured', 'k7-church');
         $columns['date'] = $date;
 
         return $columns;
@@ -248,8 +248,8 @@ class Church_TestimonialController extends Church_BaseController
         $data = get_post_meta($post_id, '_church_testimonial_key', true);
         $name = isset($data['name']) ? $data['name'] : '';
         $email = isset($data['email']) ? $data['email'] : '';
-        $approved = isset($data['approved']) && $data['approved'] === 1 ? '<strong>'. _e( 'YES', 'k7-church'). ' </strong>' :  _e( 'NO', 'k7-church');
-        $featured = isset($data['featured']) && $data['featured'] === 1 ? '<strong>'. _e( 'YES', 'k7-church'). '</strong>' :  _e( 'NO', 'k7-church');
+        $approved = isset($data['approved']) && $data['approved'] === 1 ? '<strong>'. __( 'YES', 'k7-church').'</strong>' : __(  'NO', 'k7-church');
+        $featured = isset($data['featured']) && $data['featured'] === 1 ? '<strong>'. __( 'YES', 'k7-church').'</strong>' : __(  'NO', 'k7-church');
 
         switch ($column) {
             case 'name':
@@ -268,9 +268,9 @@ class Church_TestimonialController extends Church_BaseController
 
     public function ch_set_custom_columns_sortable($columns)
     {
-        $columns['name'] = 'name';
-        $columns['approved'] = 'approved';
-        $columns['featured'] = 'featured';
+        $columns['name'] = __( 'name', 'k7-church');
+        $columns['approved'] = __( 'approved', 'k7-church');
+        $columns['featured'] = __( 'featured', 'k7-church');
 
         return $columns;
     }

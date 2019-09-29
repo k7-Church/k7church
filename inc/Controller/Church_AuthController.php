@@ -21,7 +21,7 @@ class Church_AuthController extends Church_BaseController
 
     public function ch_enqueue()
     {
-        wp_enqueue_style('authstyle', $this->plugin_url . 'assets/auth.css');
+
         wp_enqueue_script('authscript', $this->plugin_url . 'assets/auth.js');
     }
 

@@ -23,9 +23,7 @@ class Church_BaseController
         $this->plugin_path = plugin_dir_path(dirname(__FILE__, 2));
         $this->plugin_url = plugin_dir_url(dirname(__FILE__, 2));
         $this->plugin = plugin_basename(dirname(__FILE__, 3)) . '/church-plugin.php';
-        add_action('admin_init', array($this, 'add_sub_caps'));
         add_action('init', array( $this, 'ch_load_textdomain'));
-
 
 
         $this->managers = array(
@@ -37,6 +35,7 @@ class Church_BaseController
             'testimonial_manager' => __('Activate Testimonial Manager', 'k7-church'),
             'notify_manager' => __('Activate Notification', 'k7-church'),
             'templates_manager' => __('Activate Custom Templates', 'k7-church'),
+            'participant_manager' => __('Activate Custom Participe', 'k7-church'),
             // 'gallery_manager' => __('Activate Gallery Manager', 'k7-church'),
             // 'login_manager' => __('Activate Ajax Login/Signup', 'k7-church'),
             // 'membership_manager' => __('Activate Membership Manager', 'k7-church'),
@@ -51,33 +50,7 @@ class Church_BaseController
         return isset($option[$key]) ? $option[$key] : false;
     }
 
-    /**
-     * Add read_private_posts capability to subscriber
-     * Note this is saves capability to the database on admin_init, so consider doing this once on theme/plugin activation
-     */
-
-    public function add_sub_caps(string $roles = 'church_memeber')
-    {
-
-        $result = add_role('church_role', __('Member', 'k7-church'),
-            array(
-
-                'read' => true, // true allows this capability
-                'edit_posts' => true, // Allows user to edit their own posts
-                'edit_pages' => true, // Allows user to edit pages
-                'edit_others_posts' => true, // Allows user to edit others posts not just their own
-                'create_posts' => true, // Allows user to create new posts
-                'manage_categories' => true, // Allows user to manage post categories
-                'publish_posts' => true, // Allows the user to publish, otherwise posts stays in draft mode
-                'edit_themes' => false, // false denies this capability. User can’t edit your theme
-                'install_plugins' => false, // User cant add new plugins
-                'update_plugin' => false, // User can’t update any plugins
-                'update_core' => false // user cant perform core updates
-
-            )
-        );
-    }
-
+    
 // Load plugin textdomain.
 
     public function ch_load_textdomain()

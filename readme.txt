@@ -1,8 +1,8 @@
 === K7 Church ===
 Contributors: Márcio Zebedeu
 Tags: Form, Register, Locations, Location Widget, Media Widget, Custom Post Type Manager, Custom Taxonomy Manager, Testimonial, Sermon post, Advanced Notification System,  
-Requires at least: 4.6
-Tested up to: 5.1.1
+Requires at least: 4.9
+Tested up to: 5.2
 Requires PHP: 5.6.20
 Stable tag: 1.0.19
 License: GPLv2 or later
@@ -89,7 +89,7 @@ add sermon on a page:
 14. Event Information
 
 == Changelog ==
-= 1.0.9 =
+= 1.0.19 =
 fix bug
 add filters: location_cult_hours_days, location_cult_title
 

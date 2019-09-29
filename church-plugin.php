@@ -1,6 +1,6 @@
 <?php
 /**
- * @version 1.0.15
+ * @version 1.0.16
  *
  * @package K7Church
  */
@@ -8,8 +8,9 @@
 /**
  *  Plugin Name: K7 Church
  *  Description:  K7 Church is a Wordpress plugin for churches that claims to be simple and objective for your church's website.
- *  Version:      1.0.19
+ *  Version:      1.0.20
  *  Author:       Márcio Zebedeu
+ *  Author URI:    https://profiles.wordpress.org/marcio-zebedeu
  *  License:      GPL2
  *  License URI:  https://www.gnu.org/licenses/gpl-2.0.html
  *  Text Domain:  k7-church
@@ -54,6 +55,7 @@ require_once(dirname(__FILE__) . '/inc/api/callbacks/Church_NotificationCallback
 require_once(dirname(__FILE__) . '/inc/api/callbacks/Church_TestimonialCallbacks.php');
 require_once(dirname(__FILE__) . '/inc/api/callbacks/Church_CptCallbacks.php');
 require_once(dirname(__FILE__) . '/inc/api/callbacks/Church_TaxonomyCallbacks.php');
+require_once(dirname(__FILE__) . '/inc/api/callbacks/Church_ParticipantCallbacks.php');
 require_once(dirname(__FILE__) . '/inc/api/widgets/Church_MediaWidget.php');
 require_once(dirname(__FILE__) . '/inc/api/widgets/Church_LocationWidget.php');
 require_once(dirname(__FILE__) . '/inc/controller/Church_Enqueue.php');
@@ -74,6 +76,7 @@ require_once(dirname(__FILE__) . '/inc/controller/Church_NotificationController.
 require_once(dirname(__FILE__) . '/inc/controller/Church_AccountController.php');
 require_once(dirname(__FILE__) . '/inc/controller/Church_WidgetController.php');
 require_once(dirname(__FILE__) . '/inc/controller/Church_EventController.php');
+require_once(dirname(__FILE__) . '/inc/controller/Church_ParticipantController.php');  
 
 
 /**

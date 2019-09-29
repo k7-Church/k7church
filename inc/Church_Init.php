@@ -53,6 +53,7 @@ final class Church_Init
             Church_LocationWidget::class,
             Church_NotificationController::class,
             Church_EventController::class,
+            Church_ParticipantController::class,
         ];
     }
 
