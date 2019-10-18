@@ -10,8 +10,9 @@ defined('ABSPATH') || exit;
 
 class Church_ParticipantCallbacks extends Church_BaseController
 {
-    public function ch_shortcodePage()
-    {
-        return require_once("$this->plugin_path/templates/testimonial.php");
-    }
+    
+    
+	public function __construct(){
+		//	TODO
+	}
 }

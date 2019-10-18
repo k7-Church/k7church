@@ -2,7 +2,7 @@
 /**
  * @version 1.0.15
  *
- * @package K7Church/inc/controller
+ * @package K7Events/inc/controller
  */
 
 defined('ABSPATH') || exit;
@@ -20,18 +20,20 @@ class Church_EventController extends Church_BaseController
 
         $this->callbacks = new Church_EventCallbacks();
 
-
         add_action('init' , array($this , 'ch_eventposts'));
-        add_action('pre_get_posts' , array($this , 'ch_event_query'));
+        add_action('pre_get_posts' , array($this , 'ch_query'));
         add_action('admin_init' , array($this , 'ch_eventposts_metaboxes'));
         add_action('save_post' , array($this , 'ch_eventposts_save_meta') , 1 , 2);
-        add_filter('the_content' , array($this , 'ch_prepend_event_meta_to_content')); //gets our meta data and dispayed it before the content
-        add_shortcode('events' , array($this , 'ch_ch_event_shortcode_output'));
+        //         add_action('manage_church_posts_columns', array($this, 'ch_set_custom_columns'));
+        // add_action('manage_church_posts_custom_column', array($this, 'ch_set_custom_columns_data'), 10, 2);
+        // add_filter('manage_edit_church_sortable_columns', array($this, 'ch_set_church_custom_columns_sortable'));
 
+        add_filter('the_content' , array($this , 'ch_prepend_church_meta_to_content')); //gets our meta data and dispayed it before the content
+        add_shortcode('events' , array($this , 'ch_shortcode_output'));
 
-        $this->ch_setSettings();
         $this->ch_setSections();
         $this->ch_setFields();
+        $this->ch_setSettings();
         $this->ch_setSubpages();
 
     }
@@ -41,44 +43,66 @@ class Church_EventController extends Church_BaseController
         $subpage = array(
             array(
                 'parent_slug' => 'edit.php?post_type=event' ,
-                'page_title' => '*Settings' ,
+                'page_title' => 'Settings' ,
                 'menu_title' => 'Settings' ,
                 'capability' => 'manage_options' ,
-                'menu_slug' => 'church_event_settings' ,
-                'callback' => array($this->callbacks , 'ch_event_settings')
-            )
+                'menu_slug' => 'event_settings' ,
+                'callback' => array($this->callbacks , 'ch_settings')
+            ),
+
         );
 
         $this->settings->ch_addSubPages($subpage)->ch_register();
     }
 
+
     public function ch_setSettings()
     {
         $args = array(
             array(
-                'option_group' => 'church_event_options_group' ,
-                'option_name' => 'event_border_color' ,
-                'callback' => array($this->callbacks , 'ch_event_sanitize')
+                'option_group' => 'church_options_group' ,
+                'option_name' => 'church_border_color' ,
+                'callback' => array($this->callbacks , 'ch_sanitize_color')
 
-            ) ,
+            ),
             array(
-                'option_group' => 'church_event_options_group' ,
-                'option_name' => 'event_status_started'
+                'option_group' => 'church_options_group' ,
+                'option_name' => 'church_status_started'
             ) ,
             array(
 
 
-                'option_group' => 'church_event_options_group' ,
-                'option_name' => 'event_status_finished'
+                'option_group' => 'church_options_group' ,
+                'option_name' => 'church_status_finished'
             ) ,
             array(
-                'option_group' => 'church_event_options_group' ,
-                'option_name' => 'event_status_soon'
-            ) ,
+                'option_group' => 'church_options_group' ,
+                'option_name' => 'church_status_soon'
+            ),
             array(
-                'option_group' => 'church_event_options_group' ,
-                'option_name' => 'event_status_button'
-            )
+                'option_group' => 'church_options_group' ,
+                'option_name' => 'church_status_button'
+            ),
+
+            array(
+                'option_group' => 'church_options_group' ,
+                'option_name' => 'church_currency',
+                'callback' => array($this->callbacks , 'ch_validate_currency')
+
+            ),
+            array(
+                'option_group' => 'church_options_group' ,
+                'option_name' => 'church_background_color_button_show_form',
+                'callback' => array($this->callbacks , 'ch_sanitize_background_color')
+            ),
+
+            array('option_group' => 'church_options_group',
+                'option_name' => 'church_text_color_button_show_form',
+                'callback' => array($this->callbacks , 'ch_sanitize_text_color')
+
+        ),
+
+
         );
         $this->settings->ch_setSettings($args);
     }
@@ -87,10 +111,17 @@ class Church_EventController extends Church_BaseController
     {
         $args = array(
             array(
-                'id' => 'church_event_id' ,
+                'id' => 'church_id' ,
                 'title' => __( 'Settings', 'k7-church') ,
-                'callback' => array($this->callbacks , 'ch_event_section') ,
-                'page' => 'church_event_settings'
+                'callback' => array($this->callbacks , 'ch_section') ,
+                'page' => 'church_settings'
+
+            ),
+            array(
+                'id' => 'church_color' ,
+                'title' => __( 'Color Control', 'k7-church') ,
+                'callback' => array($this->callbacks , 'ch_section_color') ,
+                'page' => 'colors'
 
             )
         );
@@ -101,18 +132,55 @@ class Church_EventController extends Church_BaseController
     public function ch_setFields()
     {
         $args = array(
-            array(
-                'id' => 'event_border_color' ,
-                'title' => __('Border color', 'k7-church') ,
-                'callback' => array($this->callbacks , 'ch_event_textFields_border') ,
-                'page' => 'church_event_settings' ,
-                'section' => 'church_event_id' ,
-                'args' => array(
-                    'laber_for' => 'event_border_color' ,
-                    'class' => 'example-class'
-                ) ,
 
-            )
+            array(
+                'id' => 'church_currency' ,
+                'title' => __('Currency ', 'k7-church') ,
+                'callback' => array($this->callbacks , 'ch_currency') ,
+                'page' => 'church_settings' ,
+                'section' => 'church_id' ,
+                'args' => array(
+                    'laber_for' => 'church_currency' ,
+                    'class' => 'example-class'
+                ),
+
+            ),
+
+            array(
+                'id' => 'church_border_color' ,
+                'title' => __('Border color', 'k7-church') ,
+                'callback' => array($this->callbacks , 'ch_textFields_border') ,
+                'page' => 'colors' ,
+                'section' => 'church_color' ,
+                'args' => array(
+                    'laber_for' => 'church_border_color' ,
+                    'class' => 'example-class'
+                ),
+
+            ),
+            array(
+                'id'=> 'church_background_color_button_show_form',
+                 'title' => __('Color background button', 'k7-church'),
+                 'callback' => array($this->callbacks, 'ch_chanche_background_color_button'),
+                 'page' => 'colors',
+                 'section'=> 'church_color',
+                 'args' => array(
+                    'label' => 'church_background_color_button_show_form',
+                    'class' => 'exemple-class'
+                 ),
+            ),
+
+            array(
+                'id'=> 'church_text_color_button_show_form',
+                 'title' => __('Button text color', 'k7-church'),
+                 'callback' => array($this->callbacks, 'ch_chanche_text_color_button'),
+                 'page' => 'colors',
+                 'section'=> 'church_color',
+                 'args' => array(
+                    'label' => 'church_text_color_button_show_form',
+                    'class' => 'exemple-class'
+                 ),
+            ),
 
         );
 
@@ -131,16 +199,16 @@ class Church_EventController extends Church_BaseController
             'singular_name' => __('Event' , 'k7-church') ,
             'menu_name' => __('Events' , 'k7-church') ,
             'name_admin_bar' => __('Event' , 'k7-church') ,
-            'add_new' => __('Add New' , 'k7-church') ,
-            'add_new_item' => __('Add New Event' , 'k7-church') ,
-            'new_item' => __('New Event' , 'k7-church') ,
-            'edit_item' => __('Edit Event' , 'k7-church') ,
-            'view_item' => __('View Event' , 'k7-church') ,
-            'all_items' => __('All Events' , 'k7-church') ,
-            'search_items' => __('Search Events' , 'k7-church') ,
-            'parent_item_colon' => __('Parent Event:' , 'k7-church') ,
-            'not_found' => 'No Sermons found.' ,
-            'not_found_in_trash' => __('No Events found in Trash.' , 'k7-church') ,
+            'add_new' => __('Add new' , 'k7-church') ,
+            'add_new_item' => __('Add new event' , 'k7-church') ,
+            'new_item' => __('New event' , 'k7-church') ,
+            'edit_item' => __('Edit event' , 'k7-church') ,
+            'view_item' => __('View event' , 'k7-church') ,
+            'all_items' => __('All events' , 'k7-church') ,
+            'search_items' => __('Search events' , 'k7-church') ,
+            'parent_item_colon' => __('Parent event:' , 'k7-church') ,
+            'not_found' => __('No Event found.', 'k7-church') ,
+            'not_found_in_trash' => __('No events found in trash.' , 'k7-church') ,
         );
         //arguments for post type
         $args = array(
@@ -172,19 +240,19 @@ class Church_EventController extends Church_BaseController
      */
     public function ch_eventposts_metaboxes()
     {
-        add_meta_box('church_event_date_start' , __( 'Start Date and Time', 'k7-church') , array($this , 'church_event_date') , 'event' , 'side' , 'default' , array('id' => '_start'));
-        add_meta_box('church_event_date_end' , __('End Date and Time', 'k7-church') , array($this , 'church_event_date') , 'event' , 'side' , 'default' , array('id' => '_end'));
+        add_meta_box('church_date_start' , __( 'Start Date and Time', 'k7-church') , array($this , 'church_date') , 'event' , 'side' , 'default' , array('id' => '_start'));
+        add_meta_box('church_date_end' , __('End Date and Time', 'k7-church') , array($this , 'church_date') , 'event' , 'side' , 'default' , array('id' => '_end'));
 
         add_meta_box(
-            'church_event_location' ,
+            'church_location' ,
             __( 'Event Location', 'k7-church'),
-            array($this , 'church_event_location') ,
+            array($this , 'church_location') ,
             'event' , 'normal' ,
             'default' , array('id' => '_end'));
     }
 
     // Metabox HTML
-    public function church_event_date($post , $args)
+    public function church_date($post , $args)
     {
         $metabox_id = '_ch'. $args['args']['id'];
 
@@ -235,7 +303,7 @@ class Church_EventController extends Church_BaseController
 
     }
 
-    public function church_event_location()
+    public function church_location()
     {
         global $post;
         // Use nonce for verification
@@ -249,64 +317,73 @@ class Church_EventController extends Church_BaseController
         $event_phone = get_post_meta($post->ID , '_ch_event_phone' , true);
         $event_phone_2 = get_post_meta($post->ID , '_ch_event_phone_2' , true);
         $event_street = get_post_meta($post->ID , '_ch_event_street' , true);
-        $event_partici = get_post_meta($post->ID , '_ch_event_partic_limit' , true); ?>
+        $event_partici = get_post_meta($post->ID , '_ch_event_partic_limit' , true); 
+        $event_price = get_post_meta($post->ID , '_ch_event_price' , true); ?>
 
 
         <div class="field-container">
 
             <div class="field">
-                <label for="_ch_event_partic_limit"><?php _e('Event Participe Limits:'); ?></label><br>
-                <small><?php _e('Limit' , 'k7-church'); ?></small>
-                <input type="text" name="_ch_event_partic_limit" value="<?php echo $event_partici; ?>"/>
-            </div>
-            <div class="field">
-                <label for="_ch_event_country"><?php _e('Event Country:'); ?></label><br>
-                <small><?php _e('location where the event will take place' , 'k7-church'); ?></small>
-                <input type="text" name="_ch_event_country" value="<?php echo $event_country; ?>"/>
-            </div>
+                <div class="ch-col-12">
+                    <div class="ch-col-2">
+                        <label for="_ch_event_price"><?php _e('Event price :'); ?></label>
+                        <input type="text" name="_ch_event_price" placeholder="99.00" value="<?php echo $event_price; ?>" />
 
+                    </div>
+                    <div class="ch-col-3">
+                        <label for="_ch_event_currency"><?php _e('Event Currency :'); ?></label>
+                            <?php echo $value = esc_attr( get_option( 'church_currency' ) );?>
+                    </div>
+                    <div class="ch-col-12">
+                         <label for="_ch_event_partic_limit"><?php _e('Event Participe Limits:'); ?></label>
+                        <input type="text" name="_ch_event_partic_limit" placeholder="10" value="<?php echo $event_partici; ?>"/>
+            
+                    </div>
+                </div>
+            </div>
             <hr>
             <div class="field">
-                <label for="_ch_event_city"><?php _e('Event City:'); ?></label><br>
-                <small><?php _e('City/Province where the event will take place' , 'k7-church'); ?></small>
-                <input type="text" name="_ch_event_city" value="<?php echo $event_city; ?>"/>
-            </div>
+                <div class="ch-col-12">
+                    <div class="ch-col-5">
+                        <label for="_ch_event_country"><?php _e('Event Country:'); ?></label>
+                        <input type="text" name="_ch_event_country" value="<?php echo $event_country; ?>"/>
+                    </div>
+                    <div class="ch-col-5">
+                        <label for="_ch_event_city"><?php _e('Event City:'); ?></label>
+                        <input type="text" name="_ch_event_city" value="<?php echo $event_city; ?>"/>
+                    </div>
+                    <div class="ch-col-5">
+                        <label for="_ch_event_address"><?php _e('Event Address:'); ?></label>
+                        <input type="text" name="_ch_event_address" value="<?php echo $event_address; ?>"/>
+                    </div>
+                    <div class="ch-col-5">
+                         <label for="_ch_event_street"><?php _e('Event Street:'); ?></label>
+                         <input type="text" name="_ch_event_street" value="<?php echo $event_street; ?>"/>
+                    </div>
 
-            <hr>
-            <div class="field">
-                <label for="_ch_event_address"><?php _e('Event Address:'); ?></label><br>
-                <small><?php _e('Event Address' , 'k7-church'); ?></small>
-                <input type="text" name="_ch_event_address" value="<?php echo $event_address; ?>"/>
-            </div>
-            <div class="field">
-                <label for="_ch_event_street"><?php _e('Event Street:'); ?></label><br>
-                <small><?php _e('Event Streer' , 'k7-church'); ?></small>
-                <input type="text" name="_ch_event_street" value="<?php echo $event_street; ?>"/>
-            </div>
-
-            <hr>
-            <div class="field">
-                <label for="_ch_event_email"><?php _e('Event Email:'); ?></label><br>
-                <small><?php _e('Event email' , 'k7-church'); ?></small>
-                <input type="email" name="_ch_event_email" value="<?php echo $event_email; ?>"/>
+                </div>
             </div>
             <hr>
             <div class="field">
-                <label for="_ch_event_organizer"><?php _e('Event Organizers email:'); ?></label><br>
-                <small><?php _e('Event or organizer email' , 'k7-church'); ?></small>
-                <input type="email" name="_ch_event_organizer" value="<?php echo $event_organizer; ?>"/>
-            </div>
-            <hr>
+                <div class="ch-col-12">
+                    <div class="ch-col-5">
+                        <label for="_ch_event_email"><?php _e('Event Email:'); ?></label>
+                        <input type="email" name="_ch_event_email" value="<?php echo $event_email; ?>"/>
+                    </div>
+                    <div class="ch-col-5">
+                        <label for="_ch_event_organizer"><?php _e('Event Organizers email:'); ?></label>
+                        <input type="email" name="_ch_event_organizer" value="<?php echo $event_organizer; ?>"/>
+                    </div>
+                    <div class="ch-col-5">
+                        <label for="_ch_event_phone"><?php _e('Event Phone:'); ?></label>
+                        <input type="tel" name="_ch_event_phone" value="<?php echo $event_phone; ?>"/>
+                    </div>
+                </div>
             <div class="field">
-                <label for="_ch_event_phone"><?php _e('Event Phone:'); ?></label><br>
-                <small><?php _e('Event Phone' , 'k7-church'); ?></small>
-                <input type="tel" name="_ch_event_phone" value="<?php echo $event_phone; ?>"/>
-            </div>
-            <div class="field">
-                <label for="_ch_event_phone_2"><?php _e('Event Phone 2:'); ?></label><br>
-                <small><?php _e('Event Phone' , 'k7-church'); ?></small>
+                <label for="_ch_event_phone_2"><?php _e('Event Phone 2:'); ?></label>
                 <input type="tel" name="_ch_event_phone_2" value="<?php echo $event_phone_2; ?>"/>
             </div>
+        </div>
         </div>
         <?php
     }
@@ -365,6 +442,7 @@ class Church_EventController extends Church_BaseController
         $events_meta['_ch_event_phone_2'] = $this->callbacks->ch_sanitize_number($_POST['_ch_event_phone_2']);
         $events_meta['_ch_event_street'] = sanitize_text_field($_POST['_ch_event_street']);
         $events_meta['_ch_event_partic_limit'] = $this->callbacks->ch_sanitize_number($_POST['_ch_event_partic_limit']);
+        $events_meta['_ch_event_price'] = $this->callbacks->ch_sanitize_number($_POST['_ch_event_price']);
 
 
         // Add values of $events_meta as custom fields
@@ -396,7 +474,7 @@ class Church_EventController extends Church_BaseController
 
     // Display the date
 
-    public function ch_get_the_event_date()
+    public function ch_get_the_church_date()
     {
         global $post;
 
@@ -418,7 +496,7 @@ class Church_EventController extends Church_BaseController
      * @param object $query data
      *
      */
-    public function ch_event_query($query)
+    public function ch_query($query)
     {
 
         // http://codex.wordpress.org/Function_Reference/current_time
@@ -445,21 +523,21 @@ class Church_EventController extends Church_BaseController
     }
 
     //shortcode display
-    public function ch_ch_event_shortcode_output($atts , $content = '' , $tag)
+    public function ch_shortcode_output($atts , $content = '' , $tag)
     {
 
         //build default arguments
         $arguments = shortcode_atts(array(
-                'event_id' => '' ,
+                'church_id' => '' ,
                 'number_of_event' => -1)
             , $atts , $tag);
 
         //uses the main output function of the location class
-        return $this->ch_get_event_output($arguments);
+        return $this->ch_get_church_output($arguments);
 
     }
 
-    public function ch_prepend_event_meta_to_content($content)
+    public function ch_prepend_church_meta_to_content($content)
     {
         global $post , $post_type , $wp_locale;
 
@@ -511,6 +589,19 @@ class Church_EventController extends Church_BaseController
             <strong><?php echo "\t\n" . __('End event timestamp:' , 'k7-church'); ?></strong><?php echo "\t\n" . $this->callbacks->formatDate($endEvent); ?><br>
                 </div>
                     <div class="ch-col-5">
+                        <?php $price = get_post_meta($event->ID , '_ch_event_price' , true);
+
+                             $currency = get_option( 'church_currency', true );
+
+                             if( empty($price) ){
+                                $price = __('Free', 'k7-church');
+                                $currency = null;
+                             }
+                        ?>
+                        <strong><?php printf( __('Price: %s %s ', 'k7-church'), $price, $currency );?>  </strong>
+                    </div>
+                    <hr>
+                    <div class="ch-col-5">
                         <?php 
 
                             $all_post_ids = get_posts(array(
@@ -520,15 +611,24 @@ class Church_EventController extends Church_BaseController
                             ));
                             $total = [];
                         foreach ($all_post_ids as $k => $v) {
-                            $count = get_post_meta( $v->ID, '_church_participant_key', false );
+                            $count = get_post_meta( $v->ID, '_event_participant_key', false );
                                 foreach ($count as $key => $value) {
-                                        if($value['post_event_id'] == $event->ID){
+                                        if($value['post_event_id'] == $event->ID && $value['approved'] == 1){
                                             $total[] = $value['post_event_id'];
                                     ?>
                                 <?php 
                                 } }
-                            }?>
-                            <strong><?php printf( __('Nº of places available:  %s ', 'k7-church'), ($event_partici - count($total))); ?></strong><br><hr>
+                            }
+
+                            $number = 0;
+                            if($event_partici != 0){
+                                $number = ($event_partici - count($total));
+                            }else{
+                                $number = 0;
+                            }
+                            ?>
+
+                            <strong><?php printf( __('Nº of places available:  %s ', 'k7-church'), $number); ?></strong><br><hr>
                                 <strong><?php printf( 
                                     __('Nº of participants: %s', 'k7-church'), count($total) 
                                     ); ?></strong>
@@ -588,6 +688,25 @@ class Church_EventController extends Church_BaseController
                 </div>
             </div>
 
+            
+            <?php $event_permalink = get_permalink($event);
+            $html = '';
+            $html .= '<h2 class="ch-title">';
+            $html .= '<a href="' . esc_url($event_permalink) . '" title="' . esc_attr__('view Event' , 'k7-church') . '">';
+            $html .= '</a>';
+            $html .= '</h2>'; ?>
+
+            <?php
+
+            $html .= '<div class="ch-row"><div class="ch-col-6">';
+            $html .= $content;
+            $html .= '</div><div class="ch-col-6">';
+            $html .= get_the_post_thumbnail($event->ID , 'thumbnail');
+            $html .= "</div></div>"; 
+
+            echo  $html; ?>
+        
+
             <div class="ch-col-12">
                 <div class="ch-row">
                     <hr>
@@ -598,23 +717,13 @@ class Church_EventController extends Church_BaseController
                                 <button class="ch-tab" style="background: red;" onclick="myFunction()"><?php esc_html_e( 'INSCRIPTIONS ARE CLOSED! We have reached the maximum number of members, and that is why registration is closed.!', 'k7-church' );?></button>
                             </header>
                         <?php }else{
-                            $this->get_participe_event_form();
+                            $this->get_participe_church_form();
                         } ?>
                     </div>
                 </div>
             </div>
+            <?php 
 
-            <?php $event_permalink = get_permalink($event);
-            $html = '';
-            $html .= '<h2 class="ch-title">';
-            $html .= '<a href="' . esc_url($event_permalink) . '" title="' . esc_attr__('view Event' , 'k7-church') . '">';
-            $html .= '</a>';
-            $html .= '</h2>'; ?>
-
-            <?php
-            $html .= $content;
-
-            return $html;
 
         } else {
             return $content;
@@ -622,16 +731,20 @@ class Church_EventController extends Church_BaseController
         }
     }
 
-    public function ch_get_event_output($arguments = "")
+    public function ch_get_church_output($arguments = "")
     {
 
         global $post;
 
         $wp_locale = new WP_Locale();
 
+        add_image_size( 'church-thumb', 270, 175, false );
+
+
+
         //default args
         $default_args = array(
-            'event_id' => '' ,
+            'church_id' => '' ,
             'number_of_event' => -1
         );
 
@@ -647,7 +760,7 @@ class Church_EventController extends Church_BaseController
         }
 
 
-        //find sermon
+        //find event
         $event_args = array(
             'post_type' => 'event' ,
             'posts_per_page' => $default_args['number_of_event'] ,
@@ -656,9 +769,9 @@ class Church_EventController extends Church_BaseController
             'orderby' => 'meta_value_num' ,
 
         );
-        //if we passed in a single sermon to display
-        if (!empty($default_args['event_id'])) {
-            $event_args['include'] = $default_args['event_id'];
+        //if we passed in a single event to display
+        if (!empty($default_args['church_id'])) {
+            $event_args['include'] = $default_args['church_id'];
         }
 
         //output
@@ -670,17 +783,29 @@ class Church_EventController extends Church_BaseController
         list($today_year , $today_month , $today_day , $hour , $minute , $second) = preg_split('([^0-9])' , $current_time);
         $current_timestamp = $today_year . '-' . $today_month . '-' . $today_day . ' ' . $hour . ':' . $minute;
 
-        //if we have sermon
+        //if we have event
         if ($events) {
-            $html .= '<article class="ch-col-12 location_list cf" style="border: 12px solid '.get_option( 'event_border_color').'">';
-            //foreach sermon
-            foreach ($events as $event) {
-
-                $html .= '<section class="ch-col-12 sermon" >';
-                //collect sermon data
+            //foreach event
+            foreach ($events as $key => $event) {
+                                //title
+                //collect event data
                 $event_id = $event->ID;
                 $event_title = get_the_title($event_id);
-                $event_thumbnail = get_the_post_thumbnail($event_id , 'thumbnail');
+                $event_permalink = get_permalink($event_id);
+
+                $html .= '<article class="ch-col-12 " style="border: 12px solid '.get_option( 'church_border_color').'">';
+                $html .= '<div class="ch-row">';
+
+                $html .= '<h2 class="ch-title">';
+                $html .= '<a href="' . esc_url($event_permalink) . '" title="' . esc_attr__('view Event' , 'k7-church') . '">';
+                $html .= $event_title;
+                $html .= '</a>';
+                $html .= '</h2>';
+
+
+                $html .= '<section class="ch-col-6 sermon" >';
+
+                $event_thumbnail = get_the_post_thumbnail($event_id , 'church-thumb');
                 $html .= '<div class="ch-col-1 image_content">';
 
                 $event_content = apply_filters('the_content' , $event->post_content);
@@ -690,23 +815,13 @@ class Church_EventController extends Church_BaseController
                     $event_content = strip_shortcodes(wp_trim_words($event_content , 40 , '...'));
                 }
 
-                $event_permalink = get_permalink($event_id);
-
 
                 // http://codex.wordpress.org/Function_Reference/current_time
                 $current_time = current_time('mysql');
                 list($today_year , $today_month , $today_day , $hour , $minute , $second) = preg_split('([^0-9])' , $current_time);
                 $current_timestamp = $today_year . '-' . $today_month . '-' . $today_day . ' ' . $hour . ':' . $minute;
                 //(lets third parties hook into the HTML output to output data)
-                $html = apply_filters('event_before_main_content' , $html);
-
-                //title
-                $html .= '<h2 class="ch-title">';
-                $html .= '<a href="' . esc_url($event_permalink) . '" title="' . esc_attr__('view Event' , 'k7-church') . '">';
-                $html .= $event_title;
-                $html .= '</a>';
-                $html .= '</h2>';
-
+                $html = apply_filters('church_before_main_content' , $html);
 
                 //image & content
                 if (!empty($event_thumbnail) || !empty($event_content)) {
@@ -716,13 +831,19 @@ class Church_EventController extends Church_BaseController
                         $html .= $event_thumbnail;
 
                         $html .= '</p>';
+                    }else{
+                    $html .= '<p class="ch-col-3 image_content">';
+                    $html .= '<img src="' . $this->plugin_url . '/assets/images/no-image-available-icon-6.png">';
+                    $html .= '</p>';
+
+
                     }
                     if (!empty($event_content)) {
-                        $html .= '<p>';
-                        $html .= '<img src="' . $this->plugin_url . '/assets/icon/compose.svg" style="width:20px; height:20px;"><strong>' . "\t\n" . __('Publish date:' , 'k7-church') . '</strong>' . get_the_date('M d Y') . '<br>';
+                        $html .= '<img src="' . $this->plugin_url . '/assets/icon/compose.svg" style="width:20px; height:20px;"><strong>' . "\t\n" . __('Publish date:'."\t\n" , 'k7-church') . '</strong>' . get_the_date('M d Y') . '<br>';
 
                         ?>
                         <body onload='verHora()'><h3 id='relogio'></h3></body><?php
+
 
                         // Gets the event start month from the meta field
                         $month = get_post_meta($event_id , '_ch_start_month' , true);
@@ -734,44 +855,96 @@ class Church_EventController extends Church_BaseController
                         $year = get_post_meta($event_id , '_ch_start_year' , true);
 
                         $endEvent = get_post_meta($event_id , '_ch_end_eventtimestamp' , true);
+
                         $current_timestamp = $current_timestamp;
 
 
                         $html .= '<img src="' . $this->plugin_url . '/assets/icon/clock.svg" style="width:20px; height:20px;"><strong>' . "\t\n" . __('Event start date:' , 'k7-church') . '</strong>' . "\t\n" . $month . ' ' . $day . ' ' . $year . '<br>';
 
-                        $html .= '<img src="' . $this->plugin_url . '/assets/icon/timestampdate.svg" style="width:20px; height:20px;"><strong>' . "\t\n" . __('Start event timestamp:' , 'k7-church') . '</strong>' . "\t\n" . $this->formatDate(get_post_meta($event_id , '_ch_start_eventtimestamp' , true)) . '<br>';
+                        $html .= '<img src="' . $this->plugin_url . '/assets/icon/timestampdate.svg" style="width:20px; height:20px;"><strong>' . "\t\n" . __('Start event timestamp:' , 'k7-church') . '</strong>' . "\t\n" . $this->callbacks->formatDate(get_post_meta($event_id , '_ch_start_eventtimestamp' , true)) . '<br>';
 
-                        $html .= '<img src="' . $this->plugin_url . '/assets/icon/finish.svg" style="width:20px; height:20px;"><strong>' . "\t\n" . __('End event timestamp:' , 'k7-church') . '</strong>' . "\t\n" . $this->formatDate($endEvent) . '<br>';
+                        $html .= '<img src="' . $this->plugin_url . '/assets/icon/finish.svg" style="width:20px; height:20px;"><strong>' . "\t\n" . __('End event timestamp:' , 'k7-church') . '</strong>' . "\t\n" . $this->callbacks->formatDate($endEvent) . '<br>';
+                    $html .= '</section>';
+                    $html .= '<div class="ch-col-6">';
+                    $html .= $event_content;
+                    $html .= '</div>';
 
-                        $html .= $event_content;
 
-                        $html .= '</p>';
                     }
 
                 }
-
+                
                 //apply the filter after the main content, before it ends
                 //(lets third parties hook into the HTML output to output data)
-                $html = apply_filters('event_after_main_content' , $html);
+                $html = apply_filters('church_after_main_content' , $html);
 
                 //readmore
                 $html .= '<a class="link" href="' . esc_url($event_permalink) . '" title="' . esc_attr__('view Event' , 'k7-church') . '">' . __('View Event' , 'k7-church') . '</a>';
-                $html .= '</section>';
-
-            }
-
+            $html .= '</section>';
             $html .= '</article>';
             $html .= '<div class="cf"></div>';
-        }
+
+            }// and foreach
+        } // and if
 
         return $html;
     }
 
-    public function get_participe_event_form(){
-
+    public function get_participe_church_form(){
        echo  do_shortcode( '[particip-form]', false );
-        
+
 }
+
+    // public function ch_set_church_custom_columns($columns)
+    // {
+    //     $title = $columns['title'];
+    //     $date = $columns['date'];
+    //     unset($columns['title'], $columns['date']);
+
+    //     $columns['name'] = __('Event Name', 'k7-church');
+    //     $columns['title'] = $title;
+    //     $columns['Price'] =  __('Price', 'k7-church');
+    //     $columns['Currency'] = __('Currency', 'k7-church');
+    //     $columns['date'] = $date;
+
+    //     return $columns;
+    // }
+
+    // public function ch_set_church_custom_columns_data($column, $post_id)
+    // {
+    //     global $total;
+    //     $name = isset($total) ? $data['name'] : '';
+    //     $email = isset($data['email']) ? $data['email'] : '';
+    //     $telephone = isset($data['telephone']) ? $data['telephone'] : '';
+    //     $approved = isset($data['approved']) && $data['approved'] === 1 ? '<strong>'. __( 'YES', 'k7-church').'</strong>' : __(  'NO', 'k7-church');
+    //     $party = isset($data['party']) && $data['party'] === 1 ? '<strong>'. __( 'YES', 'k7-church').'</strong>' : __(  'NO', 'k7-church');
+
+    //     switch ($column) {
+    //         case 'name':
+    //             echo '<strong>' . $name . '</strong><br/><a href="mailto:' . $email . '">' . $email . '</a>';
+    //             break;
+
+    //         case 'telephone':
+    //             echo $telephone;
+    //             break;
+    //         case 'approved':
+    //             echo $approved;
+    //             break;
+
+    //         case 'party':
+    //             echo $party;
+    //             break;
+    //     }
+    // }
+
+    // public function ch_set_church_custom_columns_sortable($columns)
+    // {
+    //     $columns['name'] = __( 'name', 'k7-church');
+    //     $columns['approved'] = __( 'approved', 'k7-church');
+    //     $columns['party'] = __( 'partic', 'k7-church');
+
+    //     return $columns;
+    // }
 
 
 }

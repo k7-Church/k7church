@@ -37,6 +37,9 @@ div {
     width: 8.33%;
 }
 
+ul {
+    list-style-type: none;
+}
 .ch-col-2 {
     width: 16.66%;
 }
@@ -107,6 +110,20 @@ html {
 
 .ch-menu li:hover {
     background-color: #0099cc;
+}
+
+.ch-mt {
+  margin-top: 16em;
+}
+.ch-mb {
+  margin-bottom: 16em;
+}
+
+.ch-pt {
+  padding-top: 16em;
+}
+.ch-pb {
+  padding-bottom: 16em;
 }
 
 /* welcome */
@@ -214,6 +231,7 @@ li#ch-list-nav {
 .location_list .location .readmore {
 
 }
+
 /**  date clock */
 
 .clockdate-wrapper {
@@ -272,3 +290,9 @@ li#ch-list-nav {
   transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
 }
+
+
+  #calendar {
+    max-width: 900px;
+    margin: 0 auto;
+  }

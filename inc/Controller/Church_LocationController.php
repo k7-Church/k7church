@@ -30,8 +30,6 @@ class Church_LocationController extends Church_BaseController
         add_action('add_meta_boxes' , array($this , 'ch_add_location_meta_boxes')); //add meta boxes
         add_action('save_post_locations' , array($this , 'ch_save_location')); //save location
         add_filter('the_content' , array($this , 'ch_prepend_location_meta_to_content')); //gets our meta data and dispayed it before the content
-        $this->ch_setLocationSettingsPage();
-
         add_shortcode('locations' , array($this , 'ch_location_shortcode_output'));
     }
 
@@ -51,23 +49,6 @@ class Church_LocationController extends Church_BaseController
         return $this->ch_get_locations_output($arguments);
 
     }
-
-    public function ch_setLocationSettingsPage()
-    {
-        $subpage = array(
-            array(
-                'parent_slug' => 'edit.php?post_type=locations' ,
-                'page_title' => __('Settings', 'k7-church') ,
-                'menu_title' => __('Settings', 'k7-church') ,
-                'capability' => 'manage_options' ,
-                'menu_slug' => 'church_location_settings' ,
-                'callback' => array($this->callbacks , 'ch_locationSettings')
-            )
-        );
-
-        $this->settings->ch_addSubPages($subpage)->ch_register();
-    }
-
 
     /**
      * @param array $location_cult_hour_days

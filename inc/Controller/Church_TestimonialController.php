@@ -28,30 +28,12 @@ class Church_TestimonialController extends Church_BaseController
         add_action('manage_testimonial_posts_columns', array($this, 'ch_set_custom_columns'));
         add_action('manage_testimonial_posts_custom_column', array($this, 'ch_set_custom_columns_data'), 10, 2);
         add_filter('manage_edit-testimonial_sortable_columns', array($this, 'ch_set_custom_columns_sortable'));
-
-        $this->ch_setShortcodePage();
-
         add_shortcode('testimonial-form', array($this, 'ch_testimonial_form'));
         add_shortcode('testimonial-slideshow', array($this, 'ch_testimonial_slideshow'));
         add_action('wp_ajax_submit_testimonial', array($this, 'ch_submit_testimonial'));
         add_action('wp_ajax_nopriv_submit_testimonial', array($this, 'ch_submit_testimonial'));
     }
 
-    public function ch_setShortcodePage()
-    {
-        $subpage = array(
-            array(
-                'parent_slug' => 'edit.php?post_type=testimonial',
-                'page_title' => 'Shortcodes',
-                'menu_title' => 'Shortcodes',
-                'capability' => 'manage_options',
-                'menu_slug' => 'church_testimonial_shortcode',
-                'callback' => array($this->callbacks, 'ch_shortcodePage')
-            )
-        );
-
-        $this->settings->ch_addSubPages($subpage)->ch_register();
-    }
 
     public function ch_submit_testimonial()
     {
@@ -121,7 +103,7 @@ class Church_TestimonialController extends Church_BaseController
     public function ch_testimonial_cpt()
     {
         $labels = array(
-            'name' => 'Testimonials',
+            'name' => __('Testimonials', 'k7-church'),
             'singular_name' => __('Testimonial', 'k7-church')
         );
 

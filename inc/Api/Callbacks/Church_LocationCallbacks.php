@@ -11,8 +11,8 @@ defined('ABSPATH') || exit;
 class Church_LocationCallbacks extends Church_BaseController
 
 {
-    public function ch_locationSettings()
-    {
-        return require_once("$this->plugin_path/templates/admin/location.php");
-    }
+	
+	public function __construct(){
+		//	TODO
+	}
 }

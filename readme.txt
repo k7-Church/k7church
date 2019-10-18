@@ -1,10 +1,10 @@
 === K7 Church ===
 Contributors: Márcio Zebedeu
 Tags: Form, Register, Locations, Location Widget, Media Widget, Custom Post Type Manager, Custom Taxonomy Manager, Testimonial, Sermon post, Advanced Notification System,  
-Requires at least: 4.9
-Tested up to: 5.2
+Requires at least: 5.2
+Tested up to: 5.2.4
 Requires PHP: 5.6.20
-Stable tag: 1.0.19
+Stable tag: 1.0.21
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -87,8 +87,18 @@ add sermon on a page:
 12. Event Post
 13. Event List
 14. Event Information
+15. Limit of participants
+16. Form for registration to the event
+
 
 == Changelog ==
+
+=1.0.21 =
+add currency and price for events
+=1.0.20=
+added a limit of participants
+Added a form for registration to the event
+
 = 1.0.19 =
 fix bug
 add filters: location_cult_hours_days, location_cult_title

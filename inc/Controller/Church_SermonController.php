@@ -70,27 +70,9 @@ class Church_SermonController extends Church_BaseController
         add_action('add_meta_boxes', array($this, 'ch_add_sermon_meta_boxes')); //add meta boxes
         add_action('save_post_sermon', array($this, 'ch_save_sermon')); //save sermon
         add_filter('the_content', array($this, 'ch_prepend_sermon_meta_to_content')); //gets our meta data and dispayed it before the content
-        $this->ch_setShortcodePage();
-
         add_shortcode('sermon', array($this, 'ch_sermon_shortcode_output'));
     }
-
-    public function ch_setShortcodePage()
-    {
-        $subpage = array(
-            array(
-                'parent_slug' => 'edit.php?post_type=sermon',
-                'page_title' => __('Settings', 'k7-church'),
-                'menu_title' => __('Settings', 'k7-church'),
-                'capability' => 'manage_options',
-                'menu_slug' => 'church_sermon_settings',
-                'callback' => array($this->callbacks, 'ch_sermonSettings')
-            )
-        );
-
-        $this->settings->ch_addSubPages($subpage)->ch_register();
-    }
-
+    
     public function ch_sermon_shortcode_output($atts, $content = '', $tag)
     {
 

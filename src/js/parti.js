@@ -13,7 +13,8 @@ document.addEventListener('DOMContentLoaded', function (e) {
             name: participantForm.querySelector('[name="name"]').value,
             email: participantForm.querySelector('[name="email"]').value,
             telephone: participantForm.querySelector('[name="telephone"]').value,
-            party: participantForm.querySelector('[name="party"]').value,
+            message: participantForm.querySelector('[name="message"]').value,
+            party: participantForm.querySelector('#party'),
             nonce: participantForm.querySelector('[name="nonce"]').value
         }
 
@@ -32,7 +33,11 @@ document.addEventListener('DOMContentLoaded', function (e) {
             participantForm.querySelector('[data-error="invalidTelephone"]').classList.add('show');
             return;
         }
-        if (!data.party) {
+        if (!data.message) {
+            participantForm.querySelector('[data-error="invalidMessage"]').classList.add('show');
+            return;
+        }
+        if (!data.party.checked)  {
             participantForm.querySelector('[data-error="invalidChecked"]').classList.add('show');
             return;
         }
@@ -60,6 +65,8 @@ document.addEventListener('DOMContentLoaded', function (e) {
                 }
 
                 participantForm.querySelector('.js-form-success').classList.add('show');
+               var datas =  participantForm.querySelector('.js-form-status').classList.add('show');
+                alert(datas);
                 participantForm.reset();
             })
     });
@@ -72,4 +79,8 @@ function resetMessages() {
 function validateEmail(email) {
     let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
+}
+
+function validateCheckBox (argument) {
+    alert(argument);
 }

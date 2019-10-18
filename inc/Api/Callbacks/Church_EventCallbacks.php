@@ -2,7 +2,7 @@
 /**
  * @version 1.0.13
  *
- * @package K7Church/inc/api/callbacks
+ * @package K7Events/inc/api/callbacks
  */
 
 defined('ABSPATH') || exit;
@@ -11,36 +11,142 @@ defined('ABSPATH') || exit;
 class Church_EventCallbacks extends Church_BaseController
 
 {
-       public function ch_event_settings()
+
+       public function ch_settings()
     {
     
-        return require_once("$this->plugin_path/templates/admin/event.php");
+        return require_once("$this->plugin_path/templates/admin/admin.php");
      
     }
 
-    public function ch_event_sanitize( $input ){
+    public function ch_sanitize_color( $input ){
 
-    // if ( isset( $input['event_border_color'] ) ) {
-    //     $output['event_border_color'] = sanitize_text_field( $input['event_border_color'] );
+         $valid_fields = "";
+             
 
-    // }
-    // if ( isset( $input['event_status_started'] ) ) {
-    //     $output['event_status_started'] = sanitize_text_field( $input['event_status_started'] );
+            if(!isset($input)) {
+                return   $value = esc_attr( get_option( 'church_border_color' ));
+            }
+            // Validate Background Color
+            $background = trim( $input );
+            $background = strip_tags( stripslashes( $background ) );
+             
+            // Check if is a valid hex color
+            if( FALSE === $this->check_color( $background ) ) {
+             
+                // Set the error message
+                add_settings_error( 'ch_settings_options', 'ch_bg_error', 'Insert a valid color for Background', 'error' ); // $setting, $code, $message, $type
+                 
+                // Get the previous valid value
+            $value = esc_attr( get_option( 'church_border_color' ));
 
-    // }
-    // if ( isset( $input['event_status_finished'] ) ) {
-    //     $output['event_status_finished'] = sanitize_text_field( $input['event_status_finished'] );
+                $valid_fields = $value;
+             
+            } else {
+             
+                $valid_fields = $background;  
+             
+            }
+             
+            return apply_filters( 'validate__background_options', $valid_fields, $input);
+    }
 
-    // }
-    // if ( isset( $input['event_status_soon'] ) ) {
-    //     $output['event_status_soon'] = sanitize_text_field( $input['event_status_soon'] );
+    public function ch_sanitize_background_color( $input )
+    {
 
-    // }
-    // if ( isset( $input['event_status_button'] ) ) {
-    //     $output['event_status_button'] = sanitize_text_field( $input['event_status_button'] );
+            $valid_fields = "";
+             
 
-    // }
-    	return $input;
+            if(!isset($input)) {
+                return   $value = esc_attr( get_option( 'church_background_color_button_show_form' ));
+            }
+            // Validate Background Color
+            $background = trim( $input );
+            $background = strip_tags( stripslashes( $background ) );
+             
+            // Check if is a valid hex color
+            if( FALSE === $this->check_color( $background ) ) {
+             
+                // Set the error message
+                add_settings_error( 'ch_settings_options', 'ch_bg_error', 'Insert a valid color for Background', 'error' ); // $setting, $code, $message, $type
+                 
+                // Get the previous valid value
+            $value = esc_attr( get_option( 'church_background_color_button_show_form' ));
+
+                $valid_fields = $value;
+             
+            } else {
+             
+                $valid_fields = $background;  
+             
+            }
+             
+            return apply_filters( 'validate__background_options', $valid_fields, $input);
+
+    }
+    public function ch_sanitize_text_color( $input )
+    {
+        $valid_fields = "";
+     
+
+            if(!isset($input)) {
+                return   $value = esc_attr( get_option( 'church_text_color_button_show_form' ));
+            }
+        // Validate Background Color
+        $background = trim( $input );
+        $background = strip_tags( stripslashes( $background ) );
+         
+        // Check if is a valid hex color
+        if( FALSE === $this->check_color( $background ) ) {
+         
+            // Set the error message
+            add_settings_error( 'ch_settings_options', 'ch_bg_error', 'Insert a valid color for Background', 'error' ); // $setting, $code, $message, $type
+             
+            // Get the previous valid value
+            $value = esc_attr( get_option( 'church_text_color_button_show_form' ));
+
+            $valid_fields = $value;
+         
+        } else {
+         
+            $valid_fields = $background;  
+         
+        }
+         
+        return apply_filters( 'validate_color_options', $valid_fields, $input);
+
+}
+
+public function ch_validate_currency( $input )
+{
+        $output = get_option('church_currency');
+
+    if( isset( $input ) ){
+         $output = sanitize_text_field( $input );
+    }
+    return $output;
+
+}
+
+/**
+ * Function that will check if value is a valid HEX color.
+ */
+public function check_color( $value ) { 
+     
+    if ( preg_match( '/^#[a-f0-9]{6}$/i', $value ) ) { // if user insert a HEX color with #     
+        return true;
+    }
+     
+    return false;
+}
+
+    public function ch_section()
+    {
+
+    }
+
+    public function ch_section_color(){
+
     }
 
     public function formatDate($date){
@@ -52,32 +158,81 @@ class Church_EventCallbacks extends Church_BaseController
 
     }
 
-    public function ch_event_textFields_border()
+    public function ch_textFields_border()
+    {   
+        $value = esc_attr( get_option( 'church_border_color' ) );
+        $value = $this->is_colorExists( $value );
+        echo '<input type="text" class="ch-color-picker" name="church_border_color" value="' . $value .'" placeholder="eg.#FFFFFF">';
+    }
+
+        public function ch_textFields_status_started()
     {
-    	$value = esc_attr( get_option( 'event_border_color' ) );
-    	echo '<input type="text" class="regular-text" name="event_border_color" value="' . $value .'" placeholder="eg.#FFFFFF">';
-    }
-
-        public function ch_event_textFields_status_started()
-    {
-    	$value = esc_attr( get_option( 'event_status_started' ) );
-    	echo '<input type="text" class="regular-text" name="event_status_started" value="' . $value .'" placeholder="eg.#FFFFFF">';
+        $value = esc_attr( get_option( 'church_status_started' ) );
+        $value = $this->is_colorExists( $value );
+        echo '<input type="text" class="regular-text" name="church_status_started" value="' . $value .'" placeholder="eg.#FFFFFF">';
     }
 
 
 
-    public function ch_event_textFields_status_soon_finished(){
-    	$value = esc_attr( get_option( 'event_status_finished' ) );
-    	echo '<input type="text" class="regular-text" name="event_status_finished" value="' . $value .'" placeholder="eg.#FFFFFF">';
+    public function ch_textFields_status_soon_finished(){
+        $value = esc_attr( get_option( 'church_status_finished' ) );
+        $value = $this->is_colorExists( $value );
+        echo '<input type="text" class="regular-text" name="church_status_finished" value="' . $value .'" placeholder="eg.#FFFFFF">';
     }
-	public function ch_event_textFields_status_soon(){
-		$value = esc_attr( get_option( 'event_status_soon' ) );
-    	echo '<input type="text" class="regular-text" name="event_status_soon" value="' . $value .'" placeholder="eg.#FFFFFF">';
-	}
-	public function ch_event_button_class(){
-		$value = esc_attr( get_option( 'event_status_button' ) );
-    	echo '<input type="text" class="regular-text" name="event_status_button" value="' . $value .'" placeholder="eg. class="button primary">';
-	}
+    public function ch_textFields_status_soon(){
+        $value = esc_attr( get_option( 'church_status_soon' ) );
+        $value = $this->is_colorExists( $value );
+        echo '<input type="text" class="regular-text" name="church_status_soon" value="' . $value .'" placeholder="eg.#FFFFFF">';
+    }
+
+   public function ch_button_class(){
+        $value = esc_attr( get_option( 'church_status_button' ) );
+        $value = $this->is_colorExists( $value );
+        echo '<input type="text" class="regular-text button primary" name="church_status_button" value="' . $value .'" class="ch-color-picker">';
+    }
+
+
+public function ch_chanche_background_color_button()
+{
+        $value = esc_attr( get_option( 'church_background_color_button_show_form' ));
+        $value = $this->is_colorExists( $value );
+ echo '<label>
+            <input type="text" name="church_background_color_button_show_form" value="'.$value.'" class="ch-color-picker">
+      </label>';
+}
+public function ch_chanche_text_color_button()
+{
+        $value = esc_attr( get_option( 'church_text_color_button_show_form' ));
+        $value = $this->is_colorExists( $value );
+ echo '<label>
+            <input type="text" name="church_text_color_button_show_form" value="'.$value.'" class="ch-color-picker">
+      </label>';
+}
+
+ public function is_colorExists( $string ){
+
+    if(!isset( $string )) {
+            return  $string;
+        }else {
+            return $value = "#FFFFFF";
+        }
+ }
+
+ public function ch_currency(){
+        $value = esc_attr( get_option( 'church_currency' ) );
+        $currency_list = new Church_Currency();
+
+
+        ?>
+        <select name="church_currency">
+            <option value="" <?php selected( $value, ""); ?>> <?php echo $value; ?> <option>
+            <?php foreach (apply_filters( 'church_currency_list', $currency_list->ch_currency_list() ) as $key => $curr) {?>
+               <option  value="<?php echo $key;?>"><?php selected( $value, $key );?> <?php echo $curr;?></option>;
+            <?php } ?>
+        </select>
+        <?php
+    }
+
 
   public function comments($value='')
     {

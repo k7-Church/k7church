@@ -4,16 +4,25 @@
     <?php
     if (isset($_GET['tab'])) {
         $active_tab = $_GET['tab'];
-    } else {
+    }
+        elseif (isset($_GET['events'])) {
+        $active_tab = $_GET['events'];
+    }
+        elseif (isset($_GET['church_color'])) {
+        $active_tab = $_GET['church_color'];
+    }
+     else {
         $active_tab = 'tab_one';
     }
     ?>
 
     <h2 class="nav-tab-wrapper">
         <a href="?page=church_plugin&tab=tab_one"
-           class="nav-tab <?php echo $active_tab == 'tab_one' ? 'nav-tab-active' : ''; ?>">GENERAL SETTINGS</a>
+           class="nav-tab <?php echo $active_tab == 'tab_one' ? 'nav-tab-active' : ''; ?>"><?php _e('GENERAL SETTINGS', 'k7-church');?></a>
         <a href="?page=church_plugin&tab=events"
-           class="nav-tab <?php echo $active_tab == 'events' ? 'nav-tab-active' : ''; ?>">Events</a>
+           class="nav-tab <?php echo $active_tab == 'events' ? 'nav-tab-active' : ''; ?>"><?php _e('Events', 'k7-church');?></a>
+        <a href="?page=church_plugin&tab=church_color"
+           class="nav-tab <?php echo $active_tab == 'church_color' ? 'nav-tab-active' : ''; ?>"><?php _e('Color Control', 'k7-church');?></a>
     </h2>
     <form method="post" action="options.php">
         <?php
@@ -113,10 +122,10 @@
                             <br>
                             <p>
                             <h2>3. Go to Settings » Permalinks, and simply click on Save Changes button.</h2></p>
-                            <em>If you like this plugin, please <a href="http://wordpress.org/extend/plugins/k7-churchchurch">vote</a>
+                            <em>If you like this plugin, please <a href="http://wordpress.org/extend/plugins/k7-church">vote</a>
                                 .
                                 Author : <a href="https://github.com/zebedeu">Máecio Zebedeu</a>
-                                You can <a href="https://github.com/knut7/k7-churchchurch">for bugs,</a> thanks.</em>
+                                You can <a href="https://github.com/knut7/k7-church">for bugs,</a> thanks.</em>
 
                         </div>
                     </div>
@@ -128,11 +137,18 @@
         } elseif ($active_tab == 'events') {
                   /** settings manager */ 
 
-                    settings_fields( 'church_event_options_group' );
-                    do_settings_sections( 'church_event_settings' );
+                    settings_fields( 'church_options_group' );
+                    do_settings_sections( 'church_settings' );
                     submit_button( $text = null, $type = 'primary', $name = 'submit', $wrap = true, $other_attributes = null );
-       
+        }
+         elseif ($active_tab == 'church_color') {
+                  /** settings manager */ 
 
+                    settings_fields( 'church_options_group' );
+                    do_settings_sections( 'colors' );
+                    submit_button( $text = null, $type = 'primary', $name = 'submit', $wrap = true, $other_attributes = null );
         }
         ?>
+    </form>
+
 </div>
