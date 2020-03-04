@@ -1,16 +1,16 @@
 === K7 Church ===
-Contributors: Márcio Zebedeu
+Contributors: Márcio Zebedeu, passoniate
 Tags: Form, Register, Locations, Location Widget, Media Widget, Custom Post Type Manager, Custom Taxonomy Manager, Testimonial, Sermon post, Advanced Notification System,  
 Requires at least: 5.2
 Tested up to: 5.2.4
 Requires PHP: 5.6.20
-Stable tag: 1.0.21
+Stable tag: 1.0.22
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-K7 Church is a Wordpress plugin for churches that claims to be simple and objective for your church's website.
+K7 Church is a WordPress plugin for churches that claims to be simple and objective for your church's website.
 == Description ==
-K7 Church is a Wordpress plugin for churches that claims to be simple and objective for your church's website.
+K7 Church is a WordPress plugin for churches that claims to be simple and objective for your church's website.
 
 You can easily publish your sermons and add the following details to them:
 

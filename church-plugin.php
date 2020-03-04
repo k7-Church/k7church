@@ -7,9 +7,9 @@
 
 /**
  *  Plugin Name: K7 Church
- *  Description:  K7 Church is a Wordpress plugin for churches that claims to be simple and objective for your church's website.
- *  Version:      1.0.21
- *  Author:       Márcio Zebedeu
+ *  Description:  K7 Church is a WordPress plugin for churches that claims to be simple and objective for your church's website.
+ *  Version:      1.0.22
+ *  Author:       Márcio Zebedeu, passoniate
  *  Author URI:    https://profiles.wordpress.org/marcio-zebedeu
  *  License:      GPL2
  *  License URI:  https://www.gnu.org/licenses/gpl-2.0.html
