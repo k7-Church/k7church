@@ -13,7 +13,7 @@
         <input type="hidden" name="pippin_login_nonce" value="<?php echo wp_create_nonce('pippin-login-nonce'); ?>"/>
 
         <input class="submit_button" type="submit" value="<?php esc_attr_e('Login', 'k7-church'); ?>" name="submit">
-        <p class="status" data-message="status">Satus the messages</p>
+        <p class="status" data-message="status">Status of the messages</p>
 
         <p class="actions">
             <a href="<?php echo wp_lostpassword_url(); ?>"><?php _e('Forgot Password?', 'k7-church'); ?></a> - <a

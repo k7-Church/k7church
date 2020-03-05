@@ -9,7 +9,7 @@ defined('ABSPATH') || exit;
 
  
 class Church_Country{
-    // an array of countrys
+    // an array of country's
 
     public $notification_countrys = array(
         'AF' => 'Afghanistan',

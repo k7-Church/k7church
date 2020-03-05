@@ -62,7 +62,7 @@ class Church_AuthController extends Church_BaseController
         echo json_encode(
             array(
                 'status' => false,
-                'message' => 'Login sucessful, redirecting....'
+                'message' => 'Login successful, redirecting....'
             )
         );
 

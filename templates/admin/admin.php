@@ -104,7 +104,7 @@
                     <div id="tab-3" class="tab-pane">
 
                         <P>
-                            K7 Church is a Wordpress plugin for churches that claims to be simple and objective for your
+                            K7 Church is a WordPress plugin for churches that claims to be simple and objective for your
                             church's website.
                         </P>
                         <div class='wrap'>
@@ -114,9 +114,9 @@
                             <code>[testimonial-form]</code>
                             <p>Testimonial SlideShow Shortcode</p><br>
                             <code>[testimonial-slideshow]</code>
-                            <p>location for defaul </p><br>
+                            <p>location for default </p><br>
                             <code>[locations location_id=1]</code>
-                            <p>Location for namber the post</p>
+                            <p>Location for number the post</p>
                             <code>[locations location_id=1 number_of_locations=1]</code>
                             <code>[locations location_id="1" number_of_locations=1 post_status="publish"]</code>
                             <br>
