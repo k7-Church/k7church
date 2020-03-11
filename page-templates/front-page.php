@@ -37,14 +37,14 @@ get_header(); ?>
                             <?php
                             the_excerpt();
                             $args = array(
-                                'before' => '<div class="page-links-XXX"><span class="page-link-text">' . __('More pages: ', 'textdomain') . '</span>',
+                                'before' => '<div class="page-links-XXX"><span class="page-link-text">' . __('More pages: ', 'k7-church') . '</span>',
                                 'after' => '</div>',
                                 'link_before' => '<span class="page-link">',
                                 'link_after' => '</span>',
                                 'next_or_number' => 'next',
                                 'separator' => ' | ',
-                                'nextpagelink' => __('Next &raquo', 'textdomain'),
-                                'previouspagelink' => __('&laquo Previous', 'textdomain'),
+                                'nextpagelink' => __('Next &raquo', 'k7-church'),
+                                'previouspagelink' => __('&laquo Previous', 'k7-church'),
                             );
 
                             wp_link_pages($args);
