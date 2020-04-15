@@ -29,7 +29,7 @@ class Church_BaseController
         $this->managers = array(
             'cpt_manager' => __('Activate CPT Manager', 'k7-church'),
             'taxonomy_manager' => __('Activate Taxonomy Manager', 'k7-church'),
-            'location_manager' => __('Activate Localion Manager', 'k7-church'),
+            'location_manager' => __('Activate Location Manager', 'k7-church'),
             'location_widget' => __('Activate Location Widget', 'k7-church'),
             'media_widget' => __('Activate Media Widget', 'k7-church'),
             'testimonial_manager' => __('Activate Testimonial Manager', 'k7-church'),
