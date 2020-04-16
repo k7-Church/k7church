@@ -42,12 +42,12 @@ class Church_Dashboard extends Church_BaseController
     {
         $this->pages = array(
             array(
-                'page_title' => __('Church Plugin', 'k7-church'),
-                'menu_title' => __('Church', 'k7-church'),
+                'page_title' => 'Church Plugin',
+                'menu_title' => 'Church',
                 'capability' => 'manage_options',
                 'menu_slug' => 'church_plugin',
                 'callback' => array($this->callbacks, 'ch_adminDashboard'),
-                'icon_url' => 'dashicons-forms',
+                'icon_url' => 'dashicons-store',
                 'position' => 110
             )
         );

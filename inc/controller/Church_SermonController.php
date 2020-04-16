@@ -15,9 +15,6 @@ class Church_SermonController extends Church_BaseController
     public $settings;
     public $callbacks;
 
-    /**
-     * Adds custom post type for sermons
-     */
     public static function ch_Sermon_cpt()
     {
 
@@ -47,46 +44,35 @@ class Church_SermonController extends Church_BaseController
             'show_in_nav' => true,
             'query_var' => true,
             'hierarchical' => true,
-            'supports' => array('title', 'editor', 'thumbnail', 'author'),
+            'supports' => array('title', 'thumbnail', 'editor', 'comments'),
             'has_archive' => true,
             'menu_position' => 20,
             'show_in_admin_bar' => true,
-            'show_in_rest' => true,
-            'menu_icon' => 'dashicons-megaphone',
-            // TODO: Option for permalink customisation
-            'rewrite' => array('slug' => 'sermon', 'with_front' => 'true'),
-            'template' => array(
-                array( 'core/quote', array(
-                    'value' => sprintf('<p>%s</p>', __('Bible text', 'k7-church') ),
-                    'citation' => array( __('Bible reference', 'k7-church') ),
-                    'className' => 'is-style-large'
-                )),
-                array( 'core/audio' ),
-                array( 'core/video' ),
-                array( 'core/embed' )
-            ),
-            'template_lock' => 'all'
+            'menu_icon' => 'dashicons-welcome-write-blog',
+            'rewrite' => array('slug' => 'sermon', 'with_front' => 'true')
         );
         //register post type
         register_post_type('sermon', $args);
     }
 
 
-    /**
-     * Registers SermonController
-     */
+    //shortcode display
+
     public function ch_register()
     {
+
         $this->settings = new Church_SettingsApi();
+
         $this->callbacks = new Church_SermonCallbacks();
 
-        add_action( 'init', array($this, 'ch_Sermon_cpt') ); // register sermon as custom post type
+
+        add_action('init', array($this, 'ch_Sermon_cpt')); //register sermon content type
         add_action('add_meta_boxes', array($this, 'ch_add_sermon_meta_boxes')); //add meta boxes
         add_action('save_post_sermon', array($this, 'ch_save_sermon')); //save sermon
         add_filter('the_content', array($this, 'ch_prepend_sermon_meta_to_content')); //gets our meta data and dispayed it before the content
         add_shortcode('sermon', array($this, 'ch_sermon_shortcode_output'));
     }
-
+    
     public function ch_sermon_shortcode_output($atts, $content = '', $tag)
     {
 
@@ -225,10 +211,7 @@ class Church_SermonController extends Church_BaseController
             array($this, 'ch_sermon_meta_box_display'), //display function
             'sermon', //post type
             'normal', //sermon
-            'default', //priority
-            array(
-                '__back_compat_meta_box' => true,
-            )
+            'default' //priority
         );
 
     }
@@ -305,8 +288,8 @@ class Church_SermonController extends Church_BaseController
 
         global $post, $post_type;
 
-        // display meta only on our sermon (and if its a single sermon)
-        if ($post_type == 'sermon' && is_singular('sermon') && !has_blocks( $post )) {
+        //display meta only on our sermon (and if its a single sermon)
+        if ($post_type == 'sermon' && is_singular('sermon')) {
 
             //collect variables
             $sermon_id = $post->ID;
