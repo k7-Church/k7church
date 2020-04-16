@@ -58,7 +58,8 @@ class Church_SermonController extends Church_BaseController
             'template' => array(
                 array( 'core/quote', array(
                     'value' => sprintf('<p>%s</p>', __('Bible text', 'k7-church') ),
-                    'citation' => array( __('Bible reference', 'k7-church') )
+                    'citation' => array( __('Bible reference', 'k7-church') ),
+                    'className' => 'is-style-large'
                 )),
                 array( 'core/audio' ),
                 array( 'core/video' ),
