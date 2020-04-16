@@ -199,7 +199,7 @@ class Church_EventController extends Church_BaseController
             'singular_name' => __('Event' , 'k7-church') ,
             'menu_name' => __('Events' , 'k7-church') ,
             'name_admin_bar' => __('Event' , 'k7-church') ,
-            'add_new' => __('Add new' , 'k7-church') ,
+            'add_new' => __('Add New' , 'k7-church') ,
             'add_new_item' => __('Add new event' , 'k7-church') ,
             'new_item' => __('New event' , 'k7-church') ,
             'edit_item' => __('Edit event' , 'k7-church') ,
@@ -222,6 +222,7 @@ class Church_EventController extends Church_BaseController
             'supports' => array('title' , 'thumbnail' , 'editor') ,
             'has_archive' => true ,
             'menu_position' => 20 ,
+            'show_in_rest' => true,
             'show_in_admin_bar' => true ,
             'menu_icon' => 'dashicons-calendar-alt' ,
             'rewrite' => array('slug' => 'event' , 'with_front' => 'true')
