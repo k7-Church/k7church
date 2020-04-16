@@ -50,6 +50,7 @@ class Church_SermonController extends Church_BaseController
             'show_in_admin_bar' => true,
             'show_in_rest' => true,
             'menu_icon' => 'dashicons-megaphone',
+            // TODO: Option for permalink customisation
             'rewrite' => array('slug' => 'sermon', 'with_front' => 'true')
         );
         //register post type
