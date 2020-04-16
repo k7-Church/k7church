@@ -44,11 +44,12 @@ class Church_SermonController extends Church_BaseController
             'show_in_nav' => true,
             'query_var' => true,
             'hierarchical' => true,
-            'supports' => array('title', 'thumbnail', 'editor', 'comments'),
+            'supports' => array('title', 'thumbnail', 'author', 'exerpt'),
             'has_archive' => true,
             'menu_position' => 20,
             'show_in_admin_bar' => true,
-            'menu_icon' => 'dashicons-welcome-write-blog',
+            'show_in_rest' => true,
+            'menu_icon' => 'dashicons-megaphone',
             'rewrite' => array('slug' => 'sermon', 'with_front' => 'true')
         );
         //register post type
