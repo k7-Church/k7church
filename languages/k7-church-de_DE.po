@@ -219,7 +219,7 @@ msgstr "Wähle eine Option"
 
 #: inc/api/widgets/Church_LocationWidget.php:61
 msgid "Location to display"
-msgstr "anzuzeigender Standort"
+msgstr "Anzuzeigender Standort"
 
 #: inc/api/widgets/Church_LocationWidget.php:64
 #: inc/api/widgets/Church_LocationWidget.php:92
@@ -387,7 +387,7 @@ msgstr "Betragstypen"
 #: inc/controller/Church_EmailController.php:67
 #: inc/controller/Church_NotificationController.php:252
 msgid " notifications sent."
-msgstr "Benachrichtigungen versendet."
+msgstr " Benachrichtigungen versendet."
 
 #: inc/controller/Church_EventController.php:115
 msgid "Settings"
@@ -399,7 +399,7 @@ msgstr "Farbverwaltung"
 
 #: inc/controller/Church_EventController.php:138
 msgid "Currency "
-msgstr "Währung"
+msgstr "Währung "
 
 #: inc/controller/Church_EventController.php:151
 msgid "Border color"
@@ -445,7 +445,7 @@ msgstr "Ansehen"
 
 #: inc/controller/Church_EventController.php:207
 msgid "All events"
-msgstr "Alle"
+msgstr "Alle Veranstaltungen"
 
 #: inc/controller/Church_EventController.php:208
 msgid "Search events"
@@ -477,71 +477,71 @@ msgstr "Veranstaltungsort"
 
 #: inc/controller/Church_EventController.php:329
 msgid "Event price :"
-msgstr "Preis"
+msgstr "Preis:"
 
 #: inc/controller/Church_EventController.php:334
 msgid "Event Currency :"
-msgstr "Währung"
+msgstr "Währung:"
 
 #: inc/controller/Church_EventController.php:338
 msgid "Event Participe Limits:"
-msgstr "Teilnehmerlimit"
+msgstr "Teilnehmerlimit:"
 
 #: inc/controller/Church_EventController.php:348
 msgid "Event Country:"
-msgstr "Land"
+msgstr "Land:"
 
 #: inc/controller/Church_EventController.php:352
 msgid "Event City:"
-msgstr "Stadt"
+msgstr "Stadt:"
 
 #: inc/controller/Church_EventController.php:356
 #: inc/controller/Church_EventController.php:657
 msgid "Event Address:"
-msgstr "Adresse"
+msgstr "Adresse:"
 
 #: inc/controller/Church_EventController.php:360
 #: inc/controller/Church_EventController.php:660
 msgid "Event Street:"
-msgstr "Straße"
+msgstr "Straße:"
 
 #: inc/controller/Church_EventController.php:370
 #: inc/controller/Church_EventController.php:680
 msgid "Event Email:"
-msgstr "Email"
+msgstr "Email:"
 
 #: inc/controller/Church_EventController.php:374
 msgid "Event Organizers email:"
-msgstr "Email der Veranstalters"
+msgstr "Email der Veranstalters:"
 
 #: inc/controller/Church_EventController.php:378
 #: inc/controller/Church_EventController.php:672
 msgid "Event Phone:"
-msgstr "Telefon"
+msgstr "Telefon:"
 
 #: inc/controller/Church_EventController.php:383
 #: inc/controller/Church_EventController.php:675
 msgid "Event Phone 2:"
-msgstr "Telefon 2"
+msgstr "Telefon 2:"
 
 #: inc/controller/Church_EventController.php:562
 msgid "Publish date:"
-msgstr "Veröffentlichungsdatum"
+msgstr "Veröffentlichungsdatum:"
 
 #: inc/controller/Church_EventController.php:581
 #: inc/controller/Church_EventController.php:862
 msgid "Event start date:"
-msgstr "Beginn Datum"
+msgstr "Beginn Datum:"
 
 #: inc/controller/Church_EventController.php:586
 #: inc/controller/Church_EventController.php:864
 msgid "Start event timestamp:"
-msgstr "Beginn Zeitpunkt"
+msgstr "Beginn Zeitpunkt:"
 
 #: inc/controller/Church_EventController.php:589
 #: inc/controller/Church_EventController.php:866
 msgid "End event timestamp:"
-msgstr "Ende Zeitpunkt"
+msgstr "Ende Zeitpunkt:"
 
 #: inc/controller/Church_EventController.php:597
 msgid "Free"
@@ -550,12 +550,12 @@ msgstr "Kostenlos"
 #: inc/controller/Church_EventController.php:601
 #, php-format
 msgid "Price: %s %s "
-msgstr "Preis: %s %s"
+msgstr "Preis: %s %s "
 
 #: inc/controller/Church_EventController.php:631
 #, php-format
 msgid "Nº of places available:  %s "
-msgstr "Anzahl der verfügbaren Plätze: %s"
+msgstr "Anzahl der verfügbaren Plätze:  %s "
 
 #: inc/controller/Church_EventController.php:633
 #, php-format
@@ -564,23 +564,23 @@ msgstr "Anzahl der Teilnehmer: %s"
 
 #: inc/controller/Church_EventController.php:646
 msgid " Location"
-msgstr "Ort"
+msgstr " Ort"
 
 #: inc/controller/Church_EventController.php:649
 msgid "Event County:"
-msgstr "Staat"
+msgstr "Staat:"
 
 #: inc/controller/Church_EventController.php:652
 msgid "Event City/Province:"
-msgstr "Stadt"
+msgstr "Stadt:"
 
 #: inc/controller/Church_EventController.php:670
 msgid " Contact"
-msgstr "Kontakt"
+msgstr " Kontakt"
 
 #: inc/controller/Church_EventController.php:683
 msgid "Event or organizer email:"
-msgstr "Veranstaltung oder Email des Veranstalters"
+msgstr "Veranstaltung oder Email des Veranstalters:"
 
 #: inc/controller/Church_EventController.php:695
 #: inc/controller/Church_EventController.php:800
@@ -712,7 +712,7 @@ msgstr "Kontakt Email"
 
 #: inc/controller/Church_LocationController.php:163
 msgid "Cult Country:"
-msgstr "Land"
+msgstr "Land:"
 
 #: inc/controller/Church_LocationController.php:164
 msgid "location where the cult will take place"
@@ -720,7 +720,7 @@ msgstr "Land in dem die Veranstaltung stattfinden"
 
 #: inc/controller/Church_LocationController.php:170
 msgid "City:"
-msgstr "Stadt"
+msgstr "Stadt:"
 
 #: inc/controller/Church_LocationController.php:171
 msgid "City/Province where the cult will take place"
@@ -729,7 +729,7 @@ msgstr "Stadt in dem die Veranstaltung stattfinden"
 #: inc/controller/Church_LocationController.php:177
 #: inc/controller/Church_LocationController.php:251
 msgid "Address:"
-msgstr "Adresse"
+msgstr "Adresse:"
 
 #: inc/controller/Church_LocationController.php:178
 msgid "Cult Address"
@@ -737,7 +737,7 @@ msgstr "Adresse der Veranstaltung"
 
 #: inc/controller/Church_LocationController.php:182
 msgid "Cult Street:"
-msgstr "Straße"
+msgstr "Straße:"
 
 #: inc/controller/Church_LocationController.php:183
 msgid "Cult Street"
@@ -750,15 +750,15 @@ msgstr "Öffnungszeiten"
 
 #: inc/controller/Church_LocationController.php:191
 msgid "Cult hours for the location (e.g 9am - 5pm) "
-msgstr "Öffnungszeiten des Ortes (z.B. 9:00 - 17:00 Uhr)"
+msgstr "Öffnungszeiten des Ortes (z.B. 9:00 - 17:00 Uhr) "
 
 #: inc/controller/Church_LocationController.php:243
 msgid "Phone:"
-msgstr "Telefon"
+msgstr "Telefon:"
 
 #: inc/controller/Church_LocationController.php:247
 msgid "Email:"
-msgstr "Email"
+msgstr "Email:"
 
 #: inc/controller/Church_LocationController.php:348
 #: inc/controller/Church_LocationController.php:392
@@ -825,7 +825,7 @@ msgstr "Neuer Teilnehmer"
 
 #: inc/controller/Church_ParticipantController.php:75
 msgid "Hei! vou participar"
-msgstr "Hey! Ich nehme teil."
+msgstr "Hey! Ich nehme teil"
 
 #: inc/controller/Church_ParticipantController.php:77
 #, php-format
@@ -936,11 +936,11 @@ msgstr "Anzeigen"
 
 #: inc/controller/Church_SermonController.php:32
 msgid "All Sermons"
-msgstr "Alle"
+msgstr "Alle Predigten"
 
 #: inc/controller/Church_SermonController.php:33
 msgid "Search Sermons"
-msgstr "Nach Predigten suchen:"
+msgstr "Nach Predigten suchen"
 
 #: inc/controller/Church_SermonController.php:34
 msgid "Parent Sermon:"
@@ -990,15 +990,15 @@ msgstr "Beschreibung"
 
 #: inc/controller/Church_SermonController.php:313
 msgid "Passages of the sermon:"
-msgstr "Bibelverse der Predigt"
+msgstr "Bibelverse der Predigt:"
 
 #: inc/controller/Church_SermonController.php:317
 msgid "Author of the sermon:"
-msgstr "Redner der Predigt"
+msgstr "Redner der Predigt:"
 
 #: inc/controller/Church_SermonController.php:321
 msgid "Description of the Sermon:"
-msgstr "Beschreibung der Predigt"
+msgstr "Beschreibung der Predigt:"
 
 #: inc/controller/Church_TemplateController.php:20
 msgid "Location  Layout"
@@ -1006,7 +1006,7 @@ msgstr "Layout des Ortes"
 
 #: inc/controller/Church_TestimonialController.php:56
 msgid "Testimonial from "
-msgstr "Formular für Rückmeldungen"
+msgstr "Formular für Rückmeldungen "
 
 #: inc/controller/Church_TestimonialController.php:106
 msgid "Testimonials"
@@ -1031,7 +1031,7 @@ msgstr ""
 
 #: page-templates/front-page.php:40
 msgid "More pages: "
-msgstr "Mehr Seiten"
+msgstr "Mehr Seiten: "
 
 #: page-templates/front-page.php:46
 msgid "Next &raquo"
@@ -1252,7 +1252,7 @@ msgid ""
 "with it will not be deleted"
 msgstr ""
 "Bist du dir sicher, dass du diese benutzerdefinierte Klassifizierung "
-"entfernen möchtest? Die damit verknüpften Daten bleiben erhalten."
+"entfernen möchtest? Die damit verknüpften Daten bleiben erhalten"
 
 #: templates/taxonomy.php:61
 msgid "Export Your Taxonomies"
