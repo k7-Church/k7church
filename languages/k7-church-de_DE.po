@@ -4,10 +4,12 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: K7 Church v1.0.23\n"
-"POT-Creation-Date: 2020-04-15 17:52+0200\n"
-"PO-Revision-Date: \n"
-"Language-Team: \n"
 "Report-Msgid-Bugs-To: Translator Name <translations@example.com>\n"
+"POT-Creation-Date: 2020-04-16 19:00+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -16,12 +18,9 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;esc_html_e;esc_html_x:1,2c;esc_html__;"
 "esc_attr_e;esc_attr_x:1,2c;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;"
-"_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext:1,2;__ngettext_noop:1,2;_c,"
-"_nc:4c,1,2\n"
+"_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext:1,2;__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
 "X-Poedit-Basepath: ..\n"
 "X-Generator: Poedit 2.3\n"
-"Last-Translator: \n"
-"Language: de_DE\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: assets/js/fullcalendar-4.3.1/vendor/rrule.js:2974
@@ -424,7 +423,9 @@ msgid "Events"
 msgstr "Veranstaltungen"
 
 #: inc/controller/Church_EventController.php:202
-msgid "Add new"
+#: inc/controller/Church_LocationController.php:80
+#: inc/controller/Church_SermonController.php:30
+msgid "Add New"
 msgstr "Erstellen"
 
 #: inc/controller/Church_EventController.php:203
@@ -463,144 +464,144 @@ msgstr "Keine Veranstaltung gefunden."
 msgid "No events found in trash."
 msgstr "Keine Veranstaltung im Papierkorb gefunden."
 
-#: inc/controller/Church_EventController.php:243
+#: inc/controller/Church_EventController.php:244
 msgid "Start Date and Time"
 msgstr "Beginn Datum und Zeit"
 
-#: inc/controller/Church_EventController.php:244
+#: inc/controller/Church_EventController.php:245
 msgid "End Date and Time"
 msgstr "Ende Datum und Zeit"
 
-#: inc/controller/Church_EventController.php:248
+#: inc/controller/Church_EventController.php:249
 msgid "Event Location"
 msgstr "Veranstaltungsort"
 
-#: inc/controller/Church_EventController.php:329
+#: inc/controller/Church_EventController.php:330
 msgid "Event price :"
 msgstr "Preis:"
 
-#: inc/controller/Church_EventController.php:334
+#: inc/controller/Church_EventController.php:335
 msgid "Event Currency :"
 msgstr "Währung:"
 
-#: inc/controller/Church_EventController.php:338
+#: inc/controller/Church_EventController.php:339
 msgid "Event Participe Limits:"
 msgstr "Teilnehmerlimit:"
 
-#: inc/controller/Church_EventController.php:348
+#: inc/controller/Church_EventController.php:349
 msgid "Event Country:"
 msgstr "Land:"
 
-#: inc/controller/Church_EventController.php:352
+#: inc/controller/Church_EventController.php:353
 msgid "Event City:"
 msgstr "Stadt:"
 
-#: inc/controller/Church_EventController.php:356
-#: inc/controller/Church_EventController.php:657
+#: inc/controller/Church_EventController.php:357
+#: inc/controller/Church_EventController.php:658
 msgid "Event Address:"
 msgstr "Adresse:"
 
-#: inc/controller/Church_EventController.php:360
-#: inc/controller/Church_EventController.php:660
+#: inc/controller/Church_EventController.php:361
+#: inc/controller/Church_EventController.php:661
 msgid "Event Street:"
 msgstr "Straße:"
 
-#: inc/controller/Church_EventController.php:370
-#: inc/controller/Church_EventController.php:680
+#: inc/controller/Church_EventController.php:371
+#: inc/controller/Church_EventController.php:681
 msgid "Event Email:"
 msgstr "Email:"
 
-#: inc/controller/Church_EventController.php:374
+#: inc/controller/Church_EventController.php:375
 msgid "Event Organizers email:"
 msgstr "Email der Veranstalters:"
 
-#: inc/controller/Church_EventController.php:378
-#: inc/controller/Church_EventController.php:672
+#: inc/controller/Church_EventController.php:379
+#: inc/controller/Church_EventController.php:673
 msgid "Event Phone:"
 msgstr "Telefon:"
 
-#: inc/controller/Church_EventController.php:383
-#: inc/controller/Church_EventController.php:675
+#: inc/controller/Church_EventController.php:384
+#: inc/controller/Church_EventController.php:676
 msgid "Event Phone 2:"
 msgstr "Telefon 2:"
 
-#: inc/controller/Church_EventController.php:562
+#: inc/controller/Church_EventController.php:563
 msgid "Publish date:"
 msgstr "Veröffentlichungsdatum:"
 
-#: inc/controller/Church_EventController.php:581
-#: inc/controller/Church_EventController.php:862
+#: inc/controller/Church_EventController.php:582
+#: inc/controller/Church_EventController.php:863
 msgid "Event start date:"
 msgstr "Beginn Datum:"
 
-#: inc/controller/Church_EventController.php:586
-#: inc/controller/Church_EventController.php:864
+#: inc/controller/Church_EventController.php:587
+#: inc/controller/Church_EventController.php:865
 msgid "Start event timestamp:"
 msgstr "Beginn Zeitpunkt:"
 
-#: inc/controller/Church_EventController.php:589
-#: inc/controller/Church_EventController.php:866
+#: inc/controller/Church_EventController.php:590
+#: inc/controller/Church_EventController.php:867
 msgid "End event timestamp:"
 msgstr "Ende Zeitpunkt:"
 
-#: inc/controller/Church_EventController.php:597
+#: inc/controller/Church_EventController.php:598
 msgid "Free"
 msgstr "Kostenlos"
 
-#: inc/controller/Church_EventController.php:601
+#: inc/controller/Church_EventController.php:602
 #, php-format
 msgid "Price: %s %s "
 msgstr "Preis: %s %s "
 
-#: inc/controller/Church_EventController.php:631
+#: inc/controller/Church_EventController.php:632
 #, php-format
 msgid "Nº of places available:  %s "
 msgstr "Anzahl der verfügbaren Plätze:  %s "
 
-#: inc/controller/Church_EventController.php:633
+#: inc/controller/Church_EventController.php:634
 #, php-format
 msgid "Nº of participants: %s"
 msgstr "Anzahl der Teilnehmer: %s"
 
-#: inc/controller/Church_EventController.php:646
+#: inc/controller/Church_EventController.php:647
 msgid " Location"
 msgstr " Ort"
 
-#: inc/controller/Church_EventController.php:649
+#: inc/controller/Church_EventController.php:650
 msgid "Event County:"
 msgstr "Staat:"
 
-#: inc/controller/Church_EventController.php:652
+#: inc/controller/Church_EventController.php:653
 msgid "Event City/Province:"
 msgstr "Stadt:"
 
-#: inc/controller/Church_EventController.php:670
+#: inc/controller/Church_EventController.php:671
 msgid " Contact"
 msgstr " Kontakt"
 
-#: inc/controller/Church_EventController.php:683
+#: inc/controller/Church_EventController.php:684
 msgid "Event or organizer email:"
 msgstr "Veranstaltung oder Email des Veranstalters:"
 
-#: inc/controller/Church_EventController.php:695
-#: inc/controller/Church_EventController.php:800
-#: inc/controller/Church_EventController.php:882
+#: inc/controller/Church_EventController.php:696
+#: inc/controller/Church_EventController.php:801
+#: inc/controller/Church_EventController.php:883
 msgid "view Event"
 msgstr "Anzeigen"
 
-#: inc/controller/Church_EventController.php:717
+#: inc/controller/Church_EventController.php:718
 msgid ""
 "INSCRIPTIONS ARE CLOSED! We have reached the maximum number of members, and "
 "that is why registration is closed.!"
 msgstr ""
-"Anmeldungen sind nicht mehr möglich, da die maximale Teilnehmerzahl "
-"erreicht wurde!"
+"Anmeldungen sind nicht mehr möglich, da die maximale Teilnehmerzahl erreicht "
+"wurde!"
 
-#: inc/controller/Church_EventController.php:842
+#: inc/controller/Church_EventController.php:843
 msgid "Publish date:\t\n"
 msgstr "Veröffentlichungsdatum:\t\n"
 
-#: inc/controller/Church_EventController.php:882
+#: inc/controller/Church_EventController.php:883
 msgid "View Event"
 msgstr "Anzeigen"
 
@@ -651,11 +652,6 @@ msgstr "Ort"
 #: inc/controller/Church_LocationController.php:78
 msgid "Locations"
 msgstr "Orte"
-
-#: inc/controller/Church_LocationController.php:80
-#: inc/controller/Church_SermonController.php:27
-msgid "Add New"
-msgstr "Erstellen"
 
 #: inc/controller/Church_LocationController.php:81
 msgid "Add New Location"
@@ -907,96 +903,104 @@ msgstr ""
 msgid "partic"
 msgstr ""
 
-#: inc/controller/Church_SermonController.php:23
-#: inc/controller/Church_SermonController.php:24
 #: inc/controller/Church_SermonController.php:26
+#: inc/controller/Church_SermonController.php:27
+#: inc/controller/Church_SermonController.php:29
 msgid "Sermon"
 msgstr "Predigt"
 
-#: inc/controller/Church_SermonController.php:25
+#: inc/controller/Church_SermonController.php:28
 msgid "Sermons"
 msgstr "Predigten"
 
-#: inc/controller/Church_SermonController.php:28
+#: inc/controller/Church_SermonController.php:31
 msgid "Add New Sermon"
 msgstr "Erstellen"
 
-#: inc/controller/Church_SermonController.php:29
+#: inc/controller/Church_SermonController.php:32
 msgid "New Sermon"
 msgstr "Erstellen"
 
-#: inc/controller/Church_SermonController.php:30
+#: inc/controller/Church_SermonController.php:33
 msgid "Edit Sermon"
 msgstr "Bearbeiten"
 
-#: inc/controller/Church_SermonController.php:31
-#: inc/controller/Church_SermonController.php:193
+#: inc/controller/Church_SermonController.php:34
+#: inc/controller/Church_SermonController.php:206
 msgid "View Sermon"
 msgstr "Anzeigen"
 
-#: inc/controller/Church_SermonController.php:32
+#: inc/controller/Church_SermonController.php:35
 msgid "All Sermons"
 msgstr "Alle Predigten"
 
-#: inc/controller/Church_SermonController.php:33
+#: inc/controller/Church_SermonController.php:36
 msgid "Search Sermons"
 msgstr "Nach Predigten suchen"
 
-#: inc/controller/Church_SermonController.php:34
+#: inc/controller/Church_SermonController.php:37
 msgid "Parent Sermon:"
 msgstr "Übergeordnete Predigt:"
 
-#: inc/controller/Church_SermonController.php:36
+#: inc/controller/Church_SermonController.php:39
 msgid "No Sermons found in Trash."
 msgstr "Keine Predigt im Papierkorb gefunden."
 
-#: inc/controller/Church_SermonController.php:154
-#: inc/controller/Church_SermonController.php:193
+#: inc/controller/Church_SermonController.php:60
+msgid "Bible text"
+msgstr "Bibeltext"
+
+#: inc/controller/Church_SermonController.php:61
+msgid "Bible reference"
+msgstr "Bibelstelle"
+
+#: inc/controller/Church_SermonController.php:167
+#: inc/controller/Church_SermonController.php:206
 msgid "view sermon"
 msgstr "Anzeigen"
 
-#: inc/controller/Church_SermonController.php:180
+#: inc/controller/Church_SermonController.php:193
 msgid "Passages"
 msgstr "Bibelverse"
 
-#: inc/controller/Church_SermonController.php:183
-#: inc/controller/Church_SermonController.php:248
+#: inc/controller/Church_SermonController.php:196
+#: inc/controller/Church_SermonController.php:264
 msgid "Author"
 msgstr "Redner"
 
-#: inc/controller/Church_SermonController.php:210
+#: inc/controller/Church_SermonController.php:223
 msgid "Sermon Information"
 msgstr "Informationen zur Predigt"
 
-#: inc/controller/Church_SermonController.php:234
+#: inc/controller/Church_SermonController.php:250
 msgid "Enter additional information about your sermon"
 msgstr "Gebe weiterführende Informationen zur Predigt an"
 
-#: inc/controller/Church_SermonController.php:241
+#: inc/controller/Church_SermonController.php:257
 msgid "Passages for the sermon"
 msgstr "Bibelverse der Predigt"
 
-#: inc/controller/Church_SermonController.php:242
+#: inc/controller/Church_SermonController.php:258
 msgid "Biblical Passages"
 msgstr "Bibelverse"
 
-#: inc/controller/Church_SermonController.php:263
+#: inc/controller/Church_SermonController.php:279
 msgid "Embed video URL"
 msgstr "Video URL"
 
-#: inc/controller/Church_SermonController.php:270 templates/panel.php:78
+#: inc/controller/Church_SermonController.php:286 templates/panel.php:78
 msgid "Description"
 msgstr "Beschreibung"
 
-#: inc/controller/Church_SermonController.php:313
+#: inc/controller/Church_SermonController.php:329
 msgid "Passages of the sermon:"
 msgstr "Bibelverse der Predigt:"
 
-#: inc/controller/Church_SermonController.php:317
+#: inc/controller/Church_SermonController.php:333
 msgid "Author of the sermon:"
 msgstr "Redner der Predigt:"
 
-#: inc/controller/Church_SermonController.php:321
+#: inc/controller/Church_SermonController.php:337
 msgid "Description of the Sermon:"
 msgstr "Beschreibung der Predigt:"
 
@@ -1027,6 +1031,14 @@ msgstr "Anzeigen"
 
 #: inc/controller/Church_TestimonialController.php:255
 msgid "featured"
+msgstr ""
+
+#: inc/pages/Church_Dashboard.php:45
+msgid "Church Plugin"
+msgstr ""
+
+#: inc/pages/Church_Dashboard.php:46
+msgid "Church"
 msgstr ""
 
 #: page-templates/front-page.php:40
@@ -1119,8 +1131,7 @@ msgstr "Nachricht wurde erfolgreich versendet, danke!"
 
 #: templates/contact-form.php:28 templates/participe-form.php:67
 msgid "There was a problem with the Contact Form, please try again!"
-msgstr ""
-"Es gab ein Problem mit der Formular, bitte versuche es später nochmal!"
+msgstr "Es gab ein Problem mit der Formular, bitte versuche es später nochmal!"
 
 #: templates/cpt.php:7
 msgid "Your Custom Post Types"
@@ -1231,8 +1242,8 @@ msgid ""
 "Note: Your password will be generated automatically and emailed to the "
 "address you specify above."
 msgstr ""
-"Hinweis: Dein Passwort wird automatisch generiert und dir zu der "
-"angegebenen Email-Adresse geschickt."
+"Hinweis: Dein Passwort wird automatisch generiert und dir zu der angegebenen "
+"Email-Adresse geschickt."
 
 #: templates/taxonomy.php:7
 msgid "Your Taxonomies"
@@ -1261,3 +1272,9 @@ msgstr "Exportiere deine benutzerdefinierten Klassifizierungen"
 #: templates/widget.php:1
 msgid "Widgets Manager"
 msgstr "Widget-Manager"
+
+#~ msgid "Add new"
+#~ msgstr "Erstellen"
+
+#~ msgid "sermon"
+#~ msgstr "predigt"
